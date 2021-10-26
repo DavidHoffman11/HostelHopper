@@ -1,0 +1,23 @@
+{
+  "name": "hostelhopper",
+  "version": "1.0.0",
+  "description": "- Express Server",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^17.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidHoffman11/HostelHopper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidHoffman11/HostelHopper/issues"
+  },
+  "homepage": "https://github.com/DavidHoffman11/HostelHopper#readme"
+}
