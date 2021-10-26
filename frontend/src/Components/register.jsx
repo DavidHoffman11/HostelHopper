@@ -1,8 +1,8 @@
 import React from 'react';
 import './register.css'
-import logo from './logo.png';
+import logo from 'frontend/src/logo.png';
 import User from './../models/user';
-import { HostelHopperAPIClient } from './../Api/HostelHopperAPIClient';
+import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import { RegisterButton } from './loginButton';
 import { Redirect } from 'react-router-dom';
 import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
