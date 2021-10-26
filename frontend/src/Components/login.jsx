@@ -2,12 +2,12 @@ import React from 'react';
 import './login.css'
 import { Redirect, Link } from 'react-router-dom';
 import logo from './logo.png';
-import { VacationGramAPIClient } from '../Api/VacationGramAPIClient';
+import { HostelHopperAPIClient } from '../Api/HostelHopperGramAPIClient';
 import { LoginButton, ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
 
-    apiClient = new VacationGramAPIClient();
+    apiClient = new HostelHopperAPIClient();
 
     onLogin() {
         this.apiClient.login(this.state.email, this.state.password).then(user => {

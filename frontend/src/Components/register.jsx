@@ -2,7 +2,7 @@ import React from 'react';
 import './register.css'
 import logo from './logo.png';
 import User from './../models/user';
-import { VacationGramAPIClient } from './../Api/VacationGramAPIClient';
+import { HostelHopperAPIClient } from './../Api/HostelHopperAPIClient';
 import { RegisterButton } from './loginButton';
 import { Redirect } from 'react-router-dom';
 import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
@@ -10,7 +10,7 @@ import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './logi
 
 export class RegisterPage extends React.Component {
 
-    apiClient = new VacationGramAPIClient();
+    apiClient = new HostelHopperAPIClient();
 
 
     state = {
