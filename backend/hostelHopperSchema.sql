@@ -28,8 +28,6 @@ CREATE TABLE IF NOT EXISTS `db`.`user` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(45) NOT NULL,
     `birthdate` DATE NULL DEFAULT NULL,
-    `location` VARCHAR(45) NULL DEFAULT NULL COMMENT 'long/lat of user location/hometown',
-    `bio` VARCHAR(240) NULL DEFAULT NULL,
     `email` VARCHAR(45) NOT NULL,
     `password` VARCHAR(45) NOT NULL,
     `date_joined` DATETIME NOT NULL,
@@ -38,114 +36,81 @@ CREATE TABLE IF NOT EXISTS `db`.`user` (
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
     UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
   ) ENGINE = InnoDB AUTO_INCREMENT = 32 DEFAULT CHARACTER SET = utf8;
--- -----------------------------------------------------
-  -- Table `db`.`lkp_reaction`
+  
   -- -----------------------------------------------------
-  DROP TABLE IF EXISTS `db`.`lkp_reaction`;
-CREATE TABLE IF NOT EXISTS `db`.`lkp_reaction` (
+  -- Table `db`.`host`
+  -- -----------------------------------------------------
+  DROP TABLE IF EXISTS `db`.`host`;
+CREATE TABLE IF NOT EXISTS `db`.`host` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE
-  ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
--- -----------------------------------------------------
-  -- Table `db`.`trip`
-  -- -----------------------------------------------------
-  DROP TABLE IF EXISTS `db`.`trip`;
-CREATE TABLE IF NOT EXISTS `db`.`trip` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `user_id` INT NOT NULL,
-    `title` VARCHAR(45) NOT NULL,
-    `body` TEXT NOT NULL,
-    `price` INT NULL DEFAULT NULL,
-    `origin` VARCHAR(45) NULL DEFAULT NULL,
-    `destination` VARCHAR(45) NOT NULL,
-    `rating` INT NOT NULL,
-    `reaction_id` INT NULL DEFAULT NULL,
-    `is_public` BIT(1) NOT NULL DEFAULT b '1',
-    `date_created` DATETIME NOT NULL,
-    `date_last_updated` DATETIME NULL DEFAULT NULL,
+	`email` VARCHAR(45) NOT NULL,
+    `password` VARCHAR(45) NOT NULL,
+    `date_joined` DATETIME NOT NULL,
     `image_url` VARCHAR(200) NULL,
-    PRIMARY KEY (`id`),
+	`city` VARCHAR(45) NOT NULL,
+	`state` VARCHAR(45) NOT NULL,
+	`address` VARCHAR(45) NOT NULL,
+	zip INT NOT NULL,
+	phone VARCHAR(45) NOT NULL,
+	PRIMARY KEY (`id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
-    INDEX `sentiment_id_idx` (`reaction_id` ASC) VISIBLE,
-    CONSTRAINT `fk_user_trip_id` FOREIGN KEY (`user_id`) REFERENCES `db`.`user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `reaction_id` FOREIGN KEY (`reaction_id`) REFERENCES `db`.`lkp_reaction` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-  ) ENGINE = InnoDB AUTO_INCREMENT = 13 DEFAULT CHARACTER SET = utf8;
+    UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
+  ) ENGINE = InnoDB AUTO_INCREMENT = 32 DEFAULT CHARACTER SET = utf8;
+  
 -- -----------------------------------------------------
-  -- Table `db`.`comment`
+  -- Table `db`.`review`
   -- -----------------------------------------------------
-  DROP TABLE IF EXISTS `db`.`comment`;
-CREATE TABLE IF NOT EXISTS `db`.`comment` (
+  DROP TABLE IF EXISTS `db`.`review`;
+CREATE TABLE IF NOT EXISTS `db`.`review` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `trip_id` INT NOT NULL,
+    `host_id` INT NOT NULL,
     `user_id` INT NOT NULL,
-    `parent_comment_id` INT NULL DEFAULT NULL COMMENT 'parent comment id, if null it is root comment\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\nused for replies',
     `date_created` DATETIME NOT NULL,
+	`rating` INT NOT NULL,
     `body` VARCHAR(240) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    INDEX `trip_id_idx` (`trip_id` ASC) VISIBLE,
     INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
-    INDEX `parent_id_idx` (`parent_comment_id` ASC) VISIBLE,
-    CONSTRAINT `fk_parent_comment_id` FOREIGN KEY (`parent_comment_id`) REFERENCES `db`.`comment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `fk_trip_comment_id` FOREIGN KEY (`trip_id`) REFERENCES `db`.`trip` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `fk_user_comment_id` FOREIGN KEY (`user_id`) REFERENCES `db`.`user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+    -- CONSTRAINT `fk_parent_comment_id` FOREIGN KEY (`parent_comment_id`) REFERENCES `db`.`comment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    -- CONSTRAINT `fk_trip_comment_id` FOREIGN KEY (`trip_id`) REFERENCES `db`.`trip` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `db`.`user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
   ) ENGINE = InnoDB AUTO_INCREMENT = 14 DEFAULT CHARACTER SET = utf8;
+  
 -- -----------------------------------------------------
-  -- Table `db`.`like_on_comment`
+  -- Table `db`.`reaction`
   -- -----------------------------------------------------
-  DROP TABLE IF EXISTS `db`.`like_on_comment`;
-CREATE TABLE IF NOT EXISTS `db`.`like_on_comment` (
+  DROP TABLE IF EXISTS `db`.`reaction`;
+CREATE TABLE IF NOT EXISTS `db`.`reaction` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `comment_id` INT NOT NULL,
-    `liked_by_user_id` INT NOT NULL,
+    `review_id` INT NOT NULL,
+    `reacting_user_id` INT NOT NULL,
     `is_dislike` BIT(1) NOT NULL DEFAULT b '0',
     PRIMARY KEY (`id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    INDEX `comment_id_idx` (`comment_id` ASC) VISIBLE,
-    INDEX `liked_by_user_id_idx` (`liked_by_user_id` ASC) VISIBLE,
-    CONSTRAINT `fk_comment_like_on_comment_id` FOREIGN KEY (`comment_id`) REFERENCES `db`.`comment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `liked_by_user_id` FOREIGN KEY (`liked_by_user_id`) REFERENCES `db`.`user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+    INDEX `reaction_id_idx` (`reaction_id` ASC) VISIBLE,
+    INDEX `reacting_user_id_idx` (`reacting_user_id` ASC) VISIBLE,
+    CONSTRAINT `review_id` FOREIGN KEY (`review_id`) REFERENCES `db`.`review` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `reacting_user_id` FOREIGN KEY (`reacting_user_id`) REFERENCES `db`.`user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
   ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
--- -----------------------------------------------------
-  -- Table `db`.`like_on_trip`
+ 
+ -- -----------------------------------------------------
+  -- Table `db`.`reply`
   -- -----------------------------------------------------
-  DROP TABLE IF EXISTS `db`.`like_on_trip`;
-CREATE TABLE IF NOT EXISTS `db`.`like_on_trip` (
+ DROP TABLE IF EXISTS `db`.`reply`;
+CREATE TABLE IF NOT EXISTS `db`.`reply` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `liked_by_user` INT NOT NULL,
-    `trip_id` INT NOT NULL,
-    PRIMARY KEY (`id`),
+	`user_id` INT NOT NULL,
+	`review_id` INT NOT NULL,
+	`replying_user_id` INT NOT NULL,
+	`body` VARCHAR(240) NOT NULL,
+	`is_host` BIT(1) NOT NULL DEFAULT B '0',
+	PRIMARY KEY (`id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    INDEX `liked_by_user_idx` (`liked_by_user` ASC) VISIBLE,
-    INDEX `trip_id_idx` (`trip_id` ASC) VISIBLE,
-    CONSTRAINT `fk_trip_like_on_trip_id` FOREIGN KEY (`trip_id`) REFERENCES `db`.`trip` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `liked_by_user` FOREIGN KEY (`liked_by_user`) REFERENCES `db`.`user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-  ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARACTER SET = utf8;
--- -----------------------------------------------------
-  -- Table `db`.`user_saved_trip`
-  -- -----------------------------------------------------
-  DROP TABLE IF EXISTS `db`.`user_saved_trip`;
-CREATE TABLE IF NOT EXISTS `db`.`user_saved_trip` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `trip_id` INT NOT NULL,
-    `saved_by_user_id` INT NOT NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    INDEX `trip_id_idx` (`trip_id` ASC) VISIBLE,
-    INDEX `saved_by_user_id_idx` (`saved_by_user_id` ASC) VISIBLE,
-    CONSTRAINT `fk_trip_user_saved_id` FOREIGN KEY (`trip_id`) REFERENCES `db`.`trip` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `saved_by_user_id` FOREIGN KEY (`saved_by_user_id`) REFERENCES `db`.`user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-  ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
-SET
-  SQL_MODE = @OLD_SQL_MODE;
-SET
-  FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
-SET
-  UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
+	CONSTRAINT `review_id` FOREIGN KEY (`review_id`) REFERENCES `db`.`review` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT `replying_user_id` FOREIGN KEY (`replying_user_id`) REFERENCES `db`.`user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+	ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+  
 -- -----------------------------------------------------
   -- Data for table `db`.`user`
   -- -----------------------------------------------------
