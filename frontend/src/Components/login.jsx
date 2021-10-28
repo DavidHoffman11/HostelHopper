@@ -27,6 +27,13 @@ class Login extends React.Component {
         this.setState({ register: true });
     }
 
+    handleKeyPress = e => {
+        if (e.keyCode === 13) {
+            alert("You hit enter");
+            this.onLogin();
+        }
+      };
+
     state = {
         id: '',
         username: "",
@@ -70,6 +77,7 @@ class Login extends React.Component {
                             />
                         </div>
                         <button className="btn btn-primary btn-lg btn-block" type="button"
+                            //onKeyPress={handleKeyPress}
                             onClick={() => this.onLogin()}>Log In</button>
                         {this.state.authenticated && <Redirect to={'/home/' + this.state.id} />}
                         <br></br>
