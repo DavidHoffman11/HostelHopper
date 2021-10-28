@@ -1,8 +1,8 @@
 import React from 'react';
 import './login.css'
 import { Redirect, Link } from 'react-router-dom';
-import logo from 'frontend/src/logo.png';
-import { HostelHopperAPIClient } from 'frontend/Api/HostelHopperAPIClient';
+import logo from '../logo.png';
+import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import { LoginButton, ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
