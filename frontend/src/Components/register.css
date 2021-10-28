@@ -59,6 +59,9 @@
     transition: 0.3s;
     text-decoration: none;
 }
+.text-danger{
+    color: red;
+}
 
 /* .registerB{
     border-radius: 10px;
