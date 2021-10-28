@@ -51,7 +51,7 @@ class Login extends React.Component {
             <div className="fadeInDown" id="loginWrapper">
                 <div id="loginFormContent">
                     <div className="imgcontainer pt-4 mb-0">
-                        <h1>Welcome to Hostel Hopper!!!</h1>
+                        <h1>Welcome to Hostel Hopper!</h1>
                         <img src={logo} alt="Avatar" className="avatar"></img>
                     </div>
                     <div className="login-form">
