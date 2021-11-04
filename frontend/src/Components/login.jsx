@@ -7,7 +7,7 @@ import { LoginButton, ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
 
-    apiClient = new HostelHopperAPIClient();
+    apiClient = new HostelHopperAPIClient(); 
 
     onLogin() {
         this.apiClient.login(this.state.email, this.state.password).then(user => {
@@ -82,9 +82,15 @@ class Login extends React.Component {
                         {this.state.authenticated && <Redirect to={'/home/' + this.state.id} />}
                         <br></br>
                         <div className="pb-5">
-                        <Link to={'register'}>
-                            <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Register</button>
-                        </Link>
+                            <Link to={'register'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Register</button>
+                            </Link>
+                        </div>
+                        <br></br>
+                        <div className="pb-5">
+                            <Link to={'profile'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Profile Temp Link</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
