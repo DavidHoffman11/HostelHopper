@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import Login from './Components/login';
 import RegisterPage from './Components/register';
 import ProfilePage from './Components/profilePage';
+import HomePage from './Components/homePage';
 
 class App extends Component {
   render() {
@@ -19,6 +20,9 @@ class App extends Component {
           </Route>
           <Route path="/profile">
             <ProfilePage />
+            </Route>
+         <Route path="/homepage">
+            <HomePage />
           </Route>
             {/* { ROUTES.map((route, index) => <Route key={index} { ...route } />) } */}
           </Switch>

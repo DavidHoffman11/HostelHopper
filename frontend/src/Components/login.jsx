@@ -95,6 +95,15 @@ class Login extends React.Component {
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Profile Temp Link</button>
                             </Link>
                         </div>
+
+                        
+                        <br></br>
+                        <div className="pb-5">
+                            <Link to={'homepage'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Go to Home Page</button>
+                            </Link>
+                        </div>
+
                     </div>
                 </div>
             </div>
