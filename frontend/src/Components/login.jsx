@@ -76,7 +76,7 @@ class Login extends React.Component {
                                 onChange={e => this.setState({ password: e.target.value })}
                             />
                         </div>
-                        <button className="btn btn-primary btn-lg btn-block" type="button"
+                        <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
                             //onKeyPress={handleKeyPress}
                            onClick={() => this.onLogin()}>Log In</button>
 
