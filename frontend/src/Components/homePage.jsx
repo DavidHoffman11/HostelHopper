@@ -16,26 +16,20 @@ export class HomePage extends React.Component {
 
     render(){
         return <>
-        <div class="background">
+        <div className="background">
             <div id="homePageHeader">
             Avaliable Hostels 
             </div >
-                <div class="Listing">
-                <img  src= {propertyImage} alt="Picture" className="Picture"/>
-                 </div>
-                 <h3 id="propertyName">Property Name</h3>
-                 <div>
-                     <p>This is a beautiful property. Our hostel is located right near the back and has 
-                         many amentities like a pool, clean towels, and wifi. We would love for you to 
-                         stay with us!
-                     </p>
-                 </div>
-                 <div> 
-                     <span>"$50 / night</span>
-                 </div>
-                 <div> 
-                    <button type="button" > Click here to learn more!</button>
-                 </div>
+               
+               
+            <div className="card mb-3">
+  <img className="card-img-top" src="..." alt="Card image cap"/>
+  <div className="card-body">
+    <h5 className="card-title">Card title</h5>
+    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
         
          
 
