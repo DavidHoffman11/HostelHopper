@@ -3,7 +3,7 @@ import axios from 'axios';
 export class HostelHopperAPIClient
 {
 
-  url = 'http://'
+  url = 'http://sampledockercompose.cdgpbu8t7kia.us-east-2.rds.amazonaws.com'
 
   config = {};
 
