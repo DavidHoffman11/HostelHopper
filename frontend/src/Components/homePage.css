@@ -1,0 +1,44 @@
+
+.background{
+    background-color:rgb(189,237,252);
+    width: 100vw;
+    height: 100vh;
+
+    /*figure out how to make whole page scroll*/
+    
+}
+
+#homePageHeader{
+    font-size:3rem;
+    font-weight: bold;
+    background-color: white;
+    color: rgb(47, 49, 146);
+  text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+
+
+.Listing{
+    border-style: dotted;
+border-color:rgb(47, 49, 146);
+padding-top:2%;
+padding-bottom:2%;
+    width: 650px;
+margin:auto;
+margin-top: 3rem;
+
+
+}
+
+p, h3{
+   width:600px;
+   margin:auto;
+}
+.Picture {
+    opacity: 100%;
+    height: 350px;
+    width: 600px;
+   margin-left:4%;
+}
