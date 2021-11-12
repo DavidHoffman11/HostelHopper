@@ -11,7 +11,7 @@ export class ProfilePage extends React.Component {
 
     render(){
         return <>
-            <p className="container">Profile Page</p>
+            <p className="container">Hostel Profile Page</p>
             <div id="fullProfile" className="container bg-light">
                 <div className="row border border-dark p-0">
                     <div className="col-8 border-right border-dark">Menu bar</div>
