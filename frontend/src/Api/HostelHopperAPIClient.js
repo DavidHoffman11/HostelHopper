@@ -144,7 +144,6 @@ export class HostelHopperAPIClient
     {
       axios.put(
           `${this.url}/host/${host_id}`,
-          updateJSON
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
