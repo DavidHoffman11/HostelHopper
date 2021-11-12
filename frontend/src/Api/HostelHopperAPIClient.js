@@ -3,7 +3,7 @@ import axios from 'axios';
 export class HostelHopperAPIClient
 {
 
-  url = 'http://'
+  url = 'http://sampledockercompose.cdgpbu8t7kia.us-east-2.rds.amazonaws.com'
 
   config = {};
 
@@ -28,7 +28,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/users`,
+          `${this.url}/user`,
           {
             "name": name,
             "email": email,
@@ -46,19 +46,19 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/users/${user_id}`,
+          `${this.url}/user/${user_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  getAllUsers()
+  getAlluser()
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/users`,
+          `${this.url}/user`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -70,7 +70,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.put(
-          `${this.url}/users/${user_id}`,
+          `${this.url}/user/${user_id}`,
           updateJSON
         )
         .then(response => resolve(response.data))
@@ -83,103 +83,41 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.delete(
-          `${this.url}/users/${user_id}`,
+          `${this.url}/user/${user_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  getUserTrips(user_id)
+  getAllHosts(searchRestrictions = {})
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/users/${user_id}/trips`,
+          `${this.url}/host`, { params: searchRestrictions }
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  getUserSavedTrips(user_id)
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.get(
-          `${this.url}/users/${user_id}/saved`,
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  addSavedTrip(user_id, trip_id)
+  createHost(body, title, price, city, state, address, country, zip, phone, image_url)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/users/${user_id}/saved`,
-          {
-            "trip_id": trip_id,
-          },
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  didUserSaveTrip(user_id, trip_id)
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.get(
-          `${this.url}/users/${user_id}/saved/${trip_id}`,
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  removeSavedTrip(user_id, trip_id)
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.delete(
-          `${this.url}/users/${user_id}/saved/${trip_id}`,
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  getAllTrips(searchRestrictions = {})
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.get(
-          `${this.url}/trips`, { params: searchRestrictions }
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  createTrip(body, origin, destination, rating, price, title, user_id, reaction_id, image_url)
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.post(
-          `${this.url}/trips/`,
+          `${this.url}/host/`,
           {
             "body": body,
-            "destination": destination,
-            "rating": rating,
             "title": title,
-            "user_id": user_id,
             "price": price,
-            "origin": origin,
-            "reaction_id": reaction_id,
+            "city": city,
+            "state": state,
+            "address":address,
+            "country": country,
+            "zip": zip,
+            "phone": phone,
             "image_url": image_url,
           },
         )
@@ -188,61 +126,60 @@ export class HostelHopperAPIClient
     });
   }
 
-  getTrip(trip_id)
+  getHost(host_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/trips/${trip_id}`,
+          `${this.url}/host/${host_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  updateTrip(trip_id, updateJSON)
+  updateHost(host_id, updateJSON)
   {
     return new Promise((resolve, reject) =>
     {
       axios.put(
-          `${this.url}/trips/${trip_id}`,
-          updateJSON
+          `${this.url}/host/${host_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  deleteTrip(trip_id)
+  deleteHost(host_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.delete(
-          `${this.url}/trips/${trip_id}`,
+          `${this.url}/host/${host_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  getComments(trip_id)
+  getComments(host_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/trips/${trip_id}/comments`,
+          `${this.url}/review/${host_id}/body`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  postComment(trip_id, user_id, body)
+  postReview(host_id, user_id, body)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/trips/${trip_id}/comments`,
+          `${this.url}/host/${host_id}/review`,
           {
             "user_id": user_id,
             "body": body,
@@ -253,36 +190,36 @@ export class HostelHopperAPIClient
     });
   }
 
-  deleteComment(trip_id, comment_id)
+  deleteReview(host_id, review_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.delete(
-          `${this.url}/trips/${trip_id}/comments/${comment_id}`,
+          `${this.url}/host/${host_id}/review/${review_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  getCommentLikes(trip_id, comment_id)
+  gethostLikes(host_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/trips/${trip_id}/comments/${comment_id}/likes`,
+          `${this.url}/host/${host_id}/like`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  likeComment(trip_id, comment_id, user_id)
+  likeHost(host_id, user_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/trips/${trip_id}/comments/${comment_id}/likes`,
+          `${this.url}/host/${host_id}/like`,
           {
             "user_id": user_id
           }
@@ -292,75 +229,24 @@ export class HostelHopperAPIClient
     });
   }
 
-  unlikeComment(trip_id, comment_id, user_id)
+  unlikeHost(host_id, user_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.delete(
-          `${this.url}/trips/${trip_id}/comments/${comment_id}/likes/${user_id}`,
+          `${this.url}/host/${host_id}/like/${user_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  getLikes(trip_id)
+  didUserLikeHost(host_id, user_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/trips/${trip_id}/likes`,
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  likeTrip(trip_id, user_id)
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.post(
-          `${this.url}/trips/${trip_id}/likes`,
-          {
-            "user_id": user_id,
-          }
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  didUserLikeTrip(trip_id, user_id)
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.get(
-          `${this.url}/trips/${trip_id}/likes/${user_id}`,
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  unlikeTrip(trip_id, user_id)
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.delete(
-          `${this.url}/trips/${trip_id}/likes/${user_id}`,
-        )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
-    });
-  }
-
-  getReactionName(reaction_id)
-  {
-    return new Promise((resolve, reject) =>
-    {
-      axios.get(
-          `${this.url}/reactions/${reaction_id}`,
+          `${this.url}/host/${host_id}/like/${user_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
