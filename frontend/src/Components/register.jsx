@@ -66,6 +66,8 @@ export class RegisterPage extends React.Component {
                     this.setState({ id: user.info[0].id });
                     this.setState({ registered: true });
                 });
+        }else{
+            alert("Please fill out all fields");
         }
     }
 

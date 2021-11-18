@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
-import { ROUTES } from './routes';
+import Login from './Components/login';
+import RegisterPage from './Components/register';
+import ProfilePage from './Components/profilePage';
+import HomePage from './Components/homePage';
 
 class App extends Component {
   render() {
@@ -9,12 +12,31 @@ class App extends Component {
       <>
         <Router>
           <Switch>
-            { ROUTES.map((route, index) => <Route key={index} { ...route } />) }
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage />
+            </Route>
+         <Route path="/homepage">
+            <HomePage />
+          </Route>
+            {/* { ROUTES.map((route, index) => <Route key={index} { ...route } />) } */}
           </Switch>
         </Router>
       </>
     );
   }
+
+//   ROUTES = [
+//     { path: '/register', component: RegisterPage },
+//     { path: '/', component: Login },
+//     { path: '/profile', component: ProfilePage },
+// ]
+
 }
 
 export default App;
