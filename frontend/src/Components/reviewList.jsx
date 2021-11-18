@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const ReviewList = props => <>
     <h2>Hostel Reviews <span>({props.reviews.length})</span></h2>
     <ul className="list-group">

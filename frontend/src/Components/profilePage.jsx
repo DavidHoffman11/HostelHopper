@@ -6,8 +6,15 @@ import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import { LoginButton, ErrorMessage } from './loginButton';
 import {Hostel} from '../Models/hostel';
 import { ReviewList } from './reviewList';
+import ReviewForm from './reviewForm';
+
+
 
 export class ProfilePage extends React.Component {
+    addReview(review){
+        this.state.Hostel.reviews.push(review);
+        this.setState({product: this.state.product});
+    }
     state = {
         Hostel: new Hostel(0, 
             "Big Cabana Resort", 
@@ -16,19 +23,22 @@ export class ProfilePage extends React.Component {
         1000, 
         "it is cool", 
         "we have good food", 
+        "living options",
         "big oceanside view", 
         true, 
         true, 
         "California", 
         true, 
         true, 
-        []),
+        []
+        ),
     }
 
     apiClient = new HostelHopperAPIClient(); 
 
     render(){
-        return <>
+        const { Hostel } = this.state;
+        return( <div>
             <p className="container">Hostel Profile Page</p>
             <div id="fullProfile" className="container bg-light">
                 <div className="row border border-dark p-0">
@@ -39,8 +49,11 @@ export class ProfilePage extends React.Component {
                 <h1>Bio</h1>
                 <p>Insert bio here</p>
                 <ReviewList reviews={this.state.Hostel.reviews}/>
+                <div className="bottom-padding"></div>
+                <ReviewForm onReviewAdded= {review => this.addReview(review)} />
             </div>
-        </>
+        </div>
+        )
     }
 }
 export default ProfilePage;
