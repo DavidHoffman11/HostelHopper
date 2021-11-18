@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const LoginButton = props => {
     
     return<div>
-        <Link to={'/mainPage/' + props.id}>
+        <Link to={'/homePage/' + props.id}>
         <button className = "loginButton2">Account Autherized Click here!</button>
         </Link>
     </div>
@@ -41,7 +41,7 @@ export const RegisterErrorMessage2 = props => {
 export const RegisterButton = props => {
     
     return<div>
-        <Link to={'/mainPage/' + props.id}>
+        <Link to={'/homePage/' + props.id}>
         <button className = "loginButton2">Account Registered Click here tro Proceed to Profile</button>
         </Link>
     </div>

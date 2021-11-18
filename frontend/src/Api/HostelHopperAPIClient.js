@@ -214,7 +214,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  likeHost(host_id, user_id)
+  likeHost(host_id, user_id,review_id)
   {
     return new Promise((resolve, reject) =>
     {
@@ -229,7 +229,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  unlikeHost(host_id, user_id)
+  unlikeHost(host_id, user_id,review_id)
   {
     return new Promise((resolve, reject) =>
     {
