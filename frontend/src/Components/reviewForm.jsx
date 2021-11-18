@@ -1,5 +1,5 @@
 import React from 'react';
-import HostelReview  from '/Users/yeet/Documents/GitHub/HostelHopper/frontend/src/Models/hostelReview.js';
+import HostelReview  from '../Models/hostelReview.js';
 
 export default class ReviewForm extends React.Component {
     constructor(props){
