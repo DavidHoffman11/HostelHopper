@@ -97,7 +97,7 @@ img.avatar {
 }
 
 #loginWrapper{
-    margin-top: 10vh;
+    padding-bottom: 10vh;
     padding-top: 1vh;
     display: block;
     margin-left: auto;
@@ -124,7 +124,7 @@ img.avatar {
 
 #loginPageBG{
     background-color: rgb(47, 49, 146);
-    height: 100%;
+
 }
 
 .fadeInDown{
@@ -165,18 +165,4 @@ img.avatar {
 }
 .btn-bot-margin{
     margin-bottom: 1rem;
-}
-
-@media only screen and (max-width: 600px){
-    #loginWrapper{
-        margin-top: 0;
-    }
-
-    #loginFormContent{
-        margin-top: 0;
-    }
-
-    #loginPageBG{
-        margin-top: 0;
-    }
 }
