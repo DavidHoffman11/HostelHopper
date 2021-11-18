@@ -143,7 +143,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.put(
-          `${this.url}/host/${trip_id}`,
+          `${this.url}/host/${host_id}`,
           updateJSON
         )
         .then(response => resolve(response.data))
@@ -215,7 +215,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  likeHost(host_id, user_id)
+  likeHost(host_id, user_id,review_id)
   {
     return new Promise((resolve, reject) =>
     {
@@ -230,7 +230,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  unlikeHost(host_id, user_id)
+  unlikeHost(host_id, user_id,review_id)
   {
     return new Promise((resolve, reject) =>
     {
