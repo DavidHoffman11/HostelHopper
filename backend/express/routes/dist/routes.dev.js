@@ -3,9 +3,9 @@
 module.exports = function (app) {
   var userController = require("../model/user");
 
-  var tripController = require("../model/trip");
+  var tripController = require("../model/hostel");
 
-  var commentController = require("../model/comment");
+  var commentController = require("../model/review");
 
   app.route("/").get(function (req, res) {
     res.status(200).send({
@@ -17,7 +17,7 @@ module.exports = function (app) {
   app.route("/api/user/login").post(userController.login_user);
   app.route("/api/user/delete/:id")["delete"](userController.delete_user); // TRIP
 
-  app.route("/api/trip/create").post(tripController.create_trip); // COMMENT
+  app.route("/api/hostel/create").post(tripController.create_host); // COMMENT
 
-  app.route("/api/trip/:id/comment").post(commentController.create_comment);
+  app.route("/api/hostel/:id/review").post(commentController.create_review);
 };

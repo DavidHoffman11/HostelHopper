@@ -4,7 +4,7 @@ module.exports = function(app)
 {
   var userController = require("../model/user");
   var hostelController = require("../model/hostel");
-  var commentController = require("../model/review");
+  var reviewController = require("../model/review");
 
   app.route("/").get(function(req, res)
   {
@@ -39,12 +39,12 @@ module.exports = function(app)
   // HOSTEL
 
   // REVIEW
-  app.route("/api/host/:id/review").get(commentController.get_comments);
-  app.route("/api/host/:id/review").post(commentController.create_comment);
-  app.route("/api/host/:id/review/:id").delete(commentController.delete_comment);
+  app.route("/api/host/:id/review").get(reviewController.get_comments);
+  app.route("/api/host/:id/review").post(reviewController.create_comment);
+  app.route("/api/host/:id/review/:id").delete(reviewController.delete_comment);
 
   // COMMENT LIKES
-  app.route("/api/host/:id/review/:id/like").get(commentController.get_likes);
-  app.route("/api/host/:id/review/:id/like").post(commentController.like_comment);
-  app.route("/api/host/:id/review/:id/like/:user_id").delete(commentController.unlike_comment);
+  app.route("/api/host/:id/review/:id/like").get(reviewController.get_likes);
+  app.route("/api/host/:id/review/:id/like").post(reviewController.like_review);
+  app.route("/api/host/:id/review/:id/like/:user_id").delete(reviewController.unlike_review);
 };
