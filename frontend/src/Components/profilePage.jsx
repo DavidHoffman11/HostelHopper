@@ -13,6 +13,7 @@ import ReviewForm from './reviewForm';
 export class ProfilePage extends React.Component {
     addReview(review){
         this.state.Hostel.reviews.push(review);
+        this.state.Hostel.reviewAvg = this.state.Hostel.getAvg(this.state.Hostel.reviews);
         this.setState({product: this.state.product});
     }
     state = {
@@ -46,7 +47,7 @@ export class ProfilePage extends React.Component {
                     <div className="col-auto border-left border-dark">Browse</div>
                 </div>
                 <img className="float-left" src="https://via.placeholder.com/150" alt="picture"></img>
-                <h1>Bio</h1>
+                <h1>Bio {this.state.Hostel.reviewAvg}</h1>
                 <p>Insert bio here</p>
                 <ReviewList reviews={this.state.Hostel.reviews}/>
                 <div className="bottom-padding"></div>

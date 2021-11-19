@@ -3,5 +3,6 @@ export default class HostelReview {
         this.userName = userName;
         this.comment = comment;
         this.date = date;
+        this.rating = rating;
     }
 }
