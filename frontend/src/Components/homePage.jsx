@@ -6,8 +6,6 @@ import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import './homePage.css'
 import logo from '../logo.png';
 
-
-
 export class HomePage extends React.Component {
 
     apiClient = new HostelHopperAPIClient(); 
