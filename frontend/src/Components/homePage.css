@@ -2,10 +2,8 @@
 .background{
     background-color:rgb(189,237,252);
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 
-    /*figure out how to make whole page scroll*/
-    
 }
 
 #homePageHeader{
@@ -18,27 +16,32 @@
     padding-bottom: 2rem;
 }
 
-
-
-.Listing{
-    border-style: dotted;
-border-color:rgb(47, 49, 146);
-padding-top:2%;
-padding-bottom:2%;
-    width: 650px;
-margin:auto;
-margin-top: 3rem;
-
-
+#searchBar{
+    width:40%;
+    margin:auto;
+    margin-top:2rem;
 }
 
-p, h3{
-   width:600px;
-   margin:auto;
+#listing{
+   
+  display:flex;
+    width:50%;
+    margin:auto;
+    margin-top:30px;
 }
-.Picture {
-    opacity: 100%;
-    height: 350px;
-    width: 600px;
-   margin-left:4%;
+
+#hostelImage{
+
+    width:80%;
+    height:25rem;
+    margin:auto;
+    margin-top:2rem;
+}
+
+#cornerLogo{
+    width:7rem;
+    height:7rem;
+    position:fixed;
+    bottom:1rem;
+    right:1rem;
 }

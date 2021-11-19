@@ -5,6 +5,7 @@ import Login from './Components/login';
 import RegisterPage from './Components/register';
 import ProfilePage from './Components/profilePage';
 import HomePage from './Components/homePage';
+import HostelListing from './Components/hostelListing';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
             </Route>
          <Route path="/homepage">
             <HomePage />
+            <HostelListing />
           </Route>
             {/* { ROUTES.map((route, index) => <Route key={index} { ...route } />) } */}
           </Switch>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './login.css'
+import './profilePage.css'
 import { Redirect, Link } from 'react-router-dom';
 import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
@@ -16,10 +17,11 @@ export class ProfilePage extends React.Component {
         this.setState({product: this.state.product});
     }
     state = {
-        Hostel: new Hostel(0, 
-            "Big Cabana Resort", 
-            "It is a nice place", 
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.summerwood.com%2Fproducts%2Fpool-cabanas%2Fsanara%2F231646&psig=AOvVaw37HlCLJd8Sj0S4PZtcKoaO&ust=1636763441502000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMjH347JkfQCFQAAAAAdAAAAABAD",
+        Hostel: new Hostel(
+        0, 
+        "Big Cabana Resort", 
+        "It is a nice place", 
+        "https://johnlawrimore.com/smu/101.png",
         1000, 
         "it is cool", 
         "we have good food", 
@@ -39,19 +41,26 @@ export class ProfilePage extends React.Component {
     render(){
         const { Hostel } = this.state;
         return( <div>
-            <p className="container">Hostel Profile Page</p>
-            <div id="fullProfile" className="container bg-light">
-                <div className="row border border-dark p-0">
+            <div className="container mb-3">
+                <div className="row border border-dark">
                     <div className="col-8 border-right border-dark">Menu bar</div>
                     <div className="col-auto border-left border-dark">Browse</div>
                 </div>
-                <img className="float-left" src="https://via.placeholder.com/150" alt="picture"></img>
+            </div>
+            
+            <div id="fullProfile" className="container bg-light py-5 mb-3 rounded">
+                <img className="float-left" src={this.state.Hostel.profilePicUrl} alt="picture"></img>
+                <p id="hostelName">{this.state.Hostel.hostelName}</p>
                 <h1>Bio</h1>
                 <p>Insert bio here</p>
+                
+            </div>
+            <div className="container">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
                 <div className="bottom-padding"></div>
                 <ReviewForm onReviewAdded= {review => this.addReview(review)} />
             </div>
+            
         </div>
         )
     }

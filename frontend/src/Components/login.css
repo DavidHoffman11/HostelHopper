@@ -124,8 +124,7 @@ img.avatar {
 
 #loginPageBG{
     background-color: rgb(47, 49, 146);
-    height: 103vh;
-    margin-top: -97px;
+    height: 100%;
 }
 
 .fadeInDown{
