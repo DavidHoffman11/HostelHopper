@@ -49,11 +49,10 @@ export class ProfilePage extends React.Component {
             </div>
             
             <div id="fullProfile" className="container bg-light py-5 mb-3 rounded">
-                <img className="float-left" src={this.state.Hostel.profilePicUrl} alt="picture"></img>
-                <p id="hostelName">{this.state.Hostel.hostelName}</p>
+                <img className="float-right" src={this.state.Hostel.profilePicUrl} alt="picture"></img>
+                <p id="hostelName" className="float-none">{this.state.Hostel.hostelName}</p>
                 <h1>Bio</h1>
-                <p>Insert bio here</p>
-                
+                <p>{this.state.Hostel.info}</p>   
             </div>
             <div className="container">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
