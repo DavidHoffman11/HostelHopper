@@ -8,4 +8,5 @@ export class User {
         this.profilePicUrl = profilePicUrl;
     }
 }
+
 export default User;

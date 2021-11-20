@@ -9,5 +9,9 @@ FROM node:14
 # Set the working directory within docker image
 WORKDIR /usr/src/app
 
+# Install app dependencies
+COPY package.json /usr/src/app/
+RUN npm install
+
 # expose port 8000
 EXPOSE 8000

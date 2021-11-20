@@ -108,7 +108,6 @@ class Login extends React.Component {
                 </div>
             </div>
             </div>
-            {/* <Link to={'/home/' + this.state.id}>Skip to Home</Link> */}
         </>;
     }
 
