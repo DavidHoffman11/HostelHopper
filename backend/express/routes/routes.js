@@ -31,6 +31,7 @@ module.exports = function(app)
   // USER
   app.route("/api/user/").get(userController.get_users);
   app.route("/api/user/").post(userController.create_user);
+/*
   app.route("/api/user/:id").get(userController.get_user);
   app.route("/api/user/:id").put(userController.update_user);
   app.route("/api/user/:id").delete(userController.delete_user);
@@ -47,4 +48,5 @@ module.exports = function(app)
   app.route("/api/host/:id/review/:id/like").get(reviewController.get_likes);
   app.route("/api/host/:id/review/:id/like").post(reviewController.like_review);
   app.route("/api/host/:id/review/:id/like/:user_id").delete(reviewController.unlike_review);
+  */
 };
