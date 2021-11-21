@@ -3,7 +3,7 @@
 module.exports = function(app)
 {
   var userController = require("../model/user");
-  var hostelController = require("../model/hostel");
+  var hostController = require("../model/host");
   var reviewController = require("../model/review");
 
   app.route("/").get(function(req, res)
@@ -31,20 +31,24 @@ module.exports = function(app)
   // USER
   app.route("/api/user/").get(userController.get_users);
   app.route("/api/user/").post(userController.create_user);
-/*
   app.route("/api/user/:id").get(userController.get_user);
   app.route("/api/user/:id").put(userController.update_user);
   app.route("/api/user/:id").delete(userController.delete_user);
   app.route("/api/login").post(userController.login_user);
 
   // HOSTEL
-
+  app.route("/api/host/").get(hostController.get_hosts);
+  app.route("/api/host/").post(hostController.create_host);
+  app.route("/api/host/:id").get(hostController.get_host);
+  app.route("/api/host/:id").put(hostController.update_host);
+  app.route("/api/host/:id").delete(hostController.delete_host);
+/*
   // REVIEW
   app.route("/api/host/:id/review").get(reviewController.get_comments);
   app.route("/api/host/:id/review").post(reviewController.create_comment);
   app.route("/api/host/:id/review/:id").delete(reviewController.delete_comment);
 
-  // COMMENT LIKES
+  // REVIEW LIKES
   app.route("/api/host/:id/review/:id/like").get(reviewController.get_likes);
   app.route("/api/host/:id/review/:id/like").post(reviewController.like_review);
   app.route("/api/host/:id/review/:id/like/:user_id").delete(reviewController.unlike_review);
