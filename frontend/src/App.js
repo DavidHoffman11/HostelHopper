@@ -24,7 +24,6 @@ class App extends Component {
          <Route path="/homepage">
             <HomePage />
           </Route>
-            {/* { ROUTES.map((route, index) => <Route key={index} { ...route } />) } */}
           </Switch>
         </Router>
       </>

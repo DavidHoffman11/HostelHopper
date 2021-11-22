@@ -3,7 +3,7 @@ import axios from 'axios';
 export class HostelHopperAPIClient
 {
 
-  url = 'http://sampledockercompose.cdgpbu8t7kia.us-east-2.rds.amazonaws.com'
+  url = 'http://localhost:8000'
 
   config = {};
 
@@ -144,6 +144,7 @@ export class HostelHopperAPIClient
     {
       axios.put(
           `${this.url}/host/${host_id}`,
+          updateJSON
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -214,7 +215,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  likeHost(host_id, user_id)
+  likeHost(host_id, user_id,review_id)
   {
     return new Promise((resolve, reject) =>
     {
@@ -229,7 +230,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  unlikeHost(host_id, user_id)
+  unlikeHost(host_id, user_id,review_id)
   {
     return new Promise((resolve, reject) =>
     {
