@@ -16,7 +16,7 @@ const routes = require('./express/routes/routes.js');
 //   database: process.env.MYSQL_DB
 // });
 
-//New Method od Connection -> No crash yet longest uptime 21 mins before user shutdown
+//New Method od Connection -> No crash yet longest uptime 24 mins before user forced shutdown
 var connection = mysql.createPool({
   host: process.env.MYSQL_CLOUD_HOST,
   user: process.env.MYSQL_CLOUD_USER,

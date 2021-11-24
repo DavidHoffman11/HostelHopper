@@ -42,15 +42,35 @@ module.exports = function(app)
   app.route("/api/host/:id").get(hostController.get_host);
   app.route("/api/host/:id").put(hostController.update_host);
   app.route("/api/host/:id").delete(hostController.delete_host);
-/*
+
   // REVIEW
-  app.route("/api/host/:id/review").get(reviewController.get_comments);
-  app.route("/api/host/:id/review").post(reviewController.create_comment);
-  app.route("/api/host/:id/review/:id").delete(reviewController.delete_comment);
+
+  app.route("/api/host/:id/review").get(reviewController.get_reviews);
+  app.route("/api/host/:id/review").post(reviewController.create_review);
+  app.route("/api/host/:id/review/:id").delete(reviewController.delete_review);
 
   // REVIEW LIKES
-  app.route("/api/host/:id/review/:id/like").get(reviewController.get_likes);
-  app.route("/api/host/:id/review/:id/like").post(reviewController.like_review);
-  app.route("/api/host/:id/review/:id/like/:user_id").delete(reviewController.unlike_review);
+  /* Notes:
+    - Post -> Frontend job to send 0 or 1 to set to like or dislike
+    - Get -> Two routes one for likes one for dislikes
+    - Frontend job to create logic to have button highlighed if user has already liked or dislike and to call unlike route when user clicks highlighted button
   */
+ 
+  //- Both - works for both like and dislike
+  app.route("/api/review/:id/like").post(reviewController.like_review);
+  app.route("/api/review/:id/like/:user_id").delete(reviewController.unlike_review);
+
+  //- Like specific
+  app.route("/api/review/:id/like").get(reviewController.get_likes);
+
+  //- Dislike specific
+  app.route("/api/review/:id/dislike").get(reviewController.get_dislikes); 
+  
+  //END REVIEW LIKES 
+
+  //REPLY
+  app.route("/api/host/:id/review/:id/reply").get(reviewController.get_replies);
+  app.route("/api/host/:id/review/:id/reply").post(reviewController.create_reply);
+  app.route("/api/host/:id/review/:id/reply/:id").delete(reviewController.delete_reply);
+
 };

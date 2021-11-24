@@ -5,7 +5,7 @@ module.exports = function (app) {
 
   var tripController = require("../model/hostel");
 
-  var commentController = require("../model/review");
+  var reviewController = require("../model/review");
 
   app.route("/").get(function (req, res) {
     res.status(200).send({
@@ -19,5 +19,5 @@ module.exports = function (app) {
 
   app.route("/api/hostel/create").post(tripController.create_host); // COMMENT
 
-  app.route("/api/hostel/:id/review").post(commentController.create_review);
+  app.route("/api/hostel/:id/review").post(reviewController.create_review);
 };
