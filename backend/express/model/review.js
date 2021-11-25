@@ -15,21 +15,21 @@ var Review = function(review)
 
 var Reply = function(reply)
 {
-  this.date = review.date;
-  this.id = review.id;
-  this.review_id = review.review_id;
-  this.user_id = review.user_id;
-  this.body = review.body;
+  this.date = reply.date;
+  this.id = reply.id;
+  this.review_id = reply.review_id;
+  this.user_id = reply.user_id;
+  this.body = reply.body;
 };
 
 exports.create_review = function(req, res)
 {
   if (sql.propertyCheck(req, res, ["user_id", "body"]))
   {
-    var newreview = new review(req.body);
+    var newreview = new Review(req.body);
     newreview.date = new Date();
     newreview.host_id = req.params.id;
-    newreview.rating = new rating(req.body);
+    newreview.rating = req.body.rating;
 
     sql.connection.query(
       "INSERT INTO `review` SET ?;",
@@ -149,7 +149,7 @@ exports.get_likes = function(req, res)
         var idArray = [];
         for (var i = 0; i < sqlRes.length; i++)
         {
-          idArray.push(sqlRes[i].liked_by_user_id);
+          idArray.push(sqlRes[i].user_id);
         }
 
         res.status(200).send(
@@ -175,7 +175,7 @@ exports.get_dislikes = function(req, res)
         var idArray = [];
         for (var i = 0; i < sqlRes.length; i++)
         {
-          idArray.push(sqlRes[i].liked_by_user_id);
+          idArray.push(sqlRes[i].user_id);
         }
 
         res.status(200).send(
@@ -294,10 +294,9 @@ exports.create_reply = function(req, res)
 {
   if (sql.propertyCheck(req, res, ["user_id", "body"]))
   {
-    var newreply = new reply(req.body);
+    var newreply = new Reply(req.body);
     newreply.date = new Date();
     newreply.review_id = req.params.id;
-    newreply.rating = new rating(req.body);
 
     sql.connection.query(
       "INSERT INTO `reply` SET ?;",
