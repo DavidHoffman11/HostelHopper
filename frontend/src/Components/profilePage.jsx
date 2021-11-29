@@ -41,17 +41,19 @@ export class ProfilePage extends React.Component {
 
     render(){
         const { Hostel } = this.state;
-        return( <div>
-            <div className="container mb-3">
+        return( <div id="background">
+            <div id="homePageHeader">
+                {this.state.Hostel.hostelName}
+            </div>
+            <div id="navBar" className="container mb-3">
                 <div className="row border border-dark">
                     <div className="col-8 border-right border-dark">Menu bar</div>
                     <div className="col-auto border-left border-dark">Browse</div>
                 </div>
             </div>
             
-            <div id="fullProfile" className="container bg-light py-5 mb-3 rounded">
+            <div id="fullProfile" className="container informationContainer py-5 mb-3">
                 <img className="float-right" src={this.state.Hostel.profilePicUrl} alt="picture"></img>
-                <p id="hostelName" className="float-none">{this.state.Hostel.hostelName}</p>
                 <h1>Bio</h1>
                 <p>{this.state.Hostel.info}</p>
                 <p>We offer rooms in the following price range: ${this.state.Hostel.pricing}</p>
@@ -61,21 +63,13 @@ export class ProfilePage extends React.Component {
                 <p>{this.state.Hostel.livingOptions}</p>
                 <h1>This Hostel...</h1>
                 <ul>
-                    {
-                        (this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>
-                    }
-                    {
-                        (this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>
-                    }
-                    {
-                        (this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>
-                    }
-                    {
-                        (this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>
-                    }
+                    {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
+                    {(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>}
+                    {(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>}
+                    {(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>}
                 </ul>
             </div>
-            <div className="container">
+            <div className="container px-0">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
                 <div className="bottom-padding"></div>
                 <ReviewForm onReviewAdded= {review => this.addReview(review)} />

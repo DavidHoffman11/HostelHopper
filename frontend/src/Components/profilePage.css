@@ -1,10 +1,6 @@
 #fullProfile{
     min-height: 35rem;
 }
-
-#hostelName {
-    font-size: 3rem;
-  }
   
 #hostelPrice{
     font-weight: bold;
@@ -17,3 +13,30 @@
   img {
     max-width: 20rem;
   }
+
+  #background {
+    background-color: rgb(189,237,252);
+    margin: 0;
+}
+
+#homePageHeader{
+  font-size:3rem;
+  font-family: 'Oswald', sans-serif;
+  background-color: white;
+  color: rgb(47, 49, 146);
+  text-align: center;
+  margin-top: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid black;
+  margin-bottom: 0.5rem;
+}
+
+#navBar{
+  background-color: white;
+  font-size: 2rem;
+}
+
+.informationContainer{
+  background-color: white;
+  border-radius: .5rem;
+}

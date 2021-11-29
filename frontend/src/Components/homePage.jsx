@@ -14,27 +14,21 @@ export class HomePage extends React.Component {
     render(){
         return <>
         <div className="background">
-            <div id="homePageHeader">
+          <div id="homePageHeader">
             Avaliable Hostels 
-            </div >
+          </div >
 
-<img src={logo} alt="Avatar" className="avatar" id="cornerLogo"></img>
+          <img src={logo} alt="Avatar" className="avatar" id="cornerLogo"></img>
 
-            <div class="input-group rounded" id="searchBar">
-  <input type="search" class="form-control rounded" placeholder="Search by city..." aria-label="Search"
-  aria-describedby="search-addon" />
-  <span class="input-group-text border-0" id="search-addon">
-    <i class="fas fa-search"></i>
-  </span>
-</div>
-
-
-
+          <div class="input-group rounded" id="searchBar">
+            <input type="search" class="form-control rounded" placeholder="Search by city..." aria-label="Search"
+              aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+              <i class="fas fa-search"></i>
+              </span>
+          </div>
         </div> 
-               
-        
-
-        </>
+      </>
     }
 }
 export default HomePage;

@@ -16,7 +16,7 @@
     font-family: 'Oswald', sans-serif;
     background-color: white;
     color: rgb(47, 49, 146);
-  text-align: center;
+    text-align: center;
     margin-top: 1rem;
     padding-bottom: 2rem;
 }
@@ -26,12 +26,11 @@
     margin:auto;
     margin-top:2rem;
     padding-bottom: 2rem;
-
 }
 
 #listing{
    
-  display:flex;
+    display:flex;
     width:50%;
     margin:auto;
 }
