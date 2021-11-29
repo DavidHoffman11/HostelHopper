@@ -53,7 +53,27 @@ export class ProfilePage extends React.Component {
                 <img className="float-right" src={this.state.Hostel.profilePicUrl} alt="picture"></img>
                 <p id="hostelName" className="float-none">{this.state.Hostel.hostelName}</p>
                 <h1>Bio</h1>
-                <p>{this.state.Hostel.info}</p>   
+                <p>{this.state.Hostel.info}</p>
+                <p>We offer rooms in the following price range: ${this.state.Hostel.pricing}</p>
+                <p>{this.state.Hostel.salesPitch}</p>
+                <h1>Hostel Features</h1>
+                <p>{this.state.Hostel.foodInfo}</p>
+                <p>{this.state.Hostel.livingOptions}</p>
+                <h1>This Hostel...</h1>
+                <ul>
+                    {
+                        (this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>
+                    }
+                    {
+                        (this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>
+                    }
+                    {
+                        (this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>
+                    }
+                    {
+                        (this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>
+                    }
+                </ul>
             </div>
             <div className="container">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
