@@ -1,7 +1,7 @@
 .imgcontainer {
     text-align: center;
     color: royalblue;
-    margin: 24px 0 12px 0;
+    margin: 3rem 0 12px 0;
 }
 
 .login-form { /* The white boxes where you type user and password*/
@@ -47,12 +47,8 @@
     padding: 0;
 }
 
-#loginFormContent h1{
-    margin-bottom: 0;
-}
 
 img.avatar {
-    margin-top: rem;
     opacity: 100%;
     height: 200px;
     width: 200px;
@@ -97,7 +93,7 @@ img.avatar {
 }
 
 #loginWrapper{
-    margin-top: 10vh;
+    padding-bottom: 10vh;
     padding-top: 1vh;
     display: block;
     margin-left: auto;
@@ -113,7 +109,7 @@ img.avatar {
     width: 90%;
     max-width: 450px;
     position: relative;
-    padding: 30px;
+    padding: 10px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
@@ -124,7 +120,7 @@ img.avatar {
 
 #loginPageBG{
     background-color: rgb(47, 49, 146);
-    height: 100%;
+
 }
 
 .fadeInDown{
@@ -135,7 +131,13 @@ img.avatar {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
+#welcome{
+    font-family: 'Oswald';
+    font-size: 2.3rem;
+    margin-bottom:2rem;
+    color:rgb(47, 49, 146);
 
+}
 #loginFormContent input[type=text]:focus{
     border-bottom: 2px solid royalblue;
 }
@@ -165,18 +167,4 @@ img.avatar {
 }
 .btn-bot-margin{
     margin-bottom: 1rem;
-}
-
-@media only screen and (max-width: 600px){
-    #loginWrapper{
-        margin-top: 0;
-    }
-
-    #loginFormContent{
-        margin-top: 0;
-    }
-
-    #loginPageBG{
-        margin-top: 0;
-    }
 }

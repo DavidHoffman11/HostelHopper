@@ -2,11 +2,13 @@ import React from 'react';
 import HostelReview  from '../Models/hostelReview.js';
 
 export default class ReviewForm extends React.Component {
+    ratings = [1,2,3,4,5];
     constructor(props){
         super();
         this.state = {
             userName: '',
-            comment : ''
+            comment : '',
+            rating: 0
         }
     }
     onAddClick(){
@@ -15,7 +17,8 @@ export default class ReviewForm extends React.Component {
         this.setState({
             
                 userName: '',
-                comment : ''
+                comment : '',
+                rating: 0
             
         });
     }
@@ -40,6 +43,14 @@ export default class ReviewForm extends React.Component {
                             value={this.state.userName}
                             onChange={e => this.setState({ userName: e.target.value })}
                         />                    
+                    </div>
+                    <div class="col-sm">
+                        <label className="form-label" htmlFor="rating">Rating</label>
+                        <select id="rating" name="rating" className="form-select" value={this.state.rating} onChange={e => this.setState({ rating: e.target.value })} >
+                            <option></option>{
+                                this.ratings.map(x => <option key={x} value={x}>{x}</option>)
+                            }
+                        </select>
                     </div>
                 </div>
                 </div>

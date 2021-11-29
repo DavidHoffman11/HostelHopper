@@ -13,6 +13,7 @@ export const ReviewList = props => <>
                     <span>{ x.userName }</span>
                          </div>
                     </header>
+                    <span> { x.rating }</span>
                     <div className = "upperBridge">
                     
                     <span>{ x.date }</span>
