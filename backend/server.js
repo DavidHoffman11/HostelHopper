@@ -5,11 +5,29 @@ const mysql = require('mysql');
 const cors = require('cors');
 const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 // const mysqlConnect = require('./db');
-const routes = require('./routes');
+const routes = require('./express/routes/routes.js');
+
+//Old Method of Connecting -> caused the crash every 10 mins
+// var connection = mysql.createConnection({
+//   host: process.env.MYSQL_CLOUD_HOST,
+//   user: process.env.MYSQL_CLOUD_USER,
+//   password: process.env.MYSQL_CLOUD_PASS,
+//   port: process.env.MYSQL_PORT,
+//   database: process.env.MYSQL_DB
+// });
+
+//New Method od Connection -> No crash yet longest uptime 24 mins before user forced shutdown
+var connection = mysql.createPool({
+  host: process.env.MYSQL_CLOUD_HOST,
+  user: process.env.MYSQL_CLOUD_USER,
+  password: process.env.MYSQL_CLOUD_PASS,
+  port: process.env.MYSQL_PORT,
+  database: process.env.MYSQL_DB
+});
 
 // set up some configs for express.
 const config = {
-  name: 'sample-express-app',
+  name: 'sampledockercompose',
   port: 8000,
   host: '0.0.0.0',
 };
@@ -37,3 +55,16 @@ app.listen(config.port, config.host, (e) => {
   }
   logger.info(`${config.name} running on ${config.host}:${config.port}`);
 });
+
+connection.getConnection(function (err) {
+  if (err)
+    logger.error("Cannot connect to the DB!");
+  logger.info("Connected to the DB!");
+});
+
+//Old method of connecting
+// connection.connect(function (err) {
+//   if (err)
+//     logger.error("Cannot connect to the DB!");
+//   logger.info("Connected to the DB!");
+// });

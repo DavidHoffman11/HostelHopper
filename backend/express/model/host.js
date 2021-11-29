@@ -1,19 +1,25 @@
 "use strict";
 var sql = require("./connection.js");
 
-var User = function(user)
+var Host = function(host)
 {
-  this.name = user.name;
-  this.email = user.email;
-  this.password = user.password;
-  this.image_url = user.image_url;
-  this.is_host = user.is_host;
+  this.user_id = host.user_id;
+  this.title = host.title;
+  this.body = host.body;
+  this.price = host.price;
+  this.state = host.state;
+  this.address = host.address;
+  this.country = host.country;
+  this.zip = host.zip;
+  this.phone = host.phone;
+  this.image_url = host.image_url;
+  this.city = host.city;
 };
 
-exports.get_users = function(req, res)
+exports.get_hosts = function(req, res)
 {
   sql.connection.query(
-    "SELECT * FROM `user`;",
+    "SELECT * FROM `host`;",
     null,
     function(sqlErr, sqlRes)
     {
@@ -30,21 +36,21 @@ exports.get_users = function(req, res)
   );
 };
 
-exports.create_user = function(req, res)
+exports.create_host = function(req, res)
 {
-  if (sql.propertyCheck(req, res, ["name", "email", "password"]))
+  if (sql.propertyCheck(req, res, ["title", "body", "price", "state","address","country","zip","phone","image_url","city"]))
   {
-    var newUser = new User(req.body);
+    var newHost = new Host(req.body);
 
     sql.connection.query(
-      "INSERT INTO `user` SET ?;",
-      newUser,
+      "INSERT INTO `host` SET ?;",
+      newHost,
       function(sqlErr, sqlRes)
       {
         if (sql.isSuccessfulQuery(sqlErr, res))
         {
           sql.connection.query(
-            "SELECT * FROM `user` WHERE `id` = ?;",
+            "SELECT * FROM `host` WHERE `id` = ?;",
             sqlRes.insertId,
             function(subErr, subRes)
             {
@@ -53,7 +59,7 @@ exports.create_user = function(req, res)
                 res.status(200).send(
                 {
                   success: true,
-                  response: "Succesfully created user",
+                  response: "Succesfully created host",
                   info: subRes,
                 });
               }
@@ -65,54 +71,7 @@ exports.create_user = function(req, res)
   }
 };
 
-exports.login_user = function(req, res)
-{
-  if (sql.propertyCheck(req, res, ["email", "password"]))
-  {
-    var loginUser = new User(req.body);
-
-    sql.connection.query(
-      "SELECT * FROM `user` WHERE `email` = ?;",
-      loginUser.email,
-      function(sqlErr, sqlRes)
-      {
-        if (sql.isSuccessfulQuery(sqlErr, res))
-        {
-          if (!Object.keys(sqlRes).length)
-          {
-            res.status(401).send(
-            {
-              success: false,
-              response: "Email not found",
-            });
-          }
-          else
-          {
-            if (sqlRes[0].password == loginUser.password)
-            {
-              res.status(200).send(
-              {
-                success: true,
-                response: "Successfully logged in",
-                info: sqlRes,
-              });
-            }
-            else
-            {
-              res.status(401).send(
-              {
-                success: false,
-                response: "Password does not match email",
-              });
-            }
-          }
-        }
-      }
-    );
-  }
-};
-
-exports.get_user = function(req, res)
+exports.get_host = function(req, res)
 {
   if (!("id" in req.params))
   {
@@ -125,7 +84,7 @@ exports.get_user = function(req, res)
   else
   {
     sql.connection.query(
-      "SELECT * FROM `user` WHERE id = ?;",
+      "SELECT * FROM `host` WHERE id = ?;",
       req.params.id,
       function(sqlErr, sqlRes)
       {
@@ -136,7 +95,7 @@ exports.get_user = function(req, res)
             res.status(200).send(
             {
               success: false,
-              response: "Couldn't find user " + req.params.id,
+              response: "Couldn't find host " + req.params.id,
             });
           }
           else
@@ -144,7 +103,7 @@ exports.get_user = function(req, res)
             res.status(200).send(
             {
               success: true,
-              response: "Successfully found user " + req.params.id,
+              response: "Successfully found host " + req.params.id,
               info: sqlRes,
             });
           }
@@ -154,7 +113,7 @@ exports.get_user = function(req, res)
   }
 }
 
-exports.update_user = function(req, res)
+exports.update_host = function(req, res)
 {
   if (req.body.length <= 0)
   {
@@ -167,7 +126,7 @@ exports.update_user = function(req, res)
   else
   {
     sql.connection.query(
-      "UPDATE `user` SET ? WHERE `id` = ?;",
+      "UPDATE `host` SET ? WHERE `id` = ?;",
       [req.body, req.params.id],
       function(sqlErr, sqlRes)
       {
@@ -178,13 +137,13 @@ exports.update_user = function(req, res)
             res.status(200).send(
             {
               success: false,
-              response: "Nothing was updated, user " + req.params.id + " might not exist.",
+              response: "Nothing was updated, host " + req.params.id + " might not exist.",
             });
           }
           else
           {
             sql.connection.query(
-              "SELECT * FROM `user` WHERE `id` = ?;",
+              "SELECT * FROM `host` WHERE `id` = ?;",
               req.params.id,
               function(subErr, subRes)
               {
@@ -193,7 +152,7 @@ exports.update_user = function(req, res)
                   res.status(200).send(
                   {
                     success: true,
-                    response: "Successfully updated user " + req.params.id,
+                    response: "Successfully updated host " + req.params.id,
                   });
                 }
               }
@@ -205,7 +164,7 @@ exports.update_user = function(req, res)
   }
 }
 
-exports.delete_user = function(req, res)
+exports.delete_host = function(req, res)
 {
   if (!("id" in req.params))
   {
@@ -218,7 +177,7 @@ exports.delete_user = function(req, res)
   else
   {
     sql.connection.query(
-      "DELETE FROM `user` WHERE `id` = ?;",
+      "DELETE FROM `host` WHERE `id` = ?;",
       req.params.id,
       function(sqlErr, sqlRes)
       {
@@ -237,7 +196,7 @@ exports.delete_user = function(req, res)
             res.status(200).send(
             {
               success: true,
-              response: "Successfully deleted user",
+              response: "Successfully deleted host",
               info: sqlRes,
             });
           }
