@@ -53,7 +53,7 @@ export class ProfilePage extends React.Component {
             </div>
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
-                <img className="float-right" src={this.state.Hostel.profilePicUrl} alt="picture"></img>
+                <img src={this.state.Hostel.profilePicUrl} alt="picture"></img>
                 <h1>Bio</h1>
                 <p>{this.state.Hostel.info}</p>
                 <p>We offer rooms in the following price range: ${this.state.Hostel.pricing}</p>

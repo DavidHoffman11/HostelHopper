@@ -12,15 +12,19 @@
 
   img {
     max-width: 20rem;
+    text-align: right;
+    float: right;
+    clear: both;
   }
 
   #background {
     background-color: rgb(189,237,252);
     margin: 0;
+    padding-bottom: 3rem;
 }
 
 #homePageHeader{
-  font-size:3rem;
+  font-size: 5rem;
   font-family: 'Oswald', sans-serif;
   background-color: white;
   color: rgb(47, 49, 146);
@@ -39,4 +43,8 @@
 .informationContainer{
   background-color: white;
   border-radius: .5rem;
+}
+
+#reviewUserName {
+  font-size: 1.25rem;
 }
