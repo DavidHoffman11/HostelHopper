@@ -16,6 +16,16 @@ export class Hostel {
         this.hasLockers = hasLockers;
         this.hasGenderedRoom = hasGenderedRoom;
         this.reviews = reviews;
+        this.reviewAvg = 0;
     }
+
+    getAvg(reviews){
+        let mean = 0;
+        for (let i = 0; i < reviews.length; i++) {
+            mean += +(reviews[i].rating);
+        }
+        return mean/reviews.length;
+    }
+
 }
 export default Hostel;
