@@ -13,6 +13,7 @@ var Review = function(review)
   this.rating = review.rating;
 };
 
+<<<<<<< Updated upstream
 var Reply = function(reply)
 {
   this.date = reply.date;
@@ -22,14 +23,23 @@ var Reply = function(reply)
   this.body = reply.body;
 };
 
+=======
+>>>>>>> Stashed changes
 exports.create_review = function(req, res)
 {
   if (sql.propertyCheck(req, res, ["user_id", "body"]))
   {
+<<<<<<< Updated upstream
     var newreview = new Review(req.body);
     newreview.date = new Date();
     newreview.host_id = req.params.id;
     newreview.rating = req.body.rating;
+=======
+    var newreview = new review(req.body);
+    newreview.date = new Date();
+    newreview.host_id = req.params.id;
+    newreview.rating = new rating(req.body);
+>>>>>>> Stashed changes
 
     sql.connection.query(
       "INSERT INTO `review` SET ?;",
@@ -85,7 +95,11 @@ exports.get_reviews = function(req, res)
             res.status(200).send(
             {
               success: false,
+<<<<<<< Updated upstream
               response: "No reviews found for host " + req.params.id,
+=======
+              response: "No commments found for post " + req.params.id,
+>>>>>>> Stashed changes
             })
           }
           else
@@ -134,6 +148,7 @@ exports.delete_review = function(req, res)
   );
 }
 
+<<<<<<< Updated upstream
 
 //////// LIKES ////////
 
@@ -141,6 +156,12 @@ exports.get_likes = function(req, res)
 {
   sql.connection.query(
     "SELECT * FROM `like` WHERE `review_id` = ? AND `is_dislike` = 0 GROUP BY `user_id`;",
+=======
+exports.get_likes = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `like` WHERE `review_id` = ? GROUP BY `user_id`;",
+>>>>>>> Stashed changes
     req.params.reviewId,
     function(sqlErr, sqlRes)
     {
@@ -149,6 +170,7 @@ exports.get_likes = function(req, res)
         var idArray = [];
         for (var i = 0; i < sqlRes.length; i++)
         {
+<<<<<<< Updated upstream
           idArray.push(sqlRes[i].user_id);
         }
 
@@ -176,6 +198,9 @@ exports.get_dislikes = function(req, res)
         for (var i = 0; i < sqlRes.length; i++)
         {
           idArray.push(sqlRes[i].user_id);
+=======
+          idArray.push(sqlRes[i].liked_by_user_id);
+>>>>>>> Stashed changes
         }
 
         res.status(200).send(
@@ -196,9 +221,14 @@ exports.like_review = function(req, res)
     sql.connection.query(
       "INSERT INTO `like` SET ?;",
       {
+<<<<<<< Updated upstream
         review_id: req.params.reviewId,
         user_id: req.body.user_id,
         is_dislike: req.body.is_dislike
+=======
+        liked_by_user_id: req.body.user_id,
+        review_id: req.params.reviewId,
+>>>>>>> Stashed changes
       },
       function(sqlErr, sqlRes)
       {
@@ -243,6 +273,7 @@ exports.unlike_review = function(req, res)
       }
     }
   )
+<<<<<<< Updated upstream
 }
 
 //////// REPLY ////////
@@ -356,4 +387,6 @@ exports.delete_reply = function(req, res)
       }
     }
   );
+=======
+>>>>>>> Stashed changes
 }
