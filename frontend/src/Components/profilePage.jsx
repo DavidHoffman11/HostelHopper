@@ -48,7 +48,9 @@ export class ProfilePage extends React.Component {
             <div id="navBar" className="container mb-3">
                 <div className="row border border-dark">
                     <div className="col-8 border-right border-dark">Menu bar</div>
-                    <div className="col-auto border-left border-dark">Browse</div>
+                    <div className="col-auto border-left border-dark"><Link to={'homepage'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Browse</button>
+                            </Link></div>
                 </div>
             </div>
             
@@ -64,9 +66,17 @@ export class ProfilePage extends React.Component {
                 <h1>This Hostel...</h1>
                 <ul>
                     {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
+                    {(!this.state.Hostel.isPetFriendly) && <li>is NOT pet friendly</li>}
+
                     {(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>}
+                    {(!this.state.Hostel.isCovidSafe) && <li>is NOT COVID safe</li>}
+
                     {(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>}
+                    {(!this.state.Hostel.hasLockers) && <li>does NOT have lockers for secure guest storage</li>}
+
                     {(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>}
+                    {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
+
                 </ul>
             </div>
             <div className="container px-0">
