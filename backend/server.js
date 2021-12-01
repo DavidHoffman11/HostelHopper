@@ -7,7 +7,17 @@ const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 // const mysqlConnect = require('./db');
 const routes = require('./express/routes/routes.js');
 
-var connection = mysql.createConnection({
+//Old Method of Connecting -> caused the crash every 10 mins
+// var connection = mysql.createConnection({
+//   host: process.env.MYSQL_CLOUD_HOST,
+//   user: process.env.MYSQL_CLOUD_USER,
+//   password: process.env.MYSQL_CLOUD_PASS,
+//   port: process.env.MYSQL_PORT,
+//   database: process.env.MYSQL_DB
+// });
+
+//New Method od Connection -> No crash yet longest uptime 24 mins before user forced shutdown
+var connection = mysql.createPool({
   host: process.env.MYSQL_CLOUD_HOST,
   user: process.env.MYSQL_CLOUD_USER,
   password: process.env.MYSQL_CLOUD_PASS,
@@ -46,8 +56,15 @@ app.listen(config.port, config.host, (e) => {
   logger.info(`${config.name} running on ${config.host}:${config.port}`);
 });
 
-connection.connect(function (err) {
+connection.getConnection(function (err) {
   if (err)
     logger.error("Cannot connect to the DB!");
   logger.info("Connected to the DB!");
 });
+
+//Old method of connecting
+// connection.connect(function (err) {
+//   if (err)
+//     logger.error("Cannot connect to the DB!");
+//   logger.info("Connected to the DB!");
+// });

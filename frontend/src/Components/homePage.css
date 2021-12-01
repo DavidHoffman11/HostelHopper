@@ -1,44 +1,60 @@
 
-.background{
+.background, .background2{
+    height:100%;
+    width:100%;
     background-color:rgb(189,237,252);
-    width: 100vw;
-    height: 100vh;
+}
 
-    /*figure out how to make whole page scroll*/
-    
+.background2{
+    height:100%;
+    width:100%;
+    background-color: rgb(189,237,252);
 }
 
 #homePageHeader{
     font-size:3rem;
-    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
     background-color: white;
     color: rgb(47, 49, 146);
-  text-align: center;
+    text-align: center;
     margin-top: 1rem;
     padding-bottom: 2rem;
 }
 
-
-
-.Listing{
-    border-style: dotted;
-border-color:rgb(47, 49, 146);
-padding-top:2%;
-padding-bottom:2%;
-    width: 650px;
-margin:auto;
-margin-top: 3rem;
-
-
+#searchBar{
+    width:40%;
+    margin:auto;
+    margin-top:2rem;
+    padding-bottom: 2rem;
 }
 
-p, h3{
-   width:600px;
-   margin:auto;
+#listing{
+   
+    display:flex;
+    width:50%;
+    margin:auto;
 }
-.Picture {
-    opacity: 100%;
-    height: 350px;
-    width: 600px;
-   margin-left:4%;
+
+#hostelImage{
+
+    width:80%;
+    height:25rem;
+    margin:auto;
+    margin-top:2rem;
+}
+
+#cornerLogo{
+    width:7rem;
+    height:7rem;
+    position:fixed;
+    bottom:1rem;
+    right:1rem;
+}
+
+.hostelName{
+    padding-left: 1rem;
+    padding-top: 2rem;
+    font-family: Helvetica, sans-serif;
+    font-size: 2rem;
+    color:rgb(47, 49, 146);
 }

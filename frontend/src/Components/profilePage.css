@@ -1,0 +1,51 @@
+#fullProfile{
+    min-height: 35rem;
+}
+  
+#hostelPrice{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+  
+
+  img {
+    max-width: 20rem;
+    text-align: right;
+    float: right;
+    clear: both;
+  }
+
+  #background {
+    background-color: rgb(189,237,252);
+    margin: 0;
+    padding-bottom: 3rem;
+}
+
+#homePageHeader{
+  font-size: 5rem;
+  font-family: 'Oswald', sans-serif;
+  background-color: white;
+  color: rgb(47, 49, 146);
+  text-align: center;
+  margin-top: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid black;
+  margin-bottom: 0.5rem;
+}
+
+#navBar{
+  background-color: white;
+  font-size: 2rem;
+}
+
+.informationContainer{
+  background-color: white;
+  border-radius: .5rem;
+}
+
+#reviewUserName {
+  font-size: 1.25rem;
+}
+
