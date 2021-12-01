@@ -91,7 +91,7 @@ export class ProfilePage extends React.Component {
 
                 </ul>
 
-            <h2>Rating: {this.state.Hostel.reviewAvg}</h2>
+            <h2>Average Rating: {this.state.Hostel.reviewAvg}</h2>
             </div>
             <div className="container px-0">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
