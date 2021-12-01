@@ -13,19 +13,22 @@ class App extends Component {
       <>
         <Router>
           <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          <Route path="/register">
-            <RegisterPage />
-          </Route>
-          <Route path="/profile">
-            <ProfilePage />
+            <Route exact path="/">
+              <Login />
             </Route>
-         <Route path="/homepage">
-            <HomePage />
-            <HostelListing />
-          </Route>
+            <Route path="/register">
+              <RegisterPage />
+            </Route>
+            <Route path="/profile">
+              <ProfilePage />
+            </Route>
+            <Route exact path="/homepage">
+              <HomePage />
+              <HostelListing />
+            </Route>
+            <Route path="/homepage/:host_id">
+              <ProfilePage />
+            </Route>
           </Switch>
         </Router>
       </>

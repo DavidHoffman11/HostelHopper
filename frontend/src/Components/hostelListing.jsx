@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import './homePage.css'
 import placeHolder from '../img_placeHolder.png';
 
@@ -11,6 +11,7 @@ export class HostelListing extends React.Component {
  
 state={
   hostel:{
+    id: 1,
     info:'sampleDescription',
     hostelName:"sampleName", 
     profilePicUrl:placeHolder, 
@@ -23,16 +24,16 @@ state={
         return <>
 
 <div className="background2">
-        <div class="card" id="listing">
+        <div className="card" id="listing">
    
-        <h3 class="hostelName" >{this.state.hostel.hostelName}</h3>
+        <h3 className="hostelName" >{this.state.hostel.hostelName}</h3>
    
         <img src={this.state.hostel.profilePicUrl} alt="Avatar" className="avatar" id="hostelImage"></img>
       
-        <div class="card-body">
-          <h5 class="card-title">Price / Night:{this.state.hostel.pricing}</h5>
-          <p class="card-text">{this.state.hostel.info}</p>
-          <a href="#" class="btn btn-primary">View this hostel</a>
+        <div className="card-body">
+          <h5 className="card-title">Price / Night:{this.state.hostel.pricing}</h5>
+          <p className="card-text">{this.state.hostel.info}</p>
+          <Link className="btn btn-primary" to={`homepage/${this.state.hostel.id}`}>View this hostel</Link>
         </div>
       </div>
 

@@ -12,6 +12,7 @@ import ReviewForm from './reviewForm';
 
 
 export class ProfilePage extends React.Component {
+
     addReview(review){
         this.state.Hostel.reviews.push(review);
         this.state.Hostel.reviewAvg = this.state.Hostel.getAvg(this.state.Hostel.reviews);
@@ -87,6 +88,14 @@ export class ProfilePage extends React.Component {
             
         </div>
         )
+    }
+
+    componentDidMount() {
+        let id = this.props.match.params.host_id;
+        if(id){
+            this.apiClient.getHost(host_id)
+                .then(hostel => this.setState(hostel));
+        }
     }
 }
 export default ProfilePage;
