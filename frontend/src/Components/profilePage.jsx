@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './login.css'
 import './profilePage.css'
@@ -15,25 +16,26 @@ export class ProfilePage extends React.Component {
     addReview(review){
         this.state.Hostel.reviews.push(review);
         this.state.Hostel.reviewAvg = this.state.Hostel.getAvg(this.state.Hostel.reviews);
-        this.setState({product: this.state.product});
+        this.setState({Hostel: this.state.Hostel});
     }
     state = {
         Hostel: new Hostel(
         0, 
         "Big Cabana Resort", 
-        "It is a nice place", 
+        "Info / slogan", 
         "https://johnlawrimore.com/smu/101.png",
         1000, 
-        "it is cool", 
+        "Natural, environmentally conscious, sustainable: our BIO HOTELS have been operating consistently ecologically since 2001 and are constantly developing. Today we are the most sustainable hotel association on the market. We offer you the ultimate sustainable experiences in the hotel industry: certified organic quality and maximum transparency in the most beautiful European cities and regions, from the car-free North Sea island to historic Rome to sun-kissed Greece.", 
         "we have good food", 
         "living options",
-        "big oceanside view", 
+        "here is a nearby Attraction!", 
         true, 
         true, 
-        "California", 
+        "Lost Angeles, California", 
         true, 
         true, 
-        []
+        [],
+        "75206",
         ),
     }
 
@@ -44,27 +46,37 @@ export class ProfilePage extends React.Component {
         return( <div id="background">
             <div id="homePageHeader">
                 {this.state.Hostel.hostelName}
-            </div>
-            <div id="navBar" className="container mb-3">
-                <div className="row border border-dark">
-                    <div className="col-8 border-right border-dark">Menu bar</div>
-                    <div className="col-auto border-left border-dark"><Link to={'homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Browse</button>
-                            </Link></div>
-                </div>
+                <p id="slogan" >{this.state.Hostel.info}</p>
             </div>
             
+          
+                <div id="backToHomepage">
+                    
+                    <h4 id="headerText">Not what you're looking for?</h4>
+                   
+                   <Link to={'homepage'}>
+                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
+                            </Link>
+                            </div>
+          
+            
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
-                <img src={this.state.Hostel.profilePicUrl} alt="picture"></img>
-                <h1>Bio</h1>
-                <p>{this.state.Hostel.info}</p>
-                <p>We offer rooms in the following price range: ${this.state.Hostel.pricing}</p>
-                <p>{this.state.Hostel.salesPitch}</p>
-                <h1>Hostel Features</h1>
-                <p>{this.state.Hostel.foodInfo}</p>
-                <p>{this.state.Hostel.livingOptions}</p>
-                <h1>This Hostel...</h1>
-                <ul>
+                <img src={this.state.Hostel.profilePicUrl} alt="picture" ></img>
+                
+                <div id="locationAndPrice">
+                <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">{this.state.Hostel.pricing}</p> /night</p>
+                </div>
+                <p id="smallFont"> Located in Zip Code <p id="medFont">{this.state.Hostel.zipCode}</p></p>
+                <h2>Description</h2>
+                <p id="smallFont">{this.state.Hostel.salesPitch}</p>
+                <h2>During your stay</h2>
+                <p id="smallFont">FOOD: {this.state.Hostel.foodInfo}</p>
+                <p id="smallFont">LIVING OPTIONS: {this.state.Hostel.livingOptions}</p>
+                <p id="smallFont">NEARBY ATTRACTIONS: {this.state.Hostel.attractions}</p>
+               
+               <div id="features">
+                <h2>Features</h2>
+                <ul id="smallFont">
                     {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
                     {(!this.state.Hostel.isPetFriendly) && <li>is NOT pet friendly</li>}
 
@@ -78,11 +90,14 @@ export class ProfilePage extends React.Component {
                     {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
 
                 </ul>
+
+            <h2>Average Rating: {this.state.Hostel.reviewAvg}</h2>
             </div>
             <div className="container px-0">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
                 <div className="bottom-padding"></div>
                 <ReviewForm onReviewAdded= {review => this.addReview(review)} />
+            </div>
             </div>
             
         </div>
@@ -90,3 +105,4 @@ export class ProfilePage extends React.Component {
     }
 }
 export default ProfilePage;
+
