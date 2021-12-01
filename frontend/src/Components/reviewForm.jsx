@@ -3,7 +3,6 @@ import HostelReview  from '../Models/hostelReview.js';
 import './profilePage.css'
 import { Rating } from './Rating.jsx';
 
-
 export default class ReviewForm extends React.Component {
     ratings = [1,2,3,4,5];
     constructor(props){
