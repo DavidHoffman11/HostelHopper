@@ -134,7 +134,7 @@ export class RegisterPage extends React.Component {
                                 <div className="form-group">
                                     {/* <label htmlFor="search_name" className="py-0">Confirm Password</label> */}
                                     {/* <span className="text-danger"> *</span> */}
-                                    {this.passwordsDoNotMatch() && <p className="text-danger">Passwords do not match</p>}
+                                    {this.passwordsDoNotMatch() && <p className="text-danger form-control border border-white">Passwords do not match</p>}
                                     <input type="password"
                                         name="Password"
                                         className="form-control"
