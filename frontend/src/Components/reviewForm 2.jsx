@@ -22,7 +22,7 @@ export default class ReviewForm extends React.Component {
     render(){
         return(
             <form className="container">
-                <header className="nav navbar navbar-light bg-dgrey"><p className="reviewBar">Add Review</p></header>
+                <header className="nav navbar navbar-light bg-dgrey" ><p className="reviewBar"  >Add Review</p></header>
                 <div className="form-group">
 
 
