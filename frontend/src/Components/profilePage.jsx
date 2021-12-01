@@ -91,7 +91,8 @@ export class ProfilePage extends React.Component {
     }
 
     componentDidMount() {
-        let hostelId = this.props.match.params.id;
+        
+        let hostelId = this.state.Hostel.id;
         if(hostelId){
             this.apiClient.getHost(hostelId)
                 .then(hostel => this.setState(hostel));
