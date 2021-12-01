@@ -1,5 +1,5 @@
 export class Hostel {
-    constructor(id, hostelName, info, profilePicUrl, pricing, salesPitch, foodInfo, livingOptions, attractions, isPetFriendly, isCovidSafe, location, hasLockers, hasGenderedRoom, reviews){
+    constructor(id, hostelName, info, profilePicUrl, pricing, salesPitch, foodInfo, livingOptions, attractions, isPetFriendly, isCovidSafe, location, hasLockers, hasGenderedRoom, reviews, user){
         this.id = id;
         this.hostelName = hostelName;
         this.info = info;
@@ -17,6 +17,7 @@ export class Hostel {
         this.hasGenderedRoom = hasGenderedRoom;
         this.reviews = reviews;
         this.reviewAvg = 0;
+        this.user = user;
     }
 
     getAvg(reviews){
