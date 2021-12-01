@@ -1,5 +1,6 @@
 import React from 'react';
 import HostelReview  from '../Models/hostelReview.js';
+import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import './profilePage.css'
 import { Rating } from './Rating.jsx';
 
@@ -8,6 +9,8 @@ export default class ReviewForm extends React.Component {
     constructor(props){
         super();
         this.state = {
+            //apiClient: new HostelHopperAPIClient(),
+            //user: this.apiClient.getUserInfo(props.user_id),
             userName: '',
             comment : '',
             rating: 0
