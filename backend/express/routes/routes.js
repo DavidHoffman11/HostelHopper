@@ -34,7 +34,7 @@ module.exports = function(app)
   app.route("/api/user/:id").get(userController.get_user);
   app.route("/api/user/:id").put(userController.update_user);
   app.route("/api/user/:id").delete(userController.delete_user);
-  app.route("/api/login").post(userController.login_user);
+  app.route("/api/login/").post(userController.login_user);
 
   // HOSTEL
   app.route("/api/host/").get(hostController.get_hosts);
@@ -45,8 +45,8 @@ module.exports = function(app)
 
   // REVIEW
 
-  app.route("/api/host/:id/review").get(reviewController.get_reviews);
-  app.route("/api/host/:id/review").post(reviewController.create_review);
+  app.route("/api/host/:id/review/").get(reviewController.get_reviews);
+  app.route("/api/host/:id/review/").post(reviewController.create_review);
   app.route("/api/host/:id/review/:reviewId").delete(reviewController.delete_review);
 
   // REVIEW LIKES
@@ -57,20 +57,20 @@ module.exports = function(app)
   */
  
   //- Both - works for both like and dislike
-  app.route("/api/review/:reviewId/like").post(reviewController.like_review);
+  app.route("/api/review/:reviewId/like/").post(reviewController.like_review);
   app.route("/api/review/:reviewId/like/:userId").delete(reviewController.unlike_review);
 
   //- Like specific
-  app.route("/api/review/:reviewId/like").get(reviewController.get_likes);
+  app.route("/api/review/:reviewId/like/").get(reviewController.get_likes);
 
   //- Dislike specific
-  app.route("/api/review/:reviewId/dislike").get(reviewController.get_dislikes); 
+  app.route("/api/review/:reviewId/dislike/").get(reviewController.get_dislikes); 
   
   //END REVIEW LIKES 
 
   //REPLY
-  app.route("/api/review/:id/reply").get(reviewController.get_replies);
-  app.route("/api/review/:id/reply").post(reviewController.create_reply);
+  app.route("/api/review/:id/reply/").get(reviewController.get_replies);
+  app.route("/api/review/:id/reply/").post(reviewController.create_reply);
   app.route("/api/review/:reviewId/reply/:id").delete(reviewController.delete_reply);
 
 };
