@@ -41,6 +41,14 @@ export class ProfilePage extends React.Component {
     apiClient = new HostelHopperAPIClient(); 
 
     render(){
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
+
+        if (this.state.Hostel.id === 0){
+            return <div>Loading...</div>
+        }
+
         const { Hostel } = this.state;
         return( <div id="background">
             <div id="homePageHeader">
