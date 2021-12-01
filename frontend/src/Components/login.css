@@ -168,3 +168,17 @@ img.avatar {
 .btn-bot-margin{
     margin-bottom: 1rem;
 }
+
+img.avatar {
+    opacity: 100%;
+    margin-left:7rem;
+    height: 200px;
+    width: 200px;
+}
+
+#registerButton{
+    width:8rem;
+    margin-left:.5rem;
+    margin-right:.5rem;
+display: inline;
+}

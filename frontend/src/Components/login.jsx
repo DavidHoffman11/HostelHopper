@@ -7,7 +7,7 @@ import { LoginButton, ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
 
-    apiClient = new HostelHopperAPIClient(); 
+    apiClient = new HostelHopperAPIClient();
 
     onLogin() {
         this.apiClient.login(this.state.email, this.state.password).then(user => {
@@ -76,28 +76,33 @@ class Login extends React.Component {
                                 onChange={e => this.setState({ password: e.target.value })}
                             />
                         </div>
+
                         <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
                             //onKeyPress={handleKeyPress}
                            onClick={() => this.onLogin()}>Log In</button>
 
+                        <p>Don't have an account yet?</p>
 
+                        {this.state.authenticated && <Redirect to={'/home/' + this.state.id} />}
 
-
-                        {this.state.authenticated && <Redirect to={'/homepage/' + this.state.id} />}
-                        <br></br>
                         <div className="pb-5">
-                            <Link to={'register'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Register</button>
+                            <Link to={'registerUser'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as User</button>
+                            </Link>
+                            <Link to={'registerHost'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as Host</button>
                             </Link>
                         </div>
                         <br></br>
+
+
                         <div className="pb-5">
                             <Link to={'profile'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Profile Temp Link</button>
                             </Link>
                         </div>
 
-                        
+
                         <br></br>
                         <div className="pb-5">
                             <Link to={'homepage'}>
