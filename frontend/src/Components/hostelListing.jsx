@@ -2,19 +2,21 @@ import React, { useState, useEffect, onSearch } from 'react';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import './homePage.css'
 import placeHolder from '../img_placeHolder.png';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Hostel from '../Models/hostel';
 
 
 export const HostelListing = props => {
   const [hostels, setHostels] = useState(undefined);
-  let apiClient = new HostelHopperAPIClient(); 
+  const apiClient = new HostelHopperAPIClient(); 
+  
   useEffect(() => {
     onSearch();
   }, []);
-
+  
   let onSearch = params => {
-    apiClient.getAllHosts(params).then(x => setHostels(x));
+    apiClient.getAllHosts().then(x => setHostels(x));
+    console.log(typeof(hostels))
   }
   
   
@@ -28,7 +30,7 @@ export const HostelListing = props => {
 <div className="background2">
   <ul id = "hostel-list">
   {
-        hostels.map(hostel => <div key = {hostel.id}lass="card" id="listing">
+        hostels.map(hostel => <div key = {hostel.id} className="card" id="listing">
    
         <h3 class="hostelName" >{hostel.hostelName}</h3>
    

@@ -3,7 +3,7 @@ import axios from 'axios';
 export class HostelHopperAPIClient
 {
 
-  url = 'http://localhost:8000'
+  url = 'http://localhost:8000/api';
 
   config = {};
 
@@ -90,13 +90,12 @@ export class HostelHopperAPIClient
     });
   }
 
-  getAllHosts(searchRestrictions = {})
+  getAllHosts()
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host`, { params: searchRestrictions }
-        )
+          `${this.url}/host/`,)
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
@@ -203,12 +202,12 @@ export class HostelHopperAPIClient
     });
   }
 
-  gethostLikes(host_id)
+  gethostReviewLikes(host_id, review_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host/${host_id}/like`,
+          `${this.url}/host/${host_id}/review/${review_id}like`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
