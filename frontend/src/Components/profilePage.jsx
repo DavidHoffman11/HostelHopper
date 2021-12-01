@@ -10,7 +10,7 @@ import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
 
 
-
+//this is an attempt to correct the merge
 export class ProfilePage extends React.Component {
     addReview(review){
         this.state.Hostel.reviews.push(review);
