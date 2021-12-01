@@ -82,7 +82,8 @@ class Login extends React.Component {
 
 
 
-                        {this.state.authenticated && <Redirect to={'/home/' + this.state.id} />}
+
+                        {this.state.authenticated && <Redirect to={'/homepage/' + this.state.id} />}
                         <br></br>
                         <div className="pb-5">
                             <Link to={'register'}>
