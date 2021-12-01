@@ -78,6 +78,8 @@ export class ProfilePage extends React.Component {
                     {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
 
                 </ul>
+
+            <h2>Rating: {this.state.Hostel.reviewAvg}</h2>
             </div>
             <div className="container px-0">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
