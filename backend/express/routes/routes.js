@@ -3,13 +3,8 @@
 module.exports = function(app)
 {
   var userController = require("../model/user");
-<<<<<<< Updated upstream
   var hostController = require("../model/host");
   var reviewController = require("../model/review");
-=======
-  var hostelController = require("../model/hostel");
-  var commentController = require("../model/review");
->>>>>>> Stashed changes
 
   app.route("/").get(function(req, res)
   {
@@ -42,7 +37,6 @@ module.exports = function(app)
   app.route("/api/login").post(userController.login_user);
 
   // HOSTEL
-<<<<<<< Updated upstream
   app.route("/api/host/").get(hostController.get_hosts);
   app.route("/api/host/").post(hostController.create_host);
   app.route("/api/host/:id").get(hostController.get_host);
@@ -79,16 +73,4 @@ module.exports = function(app)
   app.route("/api/review/:id/reply").post(reviewController.create_reply);
   app.route("/api/review/:reviewId/reply/:id").delete(reviewController.delete_reply);
 
-=======
-
-  // REVIEW
-  app.route("/api/host/:id/review").get(commentController.get_comments);
-  app.route("/api/host/:id/review").post(commentController.create_comment);
-  app.route("/api/host/:id/review/:id").delete(commentController.delete_comment);
-
-  // COMMENT LIKES
-  app.route("/api/host/:id/review/:id/like").get(commentController.get_likes);
-  app.route("/api/host/:id/review/:id/like").post(commentController.like_comment);
-  app.route("/api/host/:id/review/:id/like/:user_id").delete(commentController.unlike_comment);
->>>>>>> Stashed changes
 };

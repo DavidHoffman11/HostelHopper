@@ -4,17 +4,10 @@ var sql = require("./connection.js");
 var User = function(user)
 {
   this.name = user.name;
-<<<<<<< Updated upstream
   this.email = user.email;
   this.password = user.password;
   this.image_url = user.image_url;
   this.is_host = user.is_host;
-=======
-  this.is_host = user.is_host;
-  this.email = user.email;
-  this.password = user.password;
-  this.image_url = user.image_url;
->>>>>>> Stashed changes
 };
 
 exports.get_users = function(req, res)
