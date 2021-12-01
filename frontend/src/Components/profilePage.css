@@ -1,6 +1,5 @@
 #fullProfile{
     min-height: 35rem;
-    margin-top: 5rem;
 }
   
 #hostelPrice{
@@ -12,10 +11,10 @@
   
 
   img {
-    max-width: 30rem;
-    float:left;
+    max-width: 20rem;
+    text-align: right;
+    float: right;
     clear: both;
-  
   }
 
   #background {
@@ -32,6 +31,7 @@
   text-align: center;
   margin-top: 1rem;
   padding-bottom: 2rem;
+  border-bottom: 2px solid black;
   margin-bottom: 0.5rem;
 }
 
@@ -43,58 +43,9 @@
 .informationContainer{
   background-color: white;
   border-radius: .5rem;
-  padding:1rem;
 }
 
 #reviewUserName {
   font-size: 1.25rem;
 }
 
-#backToHomepage{
-  padding-top:.5rem;
-  display:flex;
-  float: right;
-  margin-right: 8.9rem;
-  
-}
-
-#headerText{
- padding-top: .5rem;
-  margin-right: 1rem;
-  color: rgb(47, 49, 146);
-}
-
-#locationAndPrice{
- margin-bottom:.5rem;
-}
-
-#subFont{
-  display:inline;
-  font-size: 2rem;
-}
-
-#largeFont{
-  display:inline;
-  font-family: 'Oswald', sans-serif;
-  color: rgb(47, 49, 146);
-  font-size: 3rem;
-
-}
-
-#smallFont{
-  font-size: 1.1rem;
-}
-
-#medFont{
-  display:inline;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.4rem;
-}
-
-#slogan{
-  font-size: 2rem;
-}
-
-#features{
-  margin-left: 28rem;
-}
