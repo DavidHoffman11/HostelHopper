@@ -42,12 +42,12 @@ module.exports = function(app)
   app.route("/api/host/:id").get(hostController.get_host);
   app.route("/api/host/:id").put(hostController.update_host);
   app.route("/api/host/:id").delete(hostController.delete_host);
-/*
-  // REVIEW
-  app.route("/api/host/:id/review").get(reviewController.get_comments);
-  app.route("/api/host/:id/review").post(reviewController.create_comment);
-  app.route("/api/host/:id/review/:id").delete(reviewController.delete_comment);
 
+  // REVIEW
+  app.route("/api/host/:id/review").get(reviewController.get_reviews);
+  app.route("/api/host/:id/review/").post(reviewController.create_review);
+  app.route("/api/host/:host_id/review/:id").delete(reviewController.delete_review);
+/*
   // REVIEW LIKES
   app.route("/api/host/:id/review/:id/like").get(reviewController.get_likes);
   app.route("/api/host/:id/review/:id/like").post(reviewController.like_review);
