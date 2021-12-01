@@ -50,7 +50,7 @@ class Login extends React.Component {
             <div id="loginPageBG">
             <div className="fadeInDown" id="loginWrapper">
                 <div id="loginFormContent">
-                    <div className="imgcontainer pt-4 mb-0">
+                    <div className="imgcontainer pt-4 mb-0" id="top_content">
                         <h1 id="welcome" >Welcome to Hostel Hopper!</h1>
                         <img src={logo} alt="Avatar" className="avatar"></img>
                     </div>
@@ -84,13 +84,13 @@ class Login extends React.Component {
 
                         {this.state.authenticated && <Redirect to={'/home/' + this.state.id} />}
                         <br></br>
-                        <div className="pb-5">
+                        <div >
                             <Link to={'register'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Register</button>
                             </Link>
                         </div>
                         <br></br>
-                        <div className="pb-5">
+                        <div >
                             <Link to={'profile'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Profile Temp Link</button>
                             </Link>
