@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom';
 import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
 
 
-export class RegisterPage extends React.Component {
+export class RegisterHost extends React.Component {
 
     apiClient = new HostelHopperAPIClient();
 
@@ -87,7 +87,7 @@ export class RegisterPage extends React.Component {
                     <div id="loginFormContent">
                         <form className="container">
                             <div className="imgcontainer pt-3">
-                                <h1>Register</h1>
+                                <h1>Register as Host</h1>
                                 <img src={logo} alt="Avatar" className="avatar"></img>
                             </div>
                             {this.state.registered == false && <RegisterErrorMessage />}
@@ -167,4 +167,4 @@ export class RegisterPage extends React.Component {
     }
 }
 
-export default RegisterPage;
+export default RegisterHost;
