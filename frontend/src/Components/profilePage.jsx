@@ -90,12 +90,14 @@ export class ProfilePage extends React.Component {
                     {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
 
                 </ul>
-                </div>
+
+            <h2>Rating: {this.state.Hostel.reviewAvg}</h2>
             </div>
             <div className="container px-0">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
                 <div className="bottom-padding"></div>
                 <ReviewForm onReviewAdded= {review => this.addReview(review)} />
+            </div>
             </div>
             
         </div>
