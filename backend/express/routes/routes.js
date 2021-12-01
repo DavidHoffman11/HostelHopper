@@ -44,7 +44,6 @@ module.exports = function(app)
   app.route("/api/host/:id").delete(hostController.delete_host);
 
   // REVIEW
-
   app.route("/api/host/:id/review/").get(reviewController.get_reviews);
   app.route("/api/host/:id/review/").post(reviewController.create_review);
   app.route("/api/host/:id/review/:reviewId").delete(reviewController.delete_review);
