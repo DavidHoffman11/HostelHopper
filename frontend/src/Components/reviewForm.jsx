@@ -1,10 +1,8 @@
 import React from 'react';
 import HostelReview  from '../Models/hostelReview.js';
-<<<<<<< Updated upstream
 import './profilePage.css'
 import { Rating } from './Rating.jsx';
-=======
->>>>>>> Stashed changes
+
 
 export default class ReviewForm extends React.Component {
     ratings = [1,2,3,4,5];
