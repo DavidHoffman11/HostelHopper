@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, onSearch } from 'react';
 import './login.css'
 import './profilePage.css'
 import { Redirect, Link } from 'react-router-dom';
@@ -11,16 +11,22 @@ import ReviewForm from './reviewForm';
 
 
 
-export class ProfilePage extends React.Component {
+export const ProfilePage = props => {
 
-    addReview(review){
-        this.state.Hostel.reviews.push(review);
-        this.state.Hostel.reviewAvg = this.state.Hostel.getAvg(this.state.Hostel.reviews);
-        this.setState({product: this.state.product});
+    let [hostel, setHostel] = useState(undefined);
+    let apiClient = new HostelHopperAPIClient();
+
+    useEffect(() => {
+        onSearch();
+    }, []);
+
+    let onSearch = params => {
+        HostelHopperAPIClient.getHostel(params).then(x => setHostel(x));
     }
-    state = {
+
+    hostel = {
         Hostel: new Hostel(
-        0, 
+        1, 
         "Big Cabana Resort", 
         "It is a nice place", 
         "https://johnlawrimore.com/smu/101.png",
@@ -38,73 +44,66 @@ export class ProfilePage extends React.Component {
         ),
     }
 
-    apiClient = new HostelHopperAPIClient(); 
+    if (hostel.id === 0){
+        return <div>Loading...</div>
+    }
 
-    render(){
-        if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
-        }
+    let addReview = review => {
+        hostel.reviews.push(review);
+        hostel.reviewAvg = hostel.getAvg(hostel.reviews);
+        setHostel(review);
+    }
 
-        if (this.state.Hostel.id === 0){
-            return <div>Loading...</div>
-        }
+    
 
-        const { Hostel } = this.state;
-        return( <div id="background">
-            <div id="homePageHeader">
-                {this.state.Hostel.hostelName}
-            </div>
-            <div id="navBar" className="container mb-3">
-                <div className="row border border-dark">
-                    <div className="col-8 border-right border-dark">Menu bar</div>
-                    <div className="col-auto border-left border-dark"><Link to={'homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Browse</button>
-                            </Link></div>
+    return( <div id="background">
+        <div id="homePageHeader">
+            {hostel.hostelName}
+        </div>
+        <div id="navBar" className="container mb-3">
+            <div className="row border border-dark">
+                <div className="col-8 border-right border-dark">Menu bar</div>
+                <div className="col-auto border-left border-dark">
+                    <Link to={'homepage'}>
+                        <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Browse</button>
+                    </Link>
                 </div>
             </div>
-            
-            <div id="fullProfile" className="container informationContainer py-5 mb-3">
-                <img src={this.state.Hostel.profilePicUrl} alt="picture"></img>
-                <h1>Bio</h1>
-                <p>{this.state.Hostel.info}</p>
-                <p>We offer rooms in the following price range: ${this.state.Hostel.pricing}</p>
-                <p>{this.state.Hostel.salesPitch}</p>
-                <h1>Hostel Features</h1>
-                <p>{this.state.Hostel.foodInfo}</p>
-                <p>{this.state.Hostel.livingOptions}</p>
-                <h1>This Hostel...</h1>
-                <ul>
-                    {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
-                    {(!this.state.Hostel.isPetFriendly) && <li>is NOT pet friendly</li>}
-
-                    {(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>}
-                    {(!this.state.Hostel.isCovidSafe) && <li>is NOT COVID safe</li>}
-
-                    {(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>}
-                    {(!this.state.Hostel.hasLockers) && <li>does NOT have lockers for secure guest storage</li>}
-
-                    {(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>}
-                    {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
-
-                </ul>
-            </div>
-            <div className="container px-0">
-                <ReviewList reviews={this.state.Hostel.reviews}/>
-                <div className="bottom-padding"></div>
-                <ReviewForm onReviewAdded= {review => this.addReview(review)} />
-            </div>
-            
         </div>
-        )
-    }
-
-    componentDidMount() {
         
-        let hostelId = this.state.Hostel.id;
-        if(hostelId){
-            this.apiClient.getHost(hostelId)
-                .then(hostel => this.setState(hostel));
-        }
-    }
+        <div id="fullProfile" className="container informationContainer py-5 mb-3">
+            <img src={hostel.profilePicUrl} alt="picture"></img>
+            <h1>Bio</h1>
+            <p>{hostel.info}</p>
+            <p>We offer rooms in the following price range: ${hostel.pricing}</p>
+            <p>{hostel.salesPitch}</p>
+            <h1>Hostel Features</h1>
+            <p>{hostel.foodInfo}</p>
+            <p>{hostel.livingOptions}</p>
+            <h1>This Hostel...</h1>
+            <ul>
+                {(hostel.isPetFriendly) && <li>is pet friendly</li>}
+                {(!hostel.isPetFriendly) && <li>is NOT pet friendly</li>}
+
+                {(hostel.isCovidSafe) && <li>is COVID safe</li>}
+                {(!hostel.isCovidSafe) && <li>is NOT COVID safe</li>}
+
+                {(hostel.hasLockers) && <li>has lockers for secure guest storage</li>}
+                {(!hostel.hasLockers) && <li>does NOT have lockers for secure guest storage</li>}
+
+                {(hostel.hasGenderedRoom) && <li>has gendered rooms</li>}
+                {(!hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
+
+            </ul>
+        </div>
+        <div className="container px-0">
+            <ReviewList reviews={hostel.reviews}/>
+            <div className="bottom-padding"></div>
+            <ReviewForm onReviewAdded= {review => addReview(review)} />
+        </div>
+        
+    </div>
+    )
+
 }
 export default ProfilePage;
