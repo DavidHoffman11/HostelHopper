@@ -1,0 +1,19 @@
+#fullProfile{
+    min-height: 35rem;
+}
+
+#hostelName {
+    font-size: 3rem;
+  }
+  
+#hostelPrice{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+  
+
+  img {
+    max-width: 20rem;
+  }
