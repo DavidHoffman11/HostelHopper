@@ -12,7 +12,6 @@ export class RegisterHost extends React.Component {
 
     apiClient = new HostelHopperAPIClient();
 
-
     state = {
         username: '',
         email: '',
@@ -30,11 +29,11 @@ export class RegisterHost extends React.Component {
         foodInfo : '',
         livingOptions: '',
         attractions : '',
-        isPetFriendly: '',
-        isCovidSafe : '',
+        isPetFriendly: false,
+        isCovidSafe : false,
         location: '',
-        hasLockers: '',
-        hasGenderedRoom : '',
+        hasLockers: false,
+        hasGenderedRoom : false,
         zipCode: '',
     };
 
@@ -270,7 +269,7 @@ export class RegisterHost extends React.Component {
                                         onChange={e => this.setState({ hasGenderedRoom: e.target.value })} />
                                 </div>
                             </div>
-
+                            */
                             <div className="login-form">
                                 <div className="form-group">
                                     <input type="text"
@@ -281,7 +280,7 @@ export class RegisterHost extends React.Component {
                                         onChange={e => this.setState({ zipCode: e.target.value })} />
                                 </div>
                             </div>
-
+                            /*
 
                             <div className="login-form">
                                 <div className="form-group">
@@ -303,42 +302,67 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div> */}
 
-                    <p>This property...</p>
-        
-        <div id="checklist">
-        <div>
-        <input class="form-check-input" type="checkbox" value={this.state.isPetFriendly} id="defaultCheck1"/>
-        <label class="form-check-label" for="defaultCheck1" >
-            Is pet friendly
-        </label>  
-        </div>
+                            <p>This property...</p>
+    
+                            <div id="checklist">
+                            <div>
+                            <input 
+                                className="form-check-input" 
+                                type="checkbox" 
+                                checked={!!this.state.isPetFriendly}
+                                onChange={e => this.setState((state) => {
+                                    return {isPetFriendly: !state.isPetFriendly}
+                                    })}
+                                id="defaultCheck1"/>
+                            <label 
+                                className="form-check-label" 
+                                for="defaultCheck1" >
+                                Is pet friendly
+                            </label>  
+                            </div>
 
-        <div>
-         <input class="form-check-input" type="checkbox" value={this.state.isCovidSafe} id="defaultCheck1"/>
-        <label class="form-check-label" for="defaultCheck1" >
-            Is covid safe
-        </label>  
-        </div>
+                            <div>
+                            <input 
+                            className="form-check-input" 
+                            type="checkbox" 
+                            checked={!!this.state.isCovidSafe} 
+                            onChange={e => this.setState((state) => {
+                                return {isCovidSafe: !state.isCovidSafe}
+                                })}
+                            id="defaultCheck1"/>
+                            <label className="form-check-label" for="defaultCheck1" >
+                                Is covid safe
+                            </label>  
+                            </div>
 
-        <div>
-        <input class="form-check-input" type="checkbox" value={this.state.hasLockers} id="defaultCheck1"/>
-        <label class="form-check-label" for="defaultCheck1" >
-            Has lockers avaliable
-        </label>  
-        </div>
+                            <div>
+                            <input 
+                            className="form-check-input" 
+                            type="checkbox" 
+                            checked={!!this.state.hasLockers} 
+                            onChange={e => this.setState((state) => {
+                                return {hasLockers: !state.hasLockers}
+                                })}
+                            id="defaultCheck1"/>
+                            <label className="form-check-label" for="defaultCheck1" >
+                                Has lockers avaliable
+                            </label>  
+                            </div>
 
-        <div>
-        <input class="form-check-input" type="checkbox" value={this.state.hasGenderedRoom} id="defaultCheck1"/>
-        <label class="form-check-label" for="defaultCheck1" >
-            Has gendered rooms
-        </label>  
-        </div>
-       </div>
-
-
-
-                            
-
+                            <div>
+                            <input 
+                            className="form-check-input" 
+                            type="checkbox" 
+                            checked={!!this.state.hasGenderedRoom} 
+                            onChange={e => this.setState((state) => {
+                                return {hasGenderedRoom: !state.hasGenderedRoom}
+                                })}
+                            id="defaultCheck1"/>
+                            <label className="form-check-label" for="defaultCheck1" >
+                                Has gendered rooms
+                            </label>  
+                            </div>
+                        </div>
                             <div className="login-form pb-4">
 
                                 <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.hostelPicUrl, this.state.info,this.state.pricing,this.state.salesPitch,this.state.foodInfo,this.state.livingOptions,this.state.attractions,this.state.isPetFriendly,this.state.isCovidSafe,this.state.location,this.state.hasLockers,this.state.hasGenderedRoom,this.state.zipCode)}>Register</button>
