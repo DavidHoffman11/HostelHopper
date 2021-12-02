@@ -8,6 +8,8 @@ import { LoginButton, ErrorMessage } from './loginButton';
 import {Hostel} from '../Models/hostel';
 import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
+import { useParams } from "react-router-dom";
+
 
 
 
@@ -111,7 +113,7 @@ export class HostelProfile extends React.Component {
         )
     }
     componentDidMount() {
-        let id = this.props.params.host.id;
+        const { id } = useParams();
         if (id){
           this.apiClient.getHost(id)
           .then(hostel => this.setState(hostel));
