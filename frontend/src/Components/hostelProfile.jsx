@@ -11,6 +11,7 @@ import ReviewForm from './reviewForm';
 
 
 
+
 export class HostelProfile extends React.Component {
 
        apiClient = new HostelHopperAPIClient(); 
@@ -44,7 +45,12 @@ export class HostelProfile extends React.Component {
 
 
     render(){
-        const { Hostel } = this.state;
+        if (this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
+        if (this.state.Hostel.id === 0){
+            return <div>Loading....</div>
+        }
         return( <div id="profBackground">
             <div id="homePageHeader">
                 My Hostel
@@ -56,7 +62,7 @@ export class HostelProfile extends React.Component {
                     
                     <h4 id="headerText"> Wondering how you compare?</h4>
                    
-                   <Link to={'homepage'}>
+                   <Link to={'/homepage'}>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse other Hostels</button>
                             </Link>
                             </div>
@@ -110,5 +116,17 @@ export class HostelProfile extends React.Component {
         </div>
         )
     }
+    componentDidMount() {
+        let hostid = this.props.match.params.id;
+        if (hostid){
+          this.apiClient.getHost(hostid)
+          .then(hostel => {
+              let page = hostel.info[0];
+              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attrations, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
+              console.log(this.state.hostel);
+        }
+        );
+        }
+      }
 }
 export default HostelProfile;

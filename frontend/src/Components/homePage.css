@@ -9,6 +9,7 @@
     height:100%;
     width:100%;
     background-color: rgb(189,237,252);
+    margin-bottom: 3rem;
 }
 
 #homePageHeader{
@@ -33,6 +34,7 @@
     display:flex;
     width:50%;
     margin:auto;
+    margin-bottom: 3rem;
 }
 
 #hostelImage{
