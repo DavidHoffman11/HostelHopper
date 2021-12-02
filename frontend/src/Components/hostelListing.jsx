@@ -6,6 +6,18 @@ import { Link } from 'react-router-dom';
 import Hostel from '../Models/hostel';
 
 
+export const HostelListing = props => {
+  const [hostels, setHostels] = useState([]);
+  const apiClient = new HostelHopperAPIClient(); 
+  
+  useEffect(() => {
+    onSearch();
+  }, []);
+  
+  let onSearch = params => {
+    apiClient.getAllHosts(params).then(x => setHostels(x));
+    console.log(hostels);
+  }
   
   
 
@@ -14,9 +26,9 @@ import Hostel from '../Models/hostel';
     return <div>Loading...</div>
   }
   return <>
-    <div className="background2">
-      <ul id = "hostel-list">
-      {
+  <div className="background2">
+    <ul id = "hostel-list">
+  {
         hostels.map(hostel => <div key = {hostel.id} className="card" id="listing">
   
         <h3 class="hostelName" >{hostel.hostelName}</h3>
@@ -30,11 +42,12 @@ import Hostel from '../Models/hostel';
           <a href="#" class="btn btn-primary">View this hostel</a>
           </Link>
         </div>
-        </div>)
+      </div>)
       }
       </ul>
-    </div>
-  </>
+      </div>
+      </>
+    };
 
 
 export default HostelListing;
