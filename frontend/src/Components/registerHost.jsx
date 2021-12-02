@@ -79,9 +79,9 @@ export class RegisterHost extends React.Component {
                             <div className="login-form">
                                 <div className="form-group">
                                     <input type="text"
-                                        name="Email"
+                                        name="name"
                                         className="form-control"
-                                        placeholder="username"
+                                        placeholder="name"
                                         value={this.state.username}
                                         onChange={e => this.setState({ username: e.target.value })} 
                                     />
