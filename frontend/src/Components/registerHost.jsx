@@ -15,7 +15,7 @@ export class RegisterHost extends React.Component {
         register2: false,
         confirm: null,
         id:'',
-        hostelName: '',
+        hostelName: 'a',
         body : '',
         hostelPicUrl: '',
         pricing: '',
@@ -132,17 +132,6 @@ export class RegisterHost extends React.Component {
                                         placeholder="profile picture url (optional)"
                                         value={this.state.hostelPicUrl}
                                         onChange={e => this.setState({ hostelPicUrl: e.target.value })} 
-                                    />
-                                </div>
-                            </div>
-                            <div className="login-form">
-                                <div className="form-group">
-                                    <input type="text"
-                                        name="Email"
-                                        className="form-control"
-                                        placeholder="Name of Hostel"
-                                        value={this.state.hostelName}
-                                        onChange={e => this.setState({ hostelName: e.target.value })} 
                                     />
                                 </div>
                             </div>
