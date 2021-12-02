@@ -257,15 +257,18 @@ export class HostelHopperAPIClient
     });
   }
 
-  postReview(host_id, user_id, body)
+  postReview(host_id, user_id, rating, body, user_name)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
           `${this.url}/host/${host_id}/review/`,
           {
+            "host_id": host_id,
             "user_id": user_id,
+            "rating": rating,
             "body": body,
+            "user_name": user_name
           }
         )
         .then(response => resolve(response.data))
