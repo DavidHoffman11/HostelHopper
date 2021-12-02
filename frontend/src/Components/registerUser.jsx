@@ -90,8 +90,8 @@ export class RegisterUser extends React.Component {
                                 <h1>Register as User</h1>
                                 <img src={logo} alt="Avatar" className="avatar"></img>
                             </div>
-                            {this.state.registered == false && <RegisterErrorMessage />}
-                            {this.state.register2 == false && <RegisterErrorMessage2 />}
+                            {this.state.registered === false && <RegisterErrorMessage />}
+                            {this.state.register2 === false && <RegisterErrorMessage2 />}
                             <div className="login-form">
                                 <div className="form-group">
                                     {/* <label htmlFor="search_name" className="py-0">Username</label> */}

@@ -56,20 +56,20 @@ module.exports = function(app)
   */
 
   //- Both - works for both like and dislike
-  app.route("/api/review/:id/like/").post(reviewController.like_review);
-  app.route("/api/review/:id/like/:userId").delete(reviewController.unlike_review);
+  app.route("/api/review/:reviewId/like/").post(reviewController.like_review);
+  app.route("/api/review/:reviewId/like/:userId").delete(reviewController.unlike_review);
 
   //- Like specific
-  app.route("/api/review/:id/like/").get(reviewController.get_likes);
+  app.route("/api/review/:reviewId/like/").get(reviewController.get_likes);
 
   //- Dislike specific
-  app.route("/api/review/:id/dislike/").get(reviewController.get_dislikes);
-
-  //END REVIEW LIKES
+  app.route("/api/review/:reviewId/dislike/").get(reviewController.get_dislikes); 
+  
+  //END REVIEW LIKES 
 
   //REPLY
   app.route("/api/review/:id/reply/").get(reviewController.get_replies);
   app.route("/api/review/:id/reply/").post(reviewController.create_reply);
-  app.route("/api/review/:id/reply/:replyId").delete(reviewController.delete_reply);
+  app.route("/api/review/:reviewId/reply/:id").delete(reviewController.delete_reply);
 
 };

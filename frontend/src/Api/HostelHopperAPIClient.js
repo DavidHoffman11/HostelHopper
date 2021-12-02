@@ -95,9 +95,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-
-          `${this.url}/host/`,
-
+          `${this.url}/host/`, 
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));

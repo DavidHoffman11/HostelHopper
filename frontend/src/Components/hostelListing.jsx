@@ -30,9 +30,9 @@ export const HostelListing = props => {
     <ul id = "hostel-list">
   {
         hostels.map(hostel => <div key = {hostel.id} className="card" id="listing">
-   
+  
         <h3 class="hostelName" >{hostel.hostelName}</h3>
-   
+  
         <img src={hostel.profilePicUrl} alt="Avatar" className="avatar" id="hostelImage"></img>
       
         <div class="card-body">
