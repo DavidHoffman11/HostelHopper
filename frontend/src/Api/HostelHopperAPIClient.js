@@ -161,6 +161,16 @@ export class HostelHopperAPIClient
         .catch(error => alert(error));
     });
   }
+  getLockerHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostlocker/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
 
   createHost(name, email, password, body, price, zip_code, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
   {

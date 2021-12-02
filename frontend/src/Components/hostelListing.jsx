@@ -36,6 +36,11 @@ export const HostelListing = props => {
       setHostels(x.info);
     });
   }
+  if (filter === "Has Lockers"){
+    apiClient.getLockerHosts(params).then(x => {
+      setHostels(x.info);
+    });
+  }
   else{
     if(filter === ""){
       apiClient.getAllHosts(params).then(x => {

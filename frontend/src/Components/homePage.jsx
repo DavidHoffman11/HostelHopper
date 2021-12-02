@@ -32,7 +32,7 @@ export class HomePage extends React.Component {
             <select id="filters" name="filters" value={this.state.filter} onChange={e => this.setState({filter: e.target.value})}>
             <option value=""></option>
               <option value="Pet Friendly">Pet Friendly</option>
-              <option value="Price">Price</option>
+              <option value="Price">Price(Lowest to Highest)</option>
               <option value="Has Lockers">Has Lockers</option>
               <option value="COVID-Safe">COVID-Safe</option>
               <option value="Gender-Separated">Gender-Separated</option>
