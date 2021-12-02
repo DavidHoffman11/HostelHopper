@@ -64,6 +64,10 @@ export class ProfilePage extends React.Component {
                     <Link to={ `/homepage/${this.props.match.params.id}` }>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
                             </Link>
+                            <Link to="/">
+            <button className="btn btn-primary btn-lg mb-7 " type="button">Log Out</button>
+            </Link>
+            
                             </div>
           
             
