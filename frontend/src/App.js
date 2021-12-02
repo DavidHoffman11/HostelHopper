@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import Login from './Components/login';
 import RegisterUser from './Components/registerUser';
+import UpdateUser from './Components/updateUser';
 import RegisterHost from './Components/registerHost';
 import ProfilePage from './Components/profilePage';
 import HomePage from './Components/homePage';
@@ -21,6 +22,10 @@ class App extends Component {
 
           <Route path="/registerUser">
             <RegisterUser />
+          </Route>
+
+          <Route path="/updateUser">
+            <UpdateUser />
           </Route>
 
           <Route path="/registerHost">
