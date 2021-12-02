@@ -9,13 +9,7 @@ export class UserProfile extends React.Component {
        apiClient = new HostelHopperAPIClient(); 
 
     state = {
-        User: new User(
-        0,
-        "John",
-        "johnjohansson@gmail.com",
-        "password",
-        ""
-        ),
+        User: new User( ),
     }
 
     render(){
@@ -68,7 +62,7 @@ export class UserProfile extends React.Component {
           this.apiClient.getUserInfo(profid)
           .then(user => {
               let page = user.info[0];
-              this.setState({User: new User(page.name, page.email, page.password, page.image_url)});
+              this.setState({User: new User(page.id, page.name, page.email, page.password, page.image_url)});
         }
         );
         }

@@ -145,7 +145,7 @@ export class UpdateUser extends React.Component {
                             </div>
 
                             <div className="login-form pb-4">
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.updaterUser(123457, this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Update</button>
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.updaterUser(this.props.match.params.id, this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Update</button>
                                 {this.state.registered && <Redirect to={this.state.route} />}
                             </div>
                         </form>
