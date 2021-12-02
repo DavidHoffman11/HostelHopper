@@ -9,8 +9,6 @@ import {Hostel} from '../Models/hostel';
 import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
 
-
-
 export class HostelProfile extends React.Component {
 
        apiClient = new HostelHopperAPIClient(); 
