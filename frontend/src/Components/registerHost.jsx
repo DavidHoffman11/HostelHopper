@@ -306,33 +306,34 @@ export class RegisterHost extends React.Component {
                     <p>This property...</p>
         
         <div id="checklist">
-        <div>
-        <input class="form-check-input" type="checkbox" value={this.state.isPetFriendly} id="defaultCheck1"/>
-        <label class="form-check-label" for="defaultCheck1" >
-            Is pet friendly
-        </label>  
-        </div>
+            
+                <div>
+                <input class="form-check-input" type="checkbox" value={this.state.isPetFriendly} id="defaultCheck1"/>
+                <label class="form-check-label" for="defaultCheck1" >
+                    Is pet friendly
+                </label>  
+                </div>
 
-        <div>
-         <input class="form-check-input" type="checkbox" value={this.state.isCovidSafe} id="defaultCheck1"/>
-        <label class="form-check-label" for="defaultCheck1" >
-            Is covid safe
-        </label>  
-        </div>
+                <div>
+                <input class="form-check-input" type="checkbox" value={this.state.isCovidSafe} id="defaultCheck1"/>
+                <label class="form-check-label" for="defaultCheck1" >
+                    Is covid safe
+                </label>  
+                </div>
 
-        <div>
-        <input class="form-check-input" type="checkbox" value={this.state.hasLockers} id="defaultCheck1"/>
-        <label class="form-check-label" for="defaultCheck1" >
-            Has lockers avaliable
-        </label>  
-        </div>
+                <div>
+                <input class="form-check-input" type="checkbox" value={this.state.hasLockers} id="defaultCheck1"/>
+                <label class="form-check-label" for="defaultCheck1" >
+                    Has lockers avaliable
+                </label>  
+                </div>
 
-        <div>
-        <input class="form-check-input" type="checkbox" value={this.state.hasGenderedRoom} id="defaultCheck1"/>
-        <label class="form-check-label" for="defaultCheck1" >
-            Has gendered rooms
-        </label>  
-        </div>
+                <div>
+                <input class="form-check-input" type="checkbox" value={this.state.hasGenderedRoom} id="defaultCheck1"/>
+                <label class="form-check-label" for="defaultCheck1" >
+                    Has gendered rooms
+                </label>  
+                </div>
        </div>
 
 
