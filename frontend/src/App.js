@@ -34,6 +34,7 @@ class App extends Component {
             <HomePage />
             <HostelListing />
           </Route>
+          
           </Switch>
 
         </Router>
