@@ -30,7 +30,6 @@
 }
 
 #listing{
-   
     display:flex;
     width:50%;
     margin:auto;
@@ -60,4 +59,32 @@
     font-family: Helvetica, sans-serif;
     font-size: 2rem;
     color:rgb(47, 49, 146);
+}
+
+#backToProfile{
+    float: left;
+}
+
+.filterBar{
+    margin-left: -4.3rem;
+    height: 3rem;
+    border-radius: .5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: large;
+    padding:auto;
+    border:none;
+}
+
+#listing{
+background-color:white;
+border-radius: 1rem;
+padding-left:2rem;
+
+}
+
+#seeMoreButton{
+    float:right;
+    height:3rem;
+    width:13rem;
+    font-size: 1.3rem;
 }
