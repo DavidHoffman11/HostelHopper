@@ -106,5 +106,16 @@ export class ProfilePage extends React.Component {
         </div>
         )
     }
+    componentDidMount() {
+        let hostid = this.props.match.params.id;
+        if (hostid){
+          this.apiClient.getHost(hostid)
+          .then(hostel => {
+              let page = hostel.info[0];
+              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attrations, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
+        }
+        );
+        }
+      }
 }
 export default ProfilePage;
