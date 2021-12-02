@@ -25,6 +25,12 @@ img {
   padding-bottom: 10rem;
 }
 
+#profBackground {
+  background-color: lightgray;
+  margin: 0;
+  padding-bottom: 10rem;
+}
+
 #homePageHeader{
 font-size: 5rem;
 font-family: 'Oswald', sans-serif;
@@ -121,4 +127,15 @@ margin-left:28rem;
 font-family: 'Oswald', sans-serif;
 color: rgb(47, 49, 146);
 font-size: 2rem;
+}
+
+#hostelUpdate{
+
+  float:right;
+  width:15rem;
+  clear:both;
+
+  display: block;
+margin-right:2rem;
+margin-bottom:7rem;
 }
