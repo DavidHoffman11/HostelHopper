@@ -95,13 +95,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-<<<<<<< Updated upstream
-
-          `${this.url}/host/`,
-
-=======
           `${this.url}/host/`, 
->>>>>>> Stashed changes
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -121,11 +115,7 @@ export class HostelHopperAPIClient
             "body": body,
             "title": title,
             "price": price,
-            "city": city,
-            "state": state,
-            "address":address,
-            "country": country,
-            "zip": zip,
+            "zip": zip_code,
             "phone": phone,
             "image_url": image_url,
             "food_info": food_info,

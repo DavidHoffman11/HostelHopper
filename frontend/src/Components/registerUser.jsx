@@ -25,29 +25,6 @@ export class RegisterUser extends React.Component {
         confirm: null
     };
 
-    /* registerUser(username, email, password, confirmPassword, profilePicUrl) {
-        if (password === confirmPassword) {
-            this.setState({ confirm: true });
-            this.VacationGramAPIClient.searchUser(email)
-                .then(resp => {
-                    if (resp.data.length == 0) {
-                        this.VacationGramAPIClient.addUser(username, email, password)//add profilePicUrl
-                            .then(accountId => {
-                                new User(accountId, username, email, password, this.state.profilePicUrl)
-                                console.log(accountId);
-                                this.setState({ id: accountId.id });
-                                this.setState({ registered: true });
-                            });
-                    }
-                    else {
-                        this.setState({ register2: false });
-                    }
-                });
-        }
-        else {
-            this.setState({ registered: false });
-        }
-    } */
     readyToRegister() {
         if (this.state.username !== ''
             && this.state.email !== ''
