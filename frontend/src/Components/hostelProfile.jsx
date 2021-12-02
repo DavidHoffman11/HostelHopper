@@ -104,7 +104,7 @@ export class HostelProfile extends React.Component {
            
             </div>
 
-            <Link to={'updateHostel'}>
+            <Link to={'/updateHostel'}>
                     <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="hostelUpdate"> Edit hostel information</button>
                 </Link>
                
@@ -116,7 +116,7 @@ export class HostelProfile extends React.Component {
     }
 
     componentDidMount() {
-        let hostid = this.props.match.params.id;
+        let hostid = this.props.match.params.hostid;
         if (hostid){
           this.apiClient.getHost(hostid)
           .then(hostel => {

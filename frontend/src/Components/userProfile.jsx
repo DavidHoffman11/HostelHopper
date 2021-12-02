@@ -14,7 +14,7 @@ export class UserProfile extends React.Component {
         "John",
         "johnjohansson@gmail.com",
         "password",
-        "https://i.pinimg.com/474x/ee/60/0b/ee600b5178e4f1648fd1e8623f049611.jpg"
+        ""
         ),
     }
 
@@ -30,7 +30,7 @@ export class UserProfile extends React.Component {
                     
                     <h4 id="headerText">Planning a trip?</h4>
                    
-                   <Link to={'homepage'}>
+                    <Link to={ `/homepage/${this.props.match.params.id}` }>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse Hostels</button>
                             </Link>
                             </div>
@@ -48,7 +48,7 @@ export class UserProfile extends React.Component {
                 </div>
 
 
-                <Link to={'updateUser'}>
+                <Link to={'/updateUser'}>
                     <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="userUpdate"> Edit profile information</button>
                 </Link>
                
@@ -62,6 +62,17 @@ export class UserProfile extends React.Component {
         </div>
         )
     }
+    componentDidMount() {
+        let profid = this.props.match.params.id;
+        if (profid){
+          this.apiClient.getUserInfo(profid)
+          .then(user => {
+              let page = user.info[0];
+              this.setState({User: new User(page.name, page.email, page.password, page.image_url)});
+        }
+        );
+        }
+      }
 }
 export default UserProfile;
 

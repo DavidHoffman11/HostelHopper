@@ -44,12 +44,7 @@ export class UpdateHostel extends React.Component {
         if (profilePicUrl === '') profilePicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
         if (this.readyToRegister()) {
             this.setState({ confirm: true });
-            this.apiClient.register(username, email, password, profilePicUrl)
-                .then(user => {
-                    console.log(user.info[0].id);
-                    this.setState({ id: user.info[0].id });
-                    this.setState({ registered: true });
-                });
+            this.apiClient.updateHost()
         }else{
             alert("Please fill out all fields");
         }
@@ -290,8 +285,7 @@ export class UpdateHostel extends React.Component {
                             </div>
                             <div className="login-form pb-4">
                                 <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.hostelPicUrl, this.state.info,this.state.pricing,this.state.salesPitch,this.state.foodInfo,this.state.livingOptions,this.state.attractions,this.state.isPetFriendly,this.state.isCovidSafe,this.state.location,this.state.hasLockers,this.state.hasGenderedRoom,this.state.zipCode)}>Update</button>
-                                {this.state.registered && <Redirect to={'/homepage/' + this.state.id} />}
-                            </div>
+                                {this.state.registered && <Redirect to={'/homepage/' + this.state.id} />}                            </div>
                         </form>
                     </div>
                 </div>

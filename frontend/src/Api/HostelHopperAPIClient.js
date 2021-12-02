@@ -19,10 +19,24 @@ export class HostelHopperAPIClient
           },
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => alert("Invalid email or password"));
     });
   }
-
+  loginHostel(email, password)
+  {
+    return new Promise((resolve, reject) =>
+    {
+      axios.post(
+          `${this.url}/loginHostel/`,
+          {
+            "email": email,
+            "password": password,
+          },
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert("Invalid email or password"));
+    });
+  }
   register(name, email, password, image_url)
   {
     return new Promise((resolve, reject) =>
@@ -67,7 +81,6 @@ export class HostelHopperAPIClient
 
   updateUser(user_id, name, email, password, image_url)
   {
-    debugger;
     return new Promise((resolve, reject) =>
     {
       axios.put(

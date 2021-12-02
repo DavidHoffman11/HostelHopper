@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 
 export const HostelListing = props => {
+  let profID = props.userID;
+
   const [hostels, setHostels] = useState([]);
   const apiClient = new HostelHopperAPIClient(); 
   
@@ -35,7 +37,7 @@ export const HostelListing = props => {
         <div className="card-body">
           <h5 className="card-title" id="medFont">Price Per Night: ${hostel.price}</h5>
           <p className="card-text" id="smallFont">"{hostel.slogan}"</p>
-          <Link to={ `/homepage/${hostel.id}` }>
+          <Link to={ `/homepage/${profID}/${hostel.id}` }>
           <a href="#" className="btn btn-primary">See hostel details</a>
           </Link>
         </div>
