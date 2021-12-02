@@ -112,4 +112,3 @@ export class HostelProfile extends React.Component {
     }
 }
 export default HostelProfile;
-
