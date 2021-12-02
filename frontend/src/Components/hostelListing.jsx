@@ -29,12 +29,12 @@ export const HostelListing = props => {
         hostels.map(hostel => <div key = {hostel.id} className="card" id="listing">
    
         <h3 className="hostelName" id="largeFont">{hostel.name}</h3>
-        <p id="slogan">{hostel.location}</p>
+        <p id="slogan">Located in {hostel.location}</p>
         <img src={hostel.image_url} alt="Avatar" className="avatar" id="hostelImage"></img>
       
         <div className="card-body">
-          <h5 className="card-title" id="medFont">Price per Night: ${hostel.price}</h5>
-          <p className="card-text" id="smallFont">{hostel.slogan}</p>
+          <h5 className="card-title" id="medFont">Price Per Night: ${hostel.price}</h5>
+          <p className="card-text" id="smallFont">"{hostel.slogan}"</p>
           <Link to={ `/homepage/${hostel.id}` }>
           <a href="#" className="btn btn-primary">See hostel details</a>
           </Link>
