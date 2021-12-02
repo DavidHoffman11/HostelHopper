@@ -35,6 +35,7 @@ module.exports = function(app)
   app.route("/api/user/:id").put(userController.update_user);
   app.route("/api/user/:id").delete(userController.delete_user);
   app.route("/api/loginUser/").post(userController.login_user);
+  app.route("/api/login/").post(userController.old_login_user);
 
   // HOSTEL
   app.route("/api/host/").get(hostController.get_hosts);
