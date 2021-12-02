@@ -16,7 +16,7 @@ export class UserProfile extends React.Component {
         //const { User } = this.state;
         return( <div id="background">
             <div id="homePageHeader">
-                User Profile
+                My Profile
             </div>
             
           
