@@ -295,7 +295,7 @@ export class RegisterHost extends React.Component {
                             </div>
                             <div className="login-form pb-4">
                                 <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost( this.state.username,this.state.email, this.state.password, this.state.body, this.state.pricing,this.state.zipCode, this.state.hostelPicUrl, this.state.foodInfo, this.state.livingOptions, this.state.attractions, this.state.isPetFriendly, this.state.isCovidSafe, this.state.hasLockers, this.state.hasGenderedRoom, this.state.location, this.state.salesPitch)}>Register</button>
-                                {this.state.registered && <Redirect to={'/homepage/' + this.state.id} />}
+                                {this.state.registered && <Redirect to={'/hostelProfile/' + this.state.id} />}
                             </div>
                         </form>
                     </div>

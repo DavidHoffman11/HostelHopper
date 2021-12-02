@@ -19,14 +19,11 @@ export const ReviewList = props => {
    
 
 
-
+if(reviews !== undefined){
 return (
 <div className="informationContainer">
     <h1 className="px-3">Hostel Reviews <span>({reviews.length})</span></h1>
     <ul className="list-group">
-        {
-            reviews.length && <li className="list-group-item mb-3 mx-3">Be the first to add a review!</li>
-        }
         {
            reviews.map((x, i) => <div className="border border-secondary rounded m-3 bg-light"key={i}>
                 { <div className="border-bottom border-secondary p-3" ><Rating value={x.rating}/></div> }
@@ -39,4 +36,7 @@ return (
         }
     </ul>
 </div>
-)};
+)}else{
+    return(<><ul><li className="list-group-item mb-3 mx-3">Be the first to add a review!</li></ul></>);
+}
+};
