@@ -47,13 +47,9 @@ class App extends Component {
             <RegisterHost />
           </Route>
 
-  
-         <Route exact path="/homepage">
-            <HomePage />
-            <HostelListing />
-          </Route>
-
-          <Route path="/homepage/:id" component={ProfilePage}></Route>
+          <Route exact path="/homepage/:id/:hostid" component={ProfilePage}></Route>
+         <Route path="/homepage/:id" component={HomePage}></Route>
+          <Route path="/profile/:id" component={UserProfile}></Route>
 
           </Switch>
 

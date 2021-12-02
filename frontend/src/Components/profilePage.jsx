@@ -44,6 +44,8 @@ export class ProfilePage extends React.Component {
 
 
     render(){
+        
+
         const { Hostel } = this.state;
         return( <div id="background">
             <div id="homePageHeader">
@@ -56,7 +58,7 @@ export class ProfilePage extends React.Component {
                     
                     <h4 id="headerText">Not what you're looking for?</h4>
                    
-                   <Link to={'/homepage'}>
+                    <Link to={ `/homepage/${this.props.match.params.id}` }>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
                             </Link>
                             </div>
@@ -106,7 +108,7 @@ export class ProfilePage extends React.Component {
         )
     }
     componentDidMount() {
-        let hostid = this.props.match.params.id;
+        let hostid = this.props.match.params.hostid;
         if (hostid){
           this.apiClient.getHost(hostid)
           .then(hostel => {

@@ -16,6 +16,7 @@ class Login extends React.Component {
                 this.setState({ authenticated: true });
                 console.log(user.info[0]);
                 this.setState({ id: user.info[0].id });
+                this.setState( {route: '/homepage/' + this.state.id });
             }
             else {
                 this.setState({ authenticated: false });
@@ -80,10 +81,11 @@ class Login extends React.Component {
                         <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
                             //onKeyPress={handleKeyPress}
                            onClick={() => this.onLogin()}>Log In</button>
+                           {this.state.authenticated &&  <Redirect to={this.state.route}/>}
+
 
                         <p>Don't have an account yet?</p>
 
-                        {this.state.authenticated && <Redirect to={'/homepage/' + this.state.id} />}
                         <br></br>
 
                         <div className="pb-5">
@@ -122,6 +124,7 @@ class Login extends React.Component {
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">User Profile Temp Link</button>
                             </Link>
                         </div>
+
 
                     </div>
                 </div>
