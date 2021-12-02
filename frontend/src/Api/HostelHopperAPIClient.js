@@ -121,6 +121,46 @@ export class HostelHopperAPIClient
         .catch(error => alert(error));
     });
   }
+  getPriceHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostprice/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
+  getPetHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostpet/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
+  getCovidSafeHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostcovid/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
+  getGenderHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostgender/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
 
   createHost(name, email, password, body, price, zip_code, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
   {

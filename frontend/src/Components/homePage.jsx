@@ -7,6 +7,10 @@ import logo from '../logo.png';
 import HostelListing from './hostelListing';
 
 export class HomePage extends React.Component {
+  state = {
+    filter: "",
+  }
+  
 
 
 
@@ -25,14 +29,19 @@ export class HomePage extends React.Component {
 
           <div className="input-group rounded" id="searchBar">
 
-            <input type="search" className="form-control rounded" placeholder="Search by city..." aria-label="Search"
-              aria-describedby="search-addon" />
+            <select id="filters" name="filters" value={this.state.filter} onChange={e => this.setState({filter: e.target.value})}>
+            <option value=""></option>
+              <option value="Pet Friendly">Pet Friendly</option>
+              <option value="Price">Price</option>
+              <option value="Has Lockers">Has Lockers</option>
+              <option value="COVID-Safe">COVID-Safe</option>
+              <option value="Gender-Separated">Gender-Separated</option>
+              </select>
             <span className="input-group-text border-0" id="search-addon">
-              <i className="fas fa-search"> Search</i>
               </span>
           </div>
         </div> 
-        <HostelListing userID ={this.props.match.params.id}/>
+        <HostelListing userID ={this.props.match.params.id} filter ={this.state.filter}/>
 
         
       </>

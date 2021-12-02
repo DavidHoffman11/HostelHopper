@@ -119,30 +119,9 @@ class Login extends React.Component {
                         <br></br>
 
 
-                        <div className="pb-5">
-                            <Link to={'profile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Details Temp Link</button>
-                            </Link>
-                        </div>
+                        
 
-                        <div className="pb-5">
-                            <Link to={'hostelProfile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Profile Temp Link</button>
-                            </Link>
-                        </div>
-
-                        <br></br>
-                        <div className="pb-5">
-                            <Link to={'homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Go to Home Page</button>
-                            </Link>
-                        </div>
-
-                        <div className="pb-5">
-                            <Link to={'userProfile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">User Profile Temp Link</button>
-                            </Link>
-                        </div>
+                        
 
 
                     </div>
