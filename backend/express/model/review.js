@@ -62,7 +62,7 @@ exports.create_review = function(req, res)
 
 exports.get_reviews = function(req, res)
 {
-  if (!("host_id" in req.params))
+  if (!("id" in req.params))
   {
     res.status(400).send(
     {
@@ -74,7 +74,7 @@ exports.get_reviews = function(req, res)
   {
     sql.connection.query(
       "SELECT * FROM `review` WHERE host_id = ?;",
-      req.params.host_id,
+      req.params.id,
       function(sqlErr, sqlRes)
       {
         if (sql.isSuccessfulQuery(sqlErr, res))
@@ -84,7 +84,7 @@ exports.get_reviews = function(req, res)
             res.status(200).send(
             {
               success: false,
-              response: "No reviews found for host " + req.params.host_id,
+              response: "No reviews found for host " + req.params.id,
             })
           }
           else
@@ -92,7 +92,7 @@ exports.get_reviews = function(req, res)
             res.status(200).send(
             {
               success: true,
-              response: "Successfully found reviews for host " + req.params.host_id,
+              response: "Successfully found reviews for host " + req.params.id,
               count: Object.keys(sqlRes).length,
               info: sqlRes,
             });
