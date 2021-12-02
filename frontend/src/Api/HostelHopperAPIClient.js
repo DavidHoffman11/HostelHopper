@@ -260,10 +260,10 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/api/host/${host_id}/review/`,
+          `${this.url}/host/${host_id}/review/`,
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
