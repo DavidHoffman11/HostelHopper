@@ -1,11 +1,8 @@
 import React from 'react';
 import './register.css'
 import logo from '../logo.png';
-import User from '../Models/user';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { RegisterButton } from './loginButton';
-import { Redirect } from 'react-router-dom';
-import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
+import { RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
 
 
 export class UpdateUser extends React.Component {
@@ -25,8 +22,10 @@ export class UpdateUser extends React.Component {
         password: '',
         confirmPassword: '',
         profilePicUrl: '',
-        registered: undefined,
-        register2: undefined,
+        // registered: undefined,
+        // register2: undefined,
+        registered: false,
+        register2: false,
         confirm: null
     };
 
@@ -72,8 +71,8 @@ export class UpdateUser extends React.Component {
                                 <h1>Update User Info</h1>
                                 <img src={logo} alt="Avatar" className="avatar"></img>
                             </div>
-                            {this.state.registered == false && <RegisterErrorMessage />}
-                            {this.state.register2 == false && <RegisterErrorMessage2 />}
+                            {this.state.registered === false && <RegisterErrorMessage />}
+                            {this.state.register2 === false && <RegisterErrorMessage2 />}
                             <div className="login-form">
                                 <div className="form-group">
                                     {/* <label htmlFor="search_name" className="py-0">Username</label> */}
@@ -83,7 +82,8 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="username"
                                         value={this.state.username}
-                                        onChange={e => this.setState({ username: e.target.value })} />
+                                        onChange={e => this.setState({ username: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -96,7 +96,8 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="email"
                                         value={this.state.email}
-                                        onChange={e => this.setState({ email: e.target.value })} />
+                                        onChange={e => this.setState({ email: e.target.value })} 
+                                    />
                                 </div>
                             </div>
                             <div className="login-form">
@@ -108,7 +109,8 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="password"
                                         value={this.state.password}
-                                        onChange={e => this.setState({ password: e.target.value })} />
+                                        onChange={e => this.setState({ password: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -122,7 +124,8 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="confirm password"
                                         value={this.state.confirmPassword}
-                                        onChange={e => this.setState({ confirmPassword: e.target.value })} />
+                                        onChange={e => this.setState({ confirmPassword: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -133,15 +136,16 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="profile picture url (optional)"
                                         value={this.state.profilePicUrl}
-                                        onChange={e => this.setState({ profilePicUrl: e.target.value })} />
+                                        onChange={e => this.setState({ profilePicUrl: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
-                            <div className="login-form pb-4">
+                            {/* <div className="login-form pb-4">
                                 console.log()
                                 <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.updaterUser(123457, this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Update</button>
                                 {this.state.registered && <Redirect to={'/profile/' + this.state.id} />}
-                            </div>
+                            </div> */}
                         </form>
                     </div>
                 </div>

@@ -7,24 +7,18 @@ var Host = function(host)
   this.password = host.password;
   this.email = host.email;
   this.zip_code = host.zip_code;
-  this.user_id = host.user_id;
-  this.title = host.title;
   this.body = host.body;
   this.price = host.price;
-  this.state = host.state;
-  this.address = host.address;
-  this.country = host.country;
-  this.zip = host.zip;
-  this.phone = host.phone;
   this.image_url = host.image_url;
-  this.city = host.city;
-  this.food_info = food_info;
-  this.living_options = living_options;
-  this.attractions = attractions;
-  this.is_pet_friendly = is_pet_friendly;
-  this.is_covid_safe = is_covid_safe;
-  this.has_lockers = has_lockers;
-  this.has_gendered_rooms = has_gendered_rooms;
+  this.food_info = host.food_info;
+  this.living_options = host.living_options;
+  this.attractions = host.attractions;
+  this.is_pet_friendly = host.is_pet_friendly;
+  this.is_covid_safe = host.is_covid_safe;
+  this.has_lockers = host.has_lockers;
+  this.has_gendered_rooms = host.has_gendered_rooms;
+  this.location = host.location;
+  this.slogan = host.slogan;
 };
 
 exports.get_hosts = function(req, res)
@@ -49,7 +43,7 @@ exports.get_hosts = function(req, res)
 
 exports.create_host = function(req, res)
 {
-  if (sql.propertyCheck(req, res, ["title", "body", "price", "zip_code", "name","email","password","phone","image_url","city","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms"]))
+  if (sql.propertyCheck(req, res, ["body", "price", "zip_code", "name","email","password","image_url","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms","location","slogan"]))
   {
     var newHost = new Host(req.body);
 

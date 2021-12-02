@@ -3,7 +3,7 @@ import './login.css'
 import { Redirect, Link } from 'react-router-dom';
 import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { LoginButton, ErrorMessage } from './loginButton';
+import { ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
 
@@ -100,10 +100,15 @@ class Login extends React.Component {
 
                         <div className="pb-5">
                             <Link to={'profile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Profile Temp Link</button>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Details Temp Link</button>
                             </Link>
                         </div>
 
+                        <div className="pb-5">
+                            <Link to={'hostelProfile'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Profile Temp Link</button>
+                            </Link>
+                        </div>
 
                         <br></br>
                         <div className="pb-5">

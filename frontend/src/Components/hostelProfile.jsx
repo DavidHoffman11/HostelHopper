@@ -10,8 +10,7 @@ import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
 
 
-
-export class ProfilePage extends React.Component {
+export class HostelProfile extends React.Component {
 
        apiClient = new HostelHopperAPIClient(); 
   
@@ -23,7 +22,7 @@ export class ProfilePage extends React.Component {
     state = {
         Hostel: new Hostel(
         0, 
-        "Big Cabana Resort", 
+        "Bungalow", 
         "Info / slogan", 
         "",
         1000, 
@@ -44,20 +43,25 @@ export class ProfilePage extends React.Component {
 
 
     render(){
-        const { Hostel } = this.state;
-        return( <div id="background">
+        if (this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
+        if (this.state.Hostel.id === 0){
+            return <div>Loading....</div>
+        }
+        return( <div id="profBackground">
             <div id="homePageHeader">
-                {this.state.Hostel.hostelName}
-                <p id="slogan" >{this.state.Hostel.info}</p>
+                My Hostel
+               
             </div>
             
           
                 <div id="backToHomepage">
                     
-                    <h4 id="headerText">Not what you're looking for?</h4>
+                    <h4 id="headerText"> Wondering how you compare?</h4>
                    
                    <Link to={'/homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
+                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse other Hostels</button>
                             </Link>
                             </div>
           
@@ -65,6 +69,10 @@ export class ProfilePage extends React.Component {
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
                 <img src={this.state.Hostel.profilePicUrl} alt="picture" ></img>
                 
+
+               
+                <p id="largeFont" > {this.state.Hostel.hostelName}</p>
+                <p id="slogan" >{this.state.Hostel.info}</p>
                 <div id="locationAndPrice">
                 <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">${this.state.Hostel.pricing}</p> /night</p>
                 </div>
@@ -76,7 +84,7 @@ export class ProfilePage extends React.Component {
                 <p id="smallFont">LIVING OPTIONS: {this.state.Hostel.livingOptions}</p>
                 <p id="smallFont">NEARBY ATTRACTIONS: {this.state.Hostel.attractions}</p>
                
-               <div id="features">
+               <div >
                 <h2>Features</h2>
                 <ul id="smallFont">
                     {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
@@ -93,18 +101,20 @@ export class ProfilePage extends React.Component {
 
                 </ul>
 
-            <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
+           
             </div>
-            <div className="container px-0">
-                <ReviewList reviews={this.state.Hostel.reviews}/>
-                <div className="bottom-padding"></div>
-                <ReviewForm onReviewAdded= {review => this.addReview(review)} />
-            </div>
+
+            <Link to={'updateHostel'}>
+                    <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="hostelUpdate"> Edit hostel information</button>
+                </Link>
+               
+           
             </div>
             
         </div>
         )
     }
+
     componentDidMount() {
         let hostid = this.props.match.params.id;
         if (hostid){
@@ -116,5 +126,6 @@ export class ProfilePage extends React.Component {
         );
         }
       }
+
 }
-export default ProfilePage;
+export default HostelProfile;

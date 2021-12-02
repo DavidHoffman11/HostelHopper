@@ -60,8 +60,8 @@ export class HostelHopperAPIClient
       axios.get(
           `${this.url}/user/`,
         )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .then(response => console.log(typeof(response.data)))
+        .catch(error => console.log(error));
     });
   }
 
@@ -81,7 +81,7 @@ export class HostelHopperAPIClient
           },
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
@@ -102,39 +102,40 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host/`, 
+          `${this.url}/host/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  createHost(body, title, price, phone, name, email, password, image_url, zip_code, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms)
+  createHost(name, email, password, body, price, zip_code, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
           `${this.url}/host/`,
           {
-            "name": name,
-            "email": email,
-            "password": password,
             "body": body,
-            "title": title,
             "price": price,
-            "phone": phone,
-            "image_url": image_url,
             "food_info": food_info,
             "living_options": living_options,
             "attractions": attractions,
             "is_pet_friendly": is_pet_friendly,
             "is_covid_safe": is_covid_safe,
             "has_lockers": has_lockers,
-            "has_gendered_rooms": has_gendered_rooms
+            "has_gendered_rooms": has_gendered_rooms,
+            "name": name,
+            "email": email,
+            "password": password,
+            "zip_code": zip_code,
+            "image_url": image_url,
+            "slogan": slogan,
+            "location": location,
           },
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
@@ -159,7 +160,7 @@ export class HostelHopperAPIClient
           updateJSON
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
