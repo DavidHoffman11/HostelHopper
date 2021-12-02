@@ -88,7 +88,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="username"
                                         value={this.state.username}
-                                        onChange={e => this.setState({ username: e.target.value })} />
+                                        onChange={e => this.setState({ username: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -99,7 +100,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="email"
                                         value={this.state.email}
-                                        onChange={e => this.setState({ email: e.target.value })} />
+                                        onChange={e => this.setState({ email: e.target.value })} 
+                                    />
                                 </div>
                             </div>
                             <div className="login-form">
@@ -109,7 +111,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="password"
                                         value={this.state.password}
-                                        onChange={e => this.setState({ password: e.target.value })} />
+                                        onChange={e => this.setState({ password: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -121,7 +124,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="confirm password"
                                         value={this.state.confirmPassword}
-                                        onChange={e => this.setState({ confirmPassword: e.target.value })} />
+                                        onChange={e => this.setState({ confirmPassword: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -131,7 +135,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="profile picture url (optional)"
                                         value={this.state.hostelPicUrl}
-                                        onChange={e => this.setState({ hostelPicUrl: e.target.value })} />
+                                        onChange={e => this.setState({ hostelPicUrl: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -142,7 +147,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Name of Hostel"
                                         value={this.state.hostelName}
-                                        onChange={e => this.setState({ hostelName: e.target.value })} />
+                                        onChange={e => this.setState({ hostelName: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -153,7 +159,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Hostel tag line (or slogan)"
                                         value={this.state.info}
-                                        onChange={e => this.setState({ info: e.target.value })} />
+                                        onChange={e => this.setState({ info: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -164,7 +171,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Price per night"
                                         value={this.state.pricing}
-                                        onChange={e => this.setState({ pricing: e.target.value })} />
+                                        onChange={e => this.setState({ pricing: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -175,7 +183,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Hostel Description (bio)"
                                         value={this.state.salesPitch}
-                                        onChange={e => this.setState({ salesPitch: e.target.value })} />
+                                        onChange={e => this.setState({ salesPitch: e.target.value })} 
+                                    />
                                 </div>
                             </div>
                             
@@ -186,7 +195,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Meal information"
                                         value={this.state.foodInfo}
-                                        onChange={e => this.setState({ foodInfo: e.target.value })} />
+                                        onChange={e => this.setState({ foodInfo: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -197,7 +207,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Living options"
                                         value={this.state.livingOptions}
-                                        onChange={e => this.setState({ livingOptions: e.target.value })} />
+                                        onChange={e => this.setState({ livingOptions: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -208,7 +219,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Nearby attractions"
                                         value={this.state.attractions}
-                                        onChange={e => this.setState({ attractions: e.target.value })} />
+                                        onChange={e => this.setState({ attractions: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -219,7 +231,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Location (City,State)"
                                         value={this.state.location}
-                                        onChange={e => this.setState({ location: e.target.value })} />
+                                        onChange={e => this.setState({ location: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -230,7 +243,8 @@ export class RegisterHost extends React.Component {
                                         className="form-control"
                                         placeholder="Zip Code"
                                         value={this.state.zipCode}
-                                        onChange={e => this.setState({ zipCode: e.target.value })} />
+                                        onChange={e => this.setState({ zipCode: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -238,61 +252,61 @@ export class RegisterHost extends React.Component {
     
                             <div id="checklist">
                                 <div>
-                                <input 
+                                    <input 
+                                        className="form-check-input" 
+                                        type="checkbox" 
+                                        checked={!!this.state.isPetFriendly}
+                                        onChange={e => this.setState((state) => {
+                                            return {isPetFriendly: !state.isPetFriendly}
+                                            })}
+                                        id="defaultCheck1"/>
+                                    <label 
+                                        className="form-check-label" 
+                                        for="defaultCheck1" >
+                                        Is pet friendly
+                                    </label>  
+                                </div>
+
+                                <div>
+                                    <input 
                                     className="form-check-input" 
                                     type="checkbox" 
-                                    checked={!!this.state.isPetFriendly}
+                                    checked={!!this.state.isCovidSafe} 
                                     onChange={e => this.setState((state) => {
-                                        return {isPetFriendly: !state.isPetFriendly}
+                                        return {isCovidSafe: !state.isCovidSafe}
                                         })}
                                     id="defaultCheck1"/>
-                                <label 
-                                    className="form-check-label" 
-                                    for="defaultCheck1" >
-                                    Is pet friendly
-                                </label>  
+                                    <label className="form-check-label" for="defaultCheck1" >
+                                        Is covid safe
+                                    </label>  
                                 </div>
 
                                 <div>
-                                <input 
-                                className="form-check-input" 
-                                type="checkbox" 
-                                checked={!!this.state.isCovidSafe} 
-                                onChange={e => this.setState((state) => {
-                                    return {isCovidSafe: !state.isCovidSafe}
-                                    })}
-                                id="defaultCheck1"/>
-                                <label className="form-check-label" for="defaultCheck1" >
-                                    Is covid safe
-                                </label>  
+                                    <input 
+                                    className="form-check-input" 
+                                    type="checkbox" 
+                                    checked={!!this.state.hasLockers} 
+                                    onChange={e => this.setState((state) => {
+                                        return {hasLockers: !state.hasLockers}
+                                        })}
+                                    id="defaultCheck1"/>
+                                    <label className="form-check-label" for="defaultCheck1" >
+                                        Has lockers avaliable
+                                    </label>  
                                 </div>
 
                                 <div>
-                                <input 
-                                className="form-check-input" 
-                                type="checkbox" 
-                                checked={!!this.state.hasLockers} 
-                                onChange={e => this.setState((state) => {
-                                    return {hasLockers: !state.hasLockers}
-                                    })}
-                                id="defaultCheck1"/>
-                                <label className="form-check-label" for="defaultCheck1" >
-                                    Has lockers avaliable
-                                </label>  
-                                </div>
-
-                                <div>
-                                <input 
-                                className="form-check-input" 
-                                type="checkbox" 
-                                checked={!!this.state.hasGenderedRoom} 
-                                onChange={e => this.setState((state) => {
-                                    return {hasGenderedRoom: !state.hasGenderedRoom}
-                                    })}
-                                id="defaultCheck1"/>
-                                <label className="form-check-label" for="defaultCheck1" >
-                                    Has gendered rooms
-                                </label>  
+                                    <input 
+                                    className="form-check-input" 
+                                    type="checkbox" 
+                                    checked={!!this.state.hasGenderedRoom} 
+                                    onChange={e => this.setState((state) => {
+                                        return {hasGenderedRoom: !state.hasGenderedRoom}
+                                        })}
+                                    id="defaultCheck1"/>
+                                    <label className="form-check-label" for="defaultCheck1" >
+                                        Has gendered rooms
+                                    </label>  
                                 </div>
                             </div>
                             <div className="login-form pb-4">

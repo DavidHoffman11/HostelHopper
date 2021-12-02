@@ -48,79 +48,79 @@ class Login extends React.Component {
 
             {this.state.authenticated === false && <ErrorMessage />}
             <div id="loginPageBG">
-            <div className="fadeInDown" id="loginWrapper">
-                <div id="loginFormContent">
-                    <div className="imgcontainer pt-4 mb-0">
-                        <h1 id="welcome" >Welcome to Hostel Hopper!</h1>
-                        <img src={logo} alt="Avatar" className="avatar text-center"></img>
-                    </div>
-                    <div className="login-form">
-                        <div className="form-group">
-                            {/* <label htmlFor="search_name">Email</label> */}
-                            <input type="text"
-                                name="Email"
-                                className="form-control"
-                                placeholder="Email"
-                                value={this.state.email}
-                                onChange={e => this.setState({ email: e.target.value })} />
+                <div className="fadeInDown" id="loginWrapper">
+                    <div id="loginFormContent">
+                        <div className="imgcontainer pt-4 mb-0">
+                            <h1 id="welcome" >Welcome to Hostel Hopper!</h1>
+                            <img src={logo} alt="Avatar" className="avatar text-center"></img>
                         </div>
-                    </div>
-                    <div className="login-form">
-                        <div className="form-group">
-                            {/* <label htmlFor="search_name">Password</label> */}
-                            <input type="password"
-                                name="Password"
-                                className="form-control"
-                                placeholder="Password"
-                                value={this.state.password}
-                                onChange={e => this.setState({ password: e.target.value })}
-                            />
+                        <div className="login-form">
+                            <div className="form-group">
+                                {/* <label htmlFor="search_name">Email</label> */}
+                                <input type="text"
+                                    name="Email"
+                                    className="form-control"
+                                    placeholder="Email"
+                                    value={this.state.email}
+                                    onChange={e => this.setState({ email: e.target.value })} />
+                            </div>
                         </div>
+                        <div className="login-form">
+                            <div className="form-group">
+                                {/* <label htmlFor="search_name">Password</label> */}
+                                <input type="password"
+                                    name="Password"
+                                    className="form-control"
+                                    placeholder="Password"
+                                    value={this.state.password}
+                                    onChange={e => this.setState({ password: e.target.value })}
+                                />
+                            </div>
 
-                        <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
-                            //onKeyPress={handleKeyPress}
-                           onClick={() => this.onLogin()}>Log In</button>
+                            <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
+                                //onKeyPress={handleKeyPress}
+                            onClick={() => this.onLogin()}>Log In</button>
 
-                        <p>Don't have an account yet?</p>
+                            <p>Don't have an account yet?</p>
 
-                        {this.state.authenticated && <Redirect to={'/homepage/' + this.state.id} />}
-                        <br></br>
+                            {this.state.authenticated && <Redirect to={'/homepage/' + this.state.id} />}
+                            <br></br>
 
-                        <div className="pb-5">
-                            <Link to={'registerUser'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as User</button>
-                            </Link>
+                            <div className="pb-5">
+                                <Link to={'registerUser'}>
+                                    <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as User</button>
+                                </Link>
 
-                            <Link to={'registerHost'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as Host</button>
-                            </Link>
+                                <Link to={'registerHost'}>
+                                    <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as Host</button>
+                                </Link>
+                            </div>
+                            <br></br>
+
+
+                            <div className="pb-5">
+                                <Link to={'profile'}>
+                                    <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Profile Temp Link</button>
+                                </Link>
+                            </div>
+
+
+                            <br></br>
+                            <div className="pb-5">
+                                <Link to={'homepage'}>
+                                    <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Go to Home Page</button>
+                                </Link>
+                            </div>
+
+                            <div className="pb-5">
+                                <Link to={'userProfile'}>
+                                    <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">User Profile Temp Link</button>
+                                </Link>
+                            </div>
+
                         </div>
-                        <br></br>
-
-
-                        <div className="pb-5">
-                            <Link to={'profile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Profile Temp Link</button>
-                            </Link>
-                        </div>
-
-
-                        <br></br>
-                        <div className="pb-5">
-                            <Link to={'homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Go to Home Page</button>
-                            </Link>
-                        </div>
-
-                        <div className="pb-5">
-                            <Link to={'userProfile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">User Profile Temp Link</button>
-                            </Link>
-                        </div>
-
                     </div>
                 </div>
-            </div>
             </div>
             {/* <Link to={'/home/' + this.state.id}>Skip to Home</Link> */}
         </>;
