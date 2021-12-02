@@ -67,12 +67,12 @@ export class HostelHopperAPIClient
 
   updateUser(user_id, name, email, password, image_url)
   {
-    debugger;
     return new Promise((resolve, reject) =>
     {
       axios.put(
           `${this.url}/user/${user_id}`,
           {
+            "user_id":user_id,
             "name": name,
             "email": email,
             "password": password,
@@ -80,7 +80,7 @@ export class HostelHopperAPIClient
           },
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        // .catch(error => alert(error));
     });
   }
 

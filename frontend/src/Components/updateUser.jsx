@@ -39,19 +39,15 @@ export class UpdateUser extends React.Component {
     // }
 
     updaterUser(user_id,username, email, password, confirmPassword, profilePicUrl) {
-        if (profilePicUrl === '') profilePicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
+        // if (profilePicUrl === '') profilePicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
         //if (this.readyToRegister()) {
         this.setState({ confirm: true });
-        debugger;
 
         this.apiClient.updateUser(user_id, username, email, password, profilePicUrl)
-            .then(user => {
-                debugger;
-
-                    console.log(user.info[0].id);
-                    this.setState({ id: user.info[0].id });
-                    this.setState({ registered: true });
-                });
+            // .then(user => {
+            //         this.setState({ id: user.info[0].id });
+            //         this.setState({ registered: true });
+            //     });
         //}else{
         //    alert("Please fill out all fields");
         //}
@@ -144,7 +140,7 @@ export class UpdateUser extends React.Component {
                             <div className="login-form pb-4">
                                 console.log()
                                 <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.updaterUser(123457, this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Update</button>
-                                {this.state.registered && <Redirect to={'/profile/' + this.state.id} />}
+                                
                             </div>
                         </form>
                     </div>
