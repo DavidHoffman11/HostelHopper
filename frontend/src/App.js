@@ -8,6 +8,7 @@ import RegisterHost from './Components/registerHost';
 import ProfilePage from './Components/profilePage';
 import HomePage from './Components/homePage';
 import HostelListing from './Components/hostelListing';
+import { UserProfile } from './Components/userProfile';
 
 class App extends Component {
   render() {
@@ -26,6 +27,10 @@ class App extends Component {
 
           <Route path="/updateUser">
             <UpdateUser />
+          </Route>
+
+          <Route path="/userProfile">
+            <UserProfile />
           </Route>
 
           <Route path="/registerHost">
