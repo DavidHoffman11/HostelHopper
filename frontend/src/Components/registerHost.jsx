@@ -8,46 +8,36 @@ import { Redirect } from 'react-router-dom';
 import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
 
 
-export class RegisterPage extends React.Component {
+export class RegisterHost extends React.Component {
 
     apiClient = new HostelHopperAPIClient();
 
 
     state = {
-        id: '',
         username: '',
         email: '',
         password: '',
         confirmPassword: '',
-        profilePicUrl: '',
         registered: undefined,
         register2: undefined,
-        confirm: null
+        confirm: null,
+        id:'',
+        hostelName: '',
+        info : '',
+        hostelPicUrl: '',
+        pricing: '',
+        salesPitch: '',
+        foodInfo : '',
+        livingOptions: '',
+        attractions : '',
+        isPetFriendly: '',
+        isCovidSafe : '',
+        location: '',
+        hasLockers: '',
+        hasGenderedRoom : '',
+        zipCode: '',
     };
 
-    /* registerUser(username, email, password, confirmPassword, profilePicUrl) {
-        if (password === confirmPassword) {
-            this.setState({ confirm: true });
-            this.VacationGramAPIClient.searchUser(email)
-                .then(resp => {
-                    if (resp.data.length == 0) {
-                        this.VacationGramAPIClient.addUser(username, email, password)//add profilePicUrl
-                            .then(accountId => {
-                                new User(accountId, username, email, password, this.state.profilePicUrl)
-                                console.log(accountId);
-                                this.setState({ id: accountId.id });
-                                this.setState({ registered: true });
-                            });
-                    }
-                    else {
-                        this.setState({ register2: false });
-                    }
-                });
-        }
-        else {
-            this.setState({ registered: false });
-        }
-    } */
     readyToRegister() {
         if (this.state.username !== ''
             && this.state.email !== ''
@@ -56,7 +46,7 @@ export class RegisterPage extends React.Component {
         return false;
     }
 
-    registerUser(username, email, password, confirmPassword, profilePicUrl) {
+    registerHost(username, email, password, confirmPassword, profilePicUrl) {
         if (profilePicUrl === '') profilePicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
         if (this.readyToRegister()) {
             this.setState({ confirm: true });
@@ -87,15 +77,14 @@ export class RegisterPage extends React.Component {
                     <div id="loginFormContent">
                         <form className="container">
                             <div className="imgcontainer pt-3">
-                                <h1>Register</h1>
+                                <h1>Register as Host</h1>
                                 <img src={logo} alt="Avatar" className="avatar"></img>
                             </div>
-                            {this.state.registered === false && <RegisterErrorMessage />}
-                            {this.state.register2 === false && <RegisterErrorMessage2 />}
+                            {this.state.registered == false && <RegisterErrorMessage />}
+                            {this.state.register2 == false && <RegisterErrorMessage2 />}
+                           
                             <div className="login-form">
                                 <div className="form-group">
-                                    {/* <label htmlFor="search_name" className="py-0">Username</label> */}
-                                    {/* <span className="text-danger"> *</span> */}
                                     <input type="text"
                                         name="Email"
                                         className="form-control"
@@ -107,8 +96,6 @@ export class RegisterPage extends React.Component {
 
                             <div className="login-form">
                                 <div className="form-group">
-                                    {/* <label htmlFor="search_name" className="py-0">Email</label> */}
-                                    {/* <span className="text-danger"> *</span> */}
                                     <input type="text"
                                         name="Email"
                                         className="form-control"
@@ -119,8 +106,6 @@ export class RegisterPage extends React.Component {
                             </div>
                             <div className="login-form">
                                 <div className="form-group">
-                                    {/* <label htmlFor="search_name" className="py-0">Password</label> */}
-                                    {/* <span className="text-danger"> *</span> */}
                                     <input type="password"
                                         name="Password"
                                         className="form-control"
@@ -132,8 +117,6 @@ export class RegisterPage extends React.Component {
 
                             <div className="login-form">
                                 <div className="form-group">
-                                    {/* <label htmlFor="search_name" className="py-0">Confirm Password</label> */}
-                                    {/* <span className="text-danger"> *</span> */}
                                     {this.passwordsDoNotMatch() && <p className="text-danger form-control border border-white">Passwords do not match</p>}
                                     <input type="password"
                                         name="Password"
@@ -146,7 +129,6 @@ export class RegisterPage extends React.Component {
 
                             <div className="login-form">
                                 <div className="form-group">
-                                    {/* <label htmlFor="profPicUrl" className="py-0">Profile Picture URL</label> */}
                                     <input type="text"
                                         className="form-control"
                                         placeholder="profile picture url (optional)"
@@ -155,8 +137,31 @@ export class RegisterPage extends React.Component {
                                 </div>
                             </div>
 
+                            <div className="login-form">
+                                <div className="form-group">
+                                    <input type="text"
+                                        name="Email"
+                                        className="form-control"
+                                        value={this.state.hostelName}
+                                        onChange={e => this.setState({ hostelName: e.target.value })} />
+                                </div>
+                            </div>
+
+                            <div className="login-form">
+                                <div className="form-group">
+                                    <input type="text"
+                                        name="Email"
+                                        className="form-control"
+                                        value={this.state.hostelName}
+                                        onChange={e => this.setState({ hostelName: e.target.value })} />
+                                </div>
+                            </div>
+                            
+
+                            
+
                             <div className="login-form pb-4">
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerUser(this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Register</button>
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Register</button>
                                 {this.state.registered && <Redirect to={'/profile/' + this.state.id} />}
                             </div>
                         </form>
@@ -167,4 +172,4 @@ export class RegisterPage extends React.Component {
     }
 }
 
-export default RegisterPage;
+export default RegisterHost;
