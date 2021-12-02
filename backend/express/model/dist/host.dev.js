@@ -21,10 +21,12 @@ var Host = function Host(host) {
     this.is_covid_safe = is_covid_safe;
     this.has_lockers = has_lockers;
     this.has_gendered_rooms = has_gendered_rooms;
+    this.location = host.location;
+    this.slogan = host.slogan;
 };
 
 exports.create_host = function (req, res) {
-  if (sql.propertyCheck(req, res, ["title", "body", "price", "zip_code", "name","email","password","phone","image_url","city","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms"])) {
+  if (sql.propertyCheck(req, res, ["title", "body", "price", "zip_code", "name","email","password","phone","image_url","city","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms","location","slogan"])) {
     var newHost = new Host(req.body);
     sql.connection.query("INSERT INTO `host` SET ?;", newHost, function (sqlErr, sqlRes) {
       if (sqlErr) {

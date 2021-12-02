@@ -5,7 +5,7 @@ export const LoginButton = props => {
     
     return<div>
         <Link to={'/homePage/' + props.id}>
-        <button className = "loginButton2">Account Autherized Click here!</button>
+            <button className = "loginButton2">Account Autherized Click here!</button>
         </Link>
     </div>
                             
@@ -42,7 +42,7 @@ export const RegisterButton = props => {
     
     return<div>
         <Link to={'/homePage/' + props.id}>
-        <button className = "loginButton2">Account Registered Click here tro Proceed to Profile</button>
+            <button className = "loginButton2">Account Registered Click here tro Proceed to Profile</button>
         </Link>
     </div>
                             

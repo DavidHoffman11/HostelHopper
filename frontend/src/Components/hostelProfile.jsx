@@ -54,7 +54,7 @@ export class HostelProfile extends React.Component {
                     
                     <h4 id="headerText"> Wondering how you compare?</h4>
                    
-                   <Link to={'homepage'}>
+                   <Link to={'/homepage'}>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse other Hostels</button>
                             </Link>
                             </div>
