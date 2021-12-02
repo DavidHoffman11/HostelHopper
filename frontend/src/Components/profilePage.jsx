@@ -84,17 +84,13 @@ export class ProfilePage extends React.Component {
                <div id="features">
                 <h2>Features</h2>
                 <ul id="smallFont">
-                    {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
-                    {(!this.state.Hostel.isPetFriendly) && <li>is NOT pet friendly</li>}
+                {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li> || <li>is NOT pet friendly</li>}
 
-                    {(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>}
-                    {(!this.state.Hostel.isCovidSafe) && <li>is NOT COVID safe</li>}
+{(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li> || <li>is NOT COVID safe</li>}
 
-                    {(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>}
-                    {(!this.state.Hostel.hasLockers) && <li>does NOT have lockers for secure guest storage</li>}
+{(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li> || <li>does NOT have lockers for secure guest storage</li>}
 
-                    {(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>}
-                    {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
+{(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li> || <li>does NOT gendered rooms</li> }
 
                 </ul>
 
