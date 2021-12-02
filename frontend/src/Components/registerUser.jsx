@@ -69,8 +69,7 @@ export class RegisterUser extends React.Component {
                             {this.state.register2 === false && <RegisterErrorMessage2 />}
                             <div className="login-form">
                                 <div className="form-group">
-                                    {/* <label htmlFor="search_name" className="py-0">Username</label> */}
-                                    {/* <span className="text-danger"> *</span> */}
+                                    
                                     <input type="text"
                                         name="Email"
                                         className="form-control"
