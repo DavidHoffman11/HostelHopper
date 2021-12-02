@@ -2,30 +2,30 @@ import React from 'react';
 import HostelReview  from '../Models/hostelReview.js';
 import './profilePage.css'
 import { Rating } from './Rating.jsx';
+import {User} from '../Models/user';
+import { Link } from 'react-router-dom';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 
 export default class ReviewForm extends React.Component {
     ratings = [1,2,3,4,5];
 
     apiClient = new HostelHopperAPIClient();
+    
 
-    constructor(props){
-        super();
-        this.state = {
+ state = {
             //apiClient: new HostelHopperAPIClient(),
-            user_id: this.apiClient.getUserInfo(props.id),
-            host_id: this.apiClient.getHost(props.id),
+            user_id: this.props.userID,
+            host_id: this.props.hostID,
             user_name: '',
             comment : '',
             rating: 0
         }
-    }
-    onAddClick(userName,comment,rating){
-        //var date = new Date().toDateString();
-        //var review = new HostelReview(this.state.user_name, this.state.rating, this.state.comment);
+    onAddClick(comment,rating){
+        
+        var date = new Date().toDateString();
         this.setState({ confirm: true });
-        this.apiClient.postReview(this.state.host_id, this.state.user_id, rating, comment, userName )
-        .then(this.setState({registered: true}));
+        this.apiClient.postReview(this.state.host_id, this.state.user_id, rating, comment, this.state.userName, date)
+        .then(this.setState({registered: true, comment : '', rating: 0}));
     }
     render(){
         return(
@@ -33,17 +33,6 @@ export default class ReviewForm extends React.Component {
                 <header className="nav navbar navbar-light bg-dgrey"><h1 className="reviewBar">Add Review</h1></header>
                 <div className="form-group">
                     <div className="row">
-                        <div className="col-8">
-                            <label htmlFor="buttonName">Your Name</label>
-                            <input 
-                                type="text" 
-                                id="buttonName" 
-                                name="buttonName" 
-                                value={this.state.userName}
-                                onChange={ event => this.setState({ userName: event.target.value }) }
-                                className="form-control"
-                            />
-                        </div>
                         <div className="col-2">
                             <label htmlFor="type">Rating</label>
                             <select
@@ -77,4 +66,26 @@ export default class ReviewForm extends React.Component {
             </form>
         )
     }
+    componentDidMount() {
+        let profid = this.state.user_id;
+        if (profid){
+          this.apiClient.getUserInfo(profid)
+          .then(user => {
+              let page = user.info[0];
+              this.setState({user_id: page.id, user_name: page.name});
+        }
+        );
+        }
+        let hostid = this.state.host_id;
+        if (hostid){
+            this.apiClient.getHost(hostid)
+            .then(host => {
+                let page = host.info[0];
+                this.setState({host_id:  page.id});
+            }
+            );
+            }
+      }
 }
+
+

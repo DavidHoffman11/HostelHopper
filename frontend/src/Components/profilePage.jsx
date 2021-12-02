@@ -98,9 +98,9 @@ export class ProfilePage extends React.Component {
             <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
             </div>
             <div className="container px-0">
-                <ReviewList reviews={this.state.Hostel.reviews}/>
+                <ReviewList hostID={this.props.match.params.hostid}/>
                 <div className="bottom-padding"></div>
-                <ReviewForm onReviewAdded= {review => this.addReview(review)} />
+                <ReviewForm hostID={this.props.match.params.hostid} userID={this.props.match.params.id}onReviewAdded= {review => this.addReview(review)} />
             </div>
             </div>
             

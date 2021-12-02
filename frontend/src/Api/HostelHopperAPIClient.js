@@ -267,7 +267,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  postReview(host_id, user_id, rating, body, user_name)
+  postReview(host_id, user_id, rating, body, user_name, date)
   {
     return new Promise((resolve, reject) =>
     {
@@ -278,11 +278,12 @@ export class HostelHopperAPIClient
             "user_id": user_id,
             "rating": rating,
             "body": body,
-            "user_name": user_name
+            "user_name": user_name,
+            "date": date
           }
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => alert("Fill out form"));
     });
   }
 
