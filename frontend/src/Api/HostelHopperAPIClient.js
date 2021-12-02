@@ -95,30 +95,26 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-
-          `${this.url}/host/`,
-
+          `${this.url}/host/`, 
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  createHost(body, title, price, city, state, address, country, zip, phone, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms)
+  createHost(body, title, price, phone, name, email, password, image_url, zip_code, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
           `${this.url}/host/`,
           {
+            "name": name,
+            "email": email,
+            "password": password,
             "body": body,
             "title": title,
             "price": price,
-            "city": city,
-            "state": state,
-            "address":address,
-            "country": country,
-            "zip": zip,
             "phone": phone,
             "image_url": image_url,
             "food_info": food_info,
@@ -172,12 +168,12 @@ export class HostelHopperAPIClient
     });
   }
 
-  getComments(host_id)
+  getReviews(host_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/review/${host_id}/body/`,
+          `${this.url}/api/host/${host_id}/review/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));

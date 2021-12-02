@@ -1,11 +1,8 @@
-
 import React from 'react';
 import './login.css'
 import './profilePage.css'
-import { Redirect, Link } from 'react-router-dom';
-import logo from '../logo.png';
+import { Link } from 'react-router-dom';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { LoginButton, ErrorMessage } from './loginButton';
 import {Hostel} from '../Models/hostel';
 import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
@@ -45,11 +42,16 @@ export class ProfilePage extends React.Component {
 
 
     render(){
-        const { Hostel } = this.state;
-        return( <div id="background">
-            <div id="homePageHeader">
-                {this.state.Hostel.hostelName}
-                <p id="slogan" >{this.state.Hostel.info}</p>
+        //const { Hostel } = this.state;
+        return( <div>
+            <div className="container mb-3">
+                <div className="row border border-dark">
+                    <div className="col-8 border-right border-dark">Menu bar</div>
+                    <div className="col-auto border-left border-dark">Browse</div>
+                </div>
+                <img className="float-left" src="https://via.placeholder.com/150" alt="What the hostel looks like"></img>
+                <h1>Bio {this.state.Hostel.reviewAvg}</h1>
+                <p>Insert bio here</p>
             </div>
             
           
@@ -64,7 +66,7 @@ export class ProfilePage extends React.Component {
           
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
-                <img src={this.state.Hostel.profilePicUrl} alt="picture" ></img>
+                <img src={this.state.Hostel.profilePicUrl} alt="What the hostel looks like" ></img>
                 
                 <div id="locationAndPrice">
                 <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">${this.state.Hostel.pricing}</p> /night</p>
@@ -96,7 +98,7 @@ export class ProfilePage extends React.Component {
 
             <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
             </div>
-            <div className="container px-0">
+            <div className="container">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
                 <div className="bottom-padding"></div>
                 <ReviewForm onReviewAdded= {review => this.addReview(review)} />
@@ -108,4 +110,3 @@ export class ProfilePage extends React.Component {
     }
 }
 export default ProfilePage;
-

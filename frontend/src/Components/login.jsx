@@ -3,7 +3,7 @@ import './login.css'
 import { Redirect, Link } from 'react-router-dom';
 import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { LoginButton, ErrorMessage } from './loginButton';
+import { ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
 
@@ -52,7 +52,7 @@ class Login extends React.Component {
                 <div id="loginFormContent">
                     <div className="imgcontainer pt-4 mb-0">
                         <h1 id="welcome" >Welcome to Hostel Hopper!</h1>
-                        <img src={logo} alt="Avatar" className="avatar"></img>
+                        <img src={logo} alt="Avatar" className="avatar text-center"></img>
                     </div>
                     <div className="login-form">
                         <div className="form-group">

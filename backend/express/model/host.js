@@ -3,6 +3,10 @@ var sql = require("./connection.js");
 
 var Host = function(host)
 {
+  this.name = host.name;
+  this.password = host.password;
+  this.email = host.email;
+  this.zip_code = host.zip_code;
   this.user_id = host.user_id;
   this.title = host.title;
   this.body = host.body;
@@ -45,7 +49,7 @@ exports.get_hosts = function(req, res)
 
 exports.create_host = function(req, res)
 {
-  if (sql.propertyCheck(req, res, ["title", "body", "price", "state","address","country","zip","phone","image_url","city","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms"]))
+  if (sql.propertyCheck(req, res, ["title", "body", "price", "zip_code", "name","email","password","phone","image_url","city","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms"]))
   {
     var newHost = new Host(req.body);
 
