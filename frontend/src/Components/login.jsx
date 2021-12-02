@@ -3,7 +3,7 @@ import './login.css'
 import { Redirect, Link } from 'react-router-dom';
 import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { LoginButton, ErrorMessage } from './loginButton';
+import { ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
 

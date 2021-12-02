@@ -1,9 +1,7 @@
-import React, { useState, useEffect, onSearch } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import './homePage.css'
-import placeHolder from '../img_placeHolder.png';
 import { Link } from 'react-router-dom';
-import Hostel from '../Models/hostel';
 
 
 export const HostelListing = props => {

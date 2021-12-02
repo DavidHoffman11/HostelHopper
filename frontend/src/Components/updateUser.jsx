@@ -1,11 +1,8 @@
 import React from 'react';
 import './register.css'
 import logo from '../logo.png';
-import User from '../Models/user';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { RegisterButton } from './loginButton';
-import { Redirect } from 'react-router-dom';
-import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
+import { RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
 
 
 export class UpdateUser extends React.Component {
@@ -20,8 +17,8 @@ export class UpdateUser extends React.Component {
         password: '',
         confirmPassword: '',
         profilePicUrl: '',
-        registered: undefined,
-        register2: undefined,
+        registered: false,
+        register2: false,
         confirm: null
     };
 
@@ -67,8 +64,8 @@ export class UpdateUser extends React.Component {
                                 <h1>Update User Info</h1>
                                 <img src={logo} alt="Avatar" className="avatar"></img>
                             </div>
-                            {this.state.registered == false && <RegisterErrorMessage />}
-                            {this.state.register2 == false && <RegisterErrorMessage2 />}
+                            {this.state.registered === false && <RegisterErrorMessage />}
+                            {this.state.register2 === false && <RegisterErrorMessage2 />}
                             <div className="login-form">
                                 <div className="form-group">
                                     {/* <label htmlFor="search_name" className="py-0">Username</label> */}

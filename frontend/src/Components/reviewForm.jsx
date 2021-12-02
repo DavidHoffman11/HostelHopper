@@ -1,6 +1,5 @@
 import React from 'react';
 import HostelReview  from '../Models/hostelReview.js';
-import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import './profilePage.css'
 import { Rating } from './Rating.jsx';
 
