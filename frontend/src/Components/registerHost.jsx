@@ -214,7 +214,20 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div>
 
+                          
+   
                             <div className="login-form">
+                                <div className="form-group">
+                                    <input type="text"
+                                        name="Email"
+                                        className="form-control"
+                                        placeholder="Location (City,State)"
+                                        value={this.state.location}
+                                        onChange={e => this.setState({ location: e.target.value })} />
+                                </div>
+                            </div>
+
+                            {/* <div className="login-form">
                                 <div className="form-group">
                                     <input type="text"
                                         name="Email"
@@ -233,17 +246,6 @@ export class RegisterHost extends React.Component {
                                         placeholder="Is this hostel covid safe?"
                                         value={this.state.isCovidSafe}
                                         onChange={e => this.setState({ isCovidSafe: e.target.value })} />
-                                </div>
-                            </div>
-   
-                            <div className="login-form">
-                                <div className="form-group">
-                                    <input type="text"
-                                        name="Email"
-                                        className="form-control"
-                                        placeholder="Location (City,State)"
-                                        value={this.state.location}
-                                        onChange={e => this.setState({ location: e.target.value })} />
                                 </div>
                             </div>
 
@@ -299,8 +301,41 @@ export class RegisterHost extends React.Component {
                                         value={this.state.hostelName}
                                         onChange={e => this.setState({ hostelName: e.target.value })} />
                                 </div>
-                            </div>
-                            
+                            </div> */}
+
+                    <p>This property...</p>
+        
+        <div id="checklist">
+        <div>
+        <input class="form-check-input" type="checkbox" value={this.state.isPetFriendly} id="defaultCheck1"/>
+        <label class="form-check-label" for="defaultCheck1" >
+            Is pet friendly
+        </label>  
+        </div>
+
+        <div>
+         <input class="form-check-input" type="checkbox" value={this.state.isCovidSafe} id="defaultCheck1"/>
+        <label class="form-check-label" for="defaultCheck1" >
+            Is covid safe
+        </label>  
+        </div>
+
+        <div>
+        <input class="form-check-input" type="checkbox" value={this.state.hasLockers} id="defaultCheck1"/>
+        <label class="form-check-label" for="defaultCheck1" >
+            Has lockers avaliable
+        </label>  
+        </div>
+
+        <div>
+        <input class="form-check-input" type="checkbox" value={this.state.hasGenderedRoom} id="defaultCheck1"/>
+        <label class="form-check-label" for="defaultCheck1" >
+            Has gendered rooms
+        </label>  
+        </div>
+       </div>
+
+
 
                             
 
