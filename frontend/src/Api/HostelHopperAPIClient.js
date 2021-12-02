@@ -12,17 +12,31 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/login/`,
+          `${this.url}/loginUser/`,
           {
             "email": email,
             "password": password,
           },
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => alert("Invalid email or password"));
     });
   }
-
+  loginHostel(email, password)
+  {
+    return new Promise((resolve, reject) =>
+    {
+      axios.post(
+          `${this.url}/loginHostel/`,
+          {
+            "email": email,
+            "password": password,
+          },
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert("Invalid email or password"));
+    });
+  }
   register(name, email, password, image_url)
   {
     return new Promise((resolve, reject) =>
@@ -65,16 +79,22 @@ export class HostelHopperAPIClient
     });
   }
 
-  updateUser(user_id, updateJSON)
+  updateUser(user_id, name, email, password, image_url)
   {
     return new Promise((resolve, reject) =>
     {
       axios.put(
           `${this.url}/user/${user_id}`,
-          updateJSON
+          {
+            "id":user_id,
+            "name": name,
+            "email": email,
+            "password": password,
+            "image_url": image_url
+          },
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
@@ -101,22 +121,66 @@ export class HostelHopperAPIClient
         .catch(error => alert(error));
     });
   }
+  getPriceHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostprice/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
+  getPetHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostpet/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
+  getCovidSafeHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostcovid/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
+  getGenderHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostgender/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
+  getLockerHosts(){
+    return new Promise((resolve, reject) =>
+    {
+      axios.get(
+          `${this.url}/hostlocker/`,
+        )
+        .then(response => resolve(response.data))
+        .catch(error => alert(error));
+    });
+  }
 
-  createHost(body, price, phone, name, email, password, image_url, zip_code, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
+  createHost(name, email, password, body, price, zip_code, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
           `${this.url}/host/`,
           {
-            "name": name,
-            "email": email,
-            "password": password,
             "body": body,
             "price": price,
-            "zip_code": zip_code,
-            "phone": phone,
-            "image_url": image_url,
             "food_info": food_info,
             "living_options": living_options,
             "attractions": attractions,
@@ -124,12 +188,17 @@ export class HostelHopperAPIClient
             "is_covid_safe": is_covid_safe,
             "has_lockers": has_lockers,
             "has_gendered_rooms": has_gendered_rooms,
+            "name": name,
+            "email": email,
+            "password": password,
+            "zip_code": zip_code,
+            "image_url": image_url,
+            "slogan": slogan,
             "location": location,
-            "slogan": slogan
           },
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
@@ -145,16 +214,32 @@ export class HostelHopperAPIClient
     });
   }
 
-  updateHost(host_id, updateJSON)
+  updateHost(host_id, body, price, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan, name, email, password, image_url, zip_code)
   {
     return new Promise((resolve, reject) =>
     {
       axios.put(
-          `${this.url}/host/${host_id}`,
-          updateJSON
-        )
+          `${this.url}/host/${host_id}`,{
+            "id":host_id,
+          "body": body,
+            "price": price,
+            "food_info": food_info,
+            "living_options": living_options,
+            "attractions": attractions,
+            "is_pet_friendly": is_pet_friendly,
+            "is_covid_safe": is_covid_safe,
+            "has_lockers": has_lockers,
+            "has_gendered_rooms": has_gendered_rooms,
+            "name": name,
+            "email": email,
+            "password": password,
+            "zip_code": zip_code,
+            "image_url": image_url,
+            "slogan": slogan,
+            "location": location,
+          })
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
@@ -175,26 +260,30 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/api/host/${host_id}/review/`,
+          `${this.url}/host/${host_id}/review/`,
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
-  postReview(host_id, user_id, body)
+  postReview(host_id, user_id, rating, body, user_name, date)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
           `${this.url}/host/${host_id}/review/`,
           {
+            "host_id": host_id,
             "user_id": user_id,
+            "rating": rating,
             "body": body,
+            "user_name": user_name,
+            "date": date
           }
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => alert("Fill out form"));
     });
   }
 

@@ -27,31 +27,22 @@ class App extends Component {
             <RegisterUser />
           </Route>
 
-          <Route path="/updateUser">
-            <UpdateUser />
-          </Route>
+          <Route path="/updateUser/:id" component={UpdateUser}></Route>
 
-          <Route path="/updateHostel">
-            <UpdateHostel />
-          </Route>
+          <Route path="/updateHostel/:id" component={UpdateHostel}></Route>
 
           <Route path="/userProfile">
             <UserProfile />
           </Route>
 
+          <Route path="/hostelProfile/:id" component={HostelProfile}></Route>
+
           <Route path="/registerHost">
             <RegisterHost />
           </Route>
-
-          <Route path="/profile">
-            <ProfilePage />
-            </Route>
-         <Route exact path="/homepage">
-            <HomePage />
-            <HostelListing />
-          </Route>
-
-          <Route path="/homepage/:id" component={HostelProfile}></Route>
+          <Route exact path="/homepage/:id/:hostid" component={ProfilePage}></Route>
+         <Route path="/homepage/:id" component={HomePage}></Route>
+          <Route path="/profile/:id" component={UserProfile}></Route>
 
           </Switch>
 
