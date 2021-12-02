@@ -3,7 +3,7 @@ import './login.css'
 import { Redirect, Link } from 'react-router-dom';
 import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { LoginButton, ErrorMessage } from './loginButton';
+import { ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
 
@@ -52,7 +52,7 @@ class Login extends React.Component {
                 <div id="loginFormContent">
                     <div className="imgcontainer pt-4 mb-0">
                         <h1 id="welcome" >Welcome to Hostel Hopper!</h1>
-                        <img src={logo} alt="Avatar" className="avatar"></img>
+                        <img src={logo} alt="Avatar" className="avatar text-center"></img>
                     </div>
                     <div className="login-form">
                         <div className="form-group">
@@ -90,9 +90,7 @@ class Login extends React.Component {
                             <Link to={'registerUser'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as User</button>
                             </Link>
-                            <Link to={'updateUser'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Update User</button>
-                            </Link>
+
                             <Link to={'registerHost'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as Host</button>
                             </Link>
@@ -102,15 +100,26 @@ class Login extends React.Component {
 
                         <div className="pb-5">
                             <Link to={'profile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Profile Temp Link</button>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Details Temp Link</button>
                             </Link>
                         </div>
 
+                        <div className="pb-5">
+                            <Link to={'hostelProfile'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Profile Temp Link</button>
+                            </Link>
+                        </div>
 
                         <br></br>
                         <div className="pb-5">
                             <Link to={'homepage'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Go to Home Page</button>
+                            </Link>
+                        </div>
+
+                        <div className="pb-5">
+                            <Link to={'userProfile'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">User Profile Temp Link</button>
                             </Link>
                         </div>
 
