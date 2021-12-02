@@ -7,7 +7,7 @@ import Hostel from '../Models/hostel';
 
 
 export const HostelListing = props => {
-  let hostels = [];
+  const [hostels, setHostels] = useState([]);
   const apiClient = new HostelHopperAPIClient(); 
   
   useEffect(() => {
@@ -15,10 +15,12 @@ export const HostelListing = props => {
   });
   
   let onSearch = params => {
-    apiClient.getAllHosts().then(x => hostels = x);
+    apiClient.getAllHosts().then(x => {
+      setHostels(x.info);
+    });
   }
   
-  
+
 
   
   if (!hostels || hostels.length === 0) {
@@ -30,13 +32,13 @@ export const HostelListing = props => {
   {
         hostels.map(hostel => <div key = {hostel.id} className="card" id="listing">
    
-        <h3 className="hostelName" >{hostel.hostelName}</h3>
+        <h3 className="hostelName" >{hostel.title}</h3>
    
-        <img src={hostel.profilePicUrl} alt="Avatar" className="avatar" id="hostelImage"></img>
+        <img src={hostel.image_url} alt="Avatar" className="avatar" id="hostelImage"></img>
       
         <div className="card-body">
-          <h5 className="card-title">Price / Night:{hostel.pricing}</h5>
-          <p className="card-text">{hostel.info}</p>
+          <h5 className="card-title">Price / Night:{hostel.price}</h5>
+          <p className="card-text">{hostel.body}</p>
           <Link to={ `homepage/${hostel.id}` }>
           <a href="#" className="btn btn-primary">View this hostel</a>
           </Link>

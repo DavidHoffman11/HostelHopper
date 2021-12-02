@@ -40,7 +40,7 @@ class App extends Component {
           <Route path="/profile">
             <ProfilePage />
             </Route>
-         <Route path="/homepage">
+         <Route exact path="/homepage">
             <HomePage />
             <HostelListing />
           </Route>

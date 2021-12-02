@@ -60,8 +60,8 @@ export class HostelHopperAPIClient
       axios.get(
           `${this.url}/user/`,
         )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .then(response => console.log(typeof(response.data)))
+        .catch(error => console.log(error));
     });
   }
 
