@@ -17,7 +17,7 @@ export class UserProfile extends React.Component {
         "John",
         "johnjohansson@gmail.com",
         "password",
-        "https://via.placeholder.com/150"
+        "https://i.pinimg.com/474x/ee/60/0b/ee600b5178e4f1648fd1e8623f049611.jpg"
         ),
     }
 
@@ -32,30 +32,36 @@ export class UserProfile extends React.Component {
           
                 <div id="backToHomepage">
                     
-                    <h4 id="headerText">Not what you're looking for?</h4>
+                    <h4 id="headerText">Planning a trip?</h4>
                    
                    <Link to={'homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
+                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse Hostels</button>
                             </Link>
                             </div>
           
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3 ">
-                <img src={this.state.User.profilePicUrl} alt="What the hostel looks like" ></img>
-                <h2>Username</h2>
-                <p id="smallFont">{this.state.User.username}</p>
-                <h2>Email Address</h2>
-                <p id="smallFont">{this.state.User.email}</p>
-                
+
+                <img src={this.state.User.profilePicUrl} alt="picture" id="userPic"></img>
+              
+              <div id="userProfileBody">
+                <h2 id="largeFont2">Username:</h2>
+                <p id="slogan">{this.state.User.username}</p>
+                <h2 id="largeFont2">Email Address:</h2>
+                <p id="slogan">{this.state.User.email}</p>
+                </div>
+
+
+                <Link to={'updateUser'}>
+                    <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="userUpdate"> Edit profile information</button>
+                </Link>
+               
             </div>
 
-            <div className="pb-5">
+  
                         
-                <Link to={'updateUser'}>
-                    <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Update User</button>
-                </Link>
-                            
-            </div>
+               
+          
             
         </div>
         )

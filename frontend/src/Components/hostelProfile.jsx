@@ -1,15 +1,17 @@
 import React from 'react';
 import './login.css'
 import './profilePage.css'
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
+import { LoginButton, ErrorMessage } from './loginButton';
 import {Hostel} from '../Models/hostel';
 import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
 
 
 
-export class ProfilePage extends React.Component {
+export class HostelProfile extends React.Component {
 
        apiClient = new HostelHopperAPIClient(); 
   
@@ -21,7 +23,7 @@ export class ProfilePage extends React.Component {
     state = {
         Hostel: new Hostel(
         0, 
-        "Big Cabana Resort", 
+        "Bungalow", 
         "Info / slogan", 
         "https://johnlawrimore.com/smu/101.png",
         1000, 
@@ -42,32 +44,31 @@ export class ProfilePage extends React.Component {
 
 
     render(){
-        //const { Hostel } = this.state;
-        return( <div>
-            <div className="container mb-3">
-                <div className="row border border-dark">
-                    <div className="col-8 border-right border-dark">Menu bar</div>
-                    <div className="col-auto border-left border-dark">Browse</div>
-                </div>
-                <img className="float-left" src="https://via.placeholder.com/150" alt="What the hostel looks like"></img>
-                <h1>Bio {this.state.Hostel.reviewAvg}</h1>
-                <p>Insert bio here</p>
+        const { Hostel } = this.state;
+        return( <div id="profBackground">
+            <div id="homePageHeader">
+                My Hostel
+               
             </div>
             
           
                 <div id="backToHomepage">
                     
-                    <h4 id="headerText">Not what you're looking for?</h4>
+                    <h4 id="headerText"> Wondering how you compare?</h4>
                    
                    <Link to={'homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
+                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse other Hostels</button>
                             </Link>
                             </div>
           
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
-                <img src={this.state.Hostel.profilePicUrl} alt="What the hostel looks like" ></img>
+                <img src={this.state.Hostel.profilePicUrl} alt="picture" ></img>
                 
+
+               
+                <p id="largeFont" > {this.state.Hostel.hostelName}</p>
+                <p id="slogan" >{this.state.Hostel.info}</p>
                 <div id="locationAndPrice">
                 <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">${this.state.Hostel.pricing}</p> /night</p>
                 </div>
@@ -79,7 +80,7 @@ export class ProfilePage extends React.Component {
                 <p id="smallFont">LIVING OPTIONS: {this.state.Hostel.livingOptions}</p>
                 <p id="smallFont">NEARBY ATTRACTIONS: {this.state.Hostel.attractions}</p>
                
-               <div id="features">
+               <div >
                 <h2>Features</h2>
                 <ul id="smallFont">
                     {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
@@ -96,17 +97,19 @@ export class ProfilePage extends React.Component {
 
                 </ul>
 
-            <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
+           
             </div>
-            <div className="container">
-                <ReviewList reviews={this.state.Hostel.reviews}/>
-                <div className="bottom-padding"></div>
-                <ReviewForm onReviewAdded= {review => this.addReview(review)} />
-            </div>
+
+            <Link to={'updateHostel'}>
+                    <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="hostelUpdate"> Edit hostel information</button>
+                </Link>
+               
+           
             </div>
             
         </div>
         )
     }
 }
-export default ProfilePage;
+export default HostelProfile;
+
