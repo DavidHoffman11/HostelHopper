@@ -44,10 +44,15 @@ export class ProfilePage extends React.Component {
 
     render(){
         const { Hostel } = this.state;
-        return( <div id="background">
-            <div id="homePageHeader">
-                {this.state.Hostel.hostelName}
-                <p id="slogan" >{this.state.Hostel.info}</p>
+        return( <div>
+            <div className="container mb-3">
+                <div className="row border border-dark">
+                    <div className="col-8 border-right border-dark">Menu bar</div>
+                    <div className="col-auto border-left border-dark">Browse</div>
+                </div>
+                <img className="float-left" src="https://via.placeholder.com/150" alt="picture"></img>
+                <h1>Bio {this.state.Hostel.reviewAvg}</h1>
+                <p>Insert bio here</p>
             </div>
             
           
@@ -94,7 +99,7 @@ export class ProfilePage extends React.Component {
 
             <h2>Average Rating: {this.state.Hostel.reviewAvg}</h2>
             </div>
-            <div className="container px-0">
+            <div className="container">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
                 <div className="bottom-padding"></div>
                 <ReviewForm onReviewAdded= {review => this.addReview(review)} />
