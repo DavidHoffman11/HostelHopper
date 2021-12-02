@@ -284,7 +284,7 @@ exports.get_hosts_price = function(req, res)
 exports.get_hosts_gender = function(req, res)
 {
   sql.connection.query(
-    "SELECT * FROM `host` ORDER BY `has_gendered_rooms`;",
+    "SELECT * FROM `host` WHERE `has_gendered_rooms` = 1;",
     null,
     function(sqlErr, sqlRes)
     {
@@ -304,7 +304,7 @@ exports.get_hosts_gender = function(req, res)
 exports.get_hosts_lockers = function(req, res)
 {
   sql.connection.query(
-    "SELECT * FROM `host` ORDER BY `has_lockers`;",
+    "SELECT * FROM `host` WHERE `has_lockers` = 1;",
     null,
     function(sqlErr, sqlRes)
     {
@@ -324,7 +324,7 @@ exports.get_hosts_lockers = function(req, res)
 exports.get_hosts_covid = function(req, res)
 {
   sql.connection.query(
-    "SELECT * FROM `host` ORDER BY `is_covid_safe`;",
+    "SELECT * FROM `host` WHERE `is_covid_safe` = 1;",
     null,
     function(sqlErr, sqlRes)
     {
@@ -344,7 +344,7 @@ exports.get_hosts_covid = function(req, res)
 exports.get_hosts_pet = function(req, res)
 {
   sql.connection.query(
-    "SELECT * FROM `host` ORDER BY `is_pet_friendly`;",
+    "SELECT * FROM `host` WHERE `is_pet_friendly` = 1;",
     null,
     function(sqlErr, sqlRes)
     {
