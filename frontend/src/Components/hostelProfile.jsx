@@ -8,7 +8,6 @@ import { LoginButton, ErrorMessage } from './loginButton';
 import {Hostel} from '../Models/hostel';
 import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
-import { useParams } from "react-router-dom";
 
 
 
@@ -46,7 +45,12 @@ export class HostelProfile extends React.Component {
 
 
     render(){
-        const { Hostel } = this.state;
+        if (this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
+        if (this.state.Hostel.id === 0){
+            return <div>Loading....</div>
+        }
         return( <div id="profBackground">
             <div id="homePageHeader">
                 My Hostel
@@ -113,10 +117,15 @@ export class HostelProfile extends React.Component {
         )
     }
     componentDidMount() {
-        const { id } = useParams();
-        if (id){
-          this.apiClient.getHost(id)
-          .then(hostel => this.setState(hostel));
+        let hostid = this.props.match.params.id;
+        if (hostid){
+          this.apiClient.getHost(hostid)
+          .then(hostel => {
+              let page = hostel.info[0];
+              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attrations, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
+              console.log(this.state.hostel);
+        }
+        );
         }
       }
 }
