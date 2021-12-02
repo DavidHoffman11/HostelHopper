@@ -24,7 +24,7 @@ export default class ReviewForm extends React.Component {
         var date = new Date().toDateString();
         var review = new HostelReview(this.state.userName, this.state.rating, this.state.comment, date);
         this.setState({ confirm: true });
-        this.apiClient.postReview(username, rating, comment, date)
+        this.apiClient.postReview(userName, rating, comment, date)
                 .then(user => {
                     console.log(user.info[0].id);
                     this.setState({ id: user.info[0].id });
