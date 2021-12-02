@@ -13,10 +13,8 @@ export default class ReviewForm extends React.Component {
         var date = new Date().toDateString();
         this.props.onReviewAdded(new HostelReview(this.state.userName, this.state.rating, this.state.comment, date));
         this.setState({
-            
-                userName: '',
-                comment : ''
-            
+            userName: '',
+            comment : ''
         });
     }
     render(){
@@ -25,13 +23,9 @@ export default class ReviewForm extends React.Component {
                 <header className="nav navbar navbar-light bg-dgrey"><p className="reviewBar">Add Review</p></header>
                 <div className="form-group">
 
-
-
-
                 <div class="row g-3">
                     <div class="col-sm-7">
                         <label className="form-label" htmlFor="name">Your Name</label>
-                    
                         <input 
                             type="text"
                             id = "name" 
@@ -44,18 +38,17 @@ export default class ReviewForm extends React.Component {
                 </div>
                 </div>
                 <div className="form-group">
-                    <label className="form-label" htmlFor="comment">Comment
-                
-                    <textarea id="comment"
-                    name="comment"
-                    rows = "4"
-                    cols = "150"
-                    className="form-control"
-                    value={this.state.comment}
-                    onChange={e => this.setState({ comment: e.target.value })}
-                    />
+                    <label className="form-label" htmlFor="comment">Comment    
+                        <textarea 
+                            id="comment"
+                            name="comment"
+                            rows = "4"
+                            cols = "150"
+                            className="form-control"
+                            value={this.state.comment}
+                            onChange={e => this.setState({ comment: e.target.value })}
+                        />
                     </label>
-                    
                 </div>
                 <button className="btn btn-primary" type="button" onClick={() => this.onAddClick()}>Submit</button>
             </form>

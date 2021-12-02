@@ -18,10 +18,11 @@ export class HomePage extends React.Component {
           <img src={logo} alt="Avatar" className="avatar" id="cornerLogo"></img>
 
           <div className="input-group rounded" id="searchBar">
+
             <input type="search" className="form-control rounded" placeholder="Search by city..." aria-label="Search"
               aria-describedby="search-addon" />
             <span className="input-group-text border-0" id="search-addon">
-              <i className="fas fa-search"></i>
+              <i className="fas fa-search"> Search</i>
               </span>
           </div>
         </div> 

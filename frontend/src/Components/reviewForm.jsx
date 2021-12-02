@@ -66,15 +66,14 @@ export default class ReviewForm extends React.Component {
                     </div>
                 <div className="form-group">
                     <label className="form-label" htmlFor="comment">Comment
-                
-                    <textarea id="comment"
-                    name="comment"
-                    rows = "4"
-                    cols = "200"
-                    className="form-control"
-                    value={this.state.comment}
-                    onChange={e => this.setState({ comment: e.target.value })}
-                    />
+                        <textarea id="comment"
+                            name="comment"
+                            rows = "4"
+                            cols = "200"
+                            className="form-control"
+                            value={this.state.comment}
+                            onChange={e => this.setState({ comment: e.target.value })}
+                        />
                     </label>
                     
                 </div>

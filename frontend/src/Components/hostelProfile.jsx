@@ -8,6 +8,8 @@ import { LoginButton, ErrorMessage } from './loginButton';
 import {Hostel} from '../Models/hostel';
 import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
+import { useParams } from "react-router-dom";
+
 
 
 
@@ -56,7 +58,7 @@ export class HostelProfile extends React.Component {
                     
                     <h4 id="headerText"> Wondering how you compare?</h4>
                    
-                   <Link to={'homepage'}>
+                   <Link to={'/homepage'}>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse other Hostels</button>
                             </Link>
                             </div>
@@ -110,5 +112,12 @@ export class HostelProfile extends React.Component {
         </div>
         )
     }
+    componentDidMount() {
+        const { id } = useParams();
+        if (id){
+          this.apiClient.getHost(id)
+          .then(hostel => this.setState(hostel));
+        }
+      }
 }
 export default HostelProfile;
