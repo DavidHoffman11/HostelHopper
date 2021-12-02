@@ -56,7 +56,7 @@ export class ProfilePage extends React.Component {
                     
                     <h4 id="headerText">Not what you're looking for?</h4>
                    
-                   <Link to={'homepage'}>
+                   <Link to={'/homepage'}>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
                             </Link>
                             </div>
