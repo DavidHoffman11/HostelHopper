@@ -24,6 +24,21 @@ class Login extends React.Component {
         });
 
     }
+    onHostLogin() {
+        this.apiClient.loginHostel(this.state.email, this.state.password).then(user => {
+            console.log(user.info[0].id)
+            if (user.info[0].id !== undefined) {
+                this.setState({ authenticated: true });
+                console.log(user.info[0]);
+                this.setState({ id: user.info[0].id });
+                this.setState( {route: '/hostelProfile/' + this.state.id });
+            }
+            else {
+                this.setState({ authenticated: false });
+            }
+        });
+
+    }
     registerUser = e => {
         this.setState({ register: true });
     }
@@ -80,8 +95,12 @@ class Login extends React.Component {
 
                         <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
                             //onKeyPress={handleKeyPress}
-                           onClick={() => this.onLogin()}>Log In</button>
+                           onClick={() => this.onLogin()}>Log In As User</button>
                            {this.state.authenticated &&  <Redirect to={this.state.route}/>}
+                           <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
+                                                      onClick={() => this.onHostLogin()}>Log In As Host</button>
+
+                           
 
 
                         <p>Don't have an account yet?</p>

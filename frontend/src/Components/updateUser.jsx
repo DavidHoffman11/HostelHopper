@@ -13,6 +13,7 @@ export class UpdateUser extends React.Component {
     //jsonUser = {name : "Eric", email : "erichoutman37@gmail.com", password : "hi"};
 
     state = {
+        
         // user : new User(123457, '', '', '', '', ''),
         // registered: undefined,
         // register2: undefined,
@@ -145,13 +146,24 @@ export class UpdateUser extends React.Component {
 
                             <div className="login-form pb-4">
                                 <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.updaterUser(123457, this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Update</button>
-                                {this.state.registered && <Redirect to={'/homepage/'} />}
+                                {this.state.registered && <Redirect to={this.state.route} />}
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </>;
+    }
+    componentDidMount(){
+        let profid = this.props.match.params.id;
+        if (profid){
+          this.apiClient.getUserInfo(profid)
+          .then(user => {
+              let page = user.info[0];
+              this.setState({id: page.id, route: '/profile/' + page.id, username: page.name, email: page.email, password: page.password,profilePicUrl: page.image_url});
+        }
+        );
+        }
     }
 }
 
