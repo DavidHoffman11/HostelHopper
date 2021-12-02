@@ -17,7 +17,6 @@ export const HostelListing = props => {
   let onSearch = params => {
     var hostels;
     apiClient.getAllHosts().then(x => hostels = x);
-    console.log();
   }
   
   
