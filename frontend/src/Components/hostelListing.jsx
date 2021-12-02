@@ -70,7 +70,7 @@ export const HostelListing = props => {
           <h5 className="card-title" id="medFont">Price Per Night: ${hostel.price}</h5>
           <p className="card-text" id="smallFont">"{hostel.slogan}"</p>
           <Link to={ `/homepage/${profID}/${hostel.id}` }>
-          <a href="#" className="btn btn-primary">See hostel details</a>
+          <a href="#" className="btn btn-primary" id="seeMoreButton">See hostel details</a>
           </Link>
         </div>
        

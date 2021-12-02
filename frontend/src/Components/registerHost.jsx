@@ -40,7 +40,7 @@ export class RegisterHost extends React.Component {
             && this.state.email !== ''
             && this.state.password !== ''
             && this.state.confirmPassword === this.state.password) return true;
-        this.setState({ confirm: false });
+        // this.setState({ confirm: false });
         return false;
     }
 
