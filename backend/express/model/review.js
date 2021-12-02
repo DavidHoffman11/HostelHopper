@@ -5,11 +5,11 @@ var sql = require("./connection.js");
 var Review = function(review)
 {
   this.date = review.date;
-  this.parent_review_id = review.parent_review_id;
   this.host_id = review.host_id;
   this.user_id = review.user_id;
   this.body = review.body;
   this.rating = review.rating;
+  this.user_name = review.user_name;
 };
 
 var Reply = function(reply)
@@ -62,7 +62,7 @@ exports.create_review = function(req, res)
 
 exports.get_reviews = function(req, res)
 {
-  if (!("id" in req.params))
+  if (!("host_id" in req.params))
   {
     res.status(400).send(
     {
@@ -74,7 +74,7 @@ exports.get_reviews = function(req, res)
   {
     sql.connection.query(
       "SELECT * FROM `review` WHERE host_id = ?;",
-      req.params.id,
+      req.params.host_id,
       function(sqlErr, sqlRes)
       {
         if (sql.isSuccessfulQuery(sqlErr, res))
@@ -84,7 +84,7 @@ exports.get_reviews = function(req, res)
             res.status(200).send(
             {
               success: false,
-              response: "No reviews found for host " + req.params.id,
+              response: "No reviews found for host " + req.params.host_id,
             })
           }
           else
@@ -92,7 +92,7 @@ exports.get_reviews = function(req, res)
             res.status(200).send(
             {
               success: true,
-              response: "Successfully found reviews for host " + req.params.id,
+              response: "Successfully found reviews for host " + req.params.host_id,
               count: Object.keys(sqlRes).length,
               info: sqlRes,
             });
