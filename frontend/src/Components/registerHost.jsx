@@ -29,6 +29,8 @@ export class RegisterHost extends React.Component {
         hasLockers: false,
         hasGenderedRoom : false,
         zipCode: '',
+        location: '',
+        slogan: '',
     };
     readyToRegister() {
         if (this.state.username !== ''
@@ -39,11 +41,11 @@ export class RegisterHost extends React.Component {
         return false;
     }
 
-    registerHost(username, email, password, confirmPassword, hostelPicUrl, hostelName, body, pricing, salesPitch, foodInfo, livingOptions, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_room, zip_code) {
+    registerHost(username, email, password, confirmPassword, hostelPicUrl, hostelName, body, pricing, salesPitch, foodInfo, livingOptions, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_room, zip_code, location, slogan) {
         if (hostelPicUrl === '') hostelPicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
         if (this.readyToRegister()) {
             this.setState({ confirm: true });
-            this.apiClient.register(username, email, password, confirmPassword, hostelPicUrl, hostelName, body, pricing, salesPitch, foodInfo, livingOptions, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_room, zip_code)
+            this.apiClient.register(username, email, password, confirmPassword, hostelPicUrl, hostelName, body, pricing, salesPitch, foodInfo, livingOptions, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_room, zip_code, location, slogan)
                 .then(user => {
                     console.log(user.info[0].id);
                     this.setState({ id: user.info[0].id });
