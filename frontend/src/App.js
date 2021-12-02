@@ -39,6 +39,10 @@ class App extends Component {
             <UserProfile />
           </Route>
 
+          <Route path="/hostelProfile">
+            <HostelProfile />
+          </Route>
+
           <Route path="/registerHost">
             <RegisterHost />
           </Route>
