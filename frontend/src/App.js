@@ -34,6 +34,9 @@ class App extends Component {
             <HomePage />
             <HostelListing />
           </Route>
+          <Route path="/homepage/:id">
+            <ProfilePage />
+          </Route>
           </Switch>
 
         </Router>

@@ -27,7 +27,7 @@ export default class ReviewForm extends React.Component {
             <form className="container informationContainer mt-3">
                 <header className="nav navbar navbar-light bg-dgrey"><h1 className="reviewBar">Add Review</h1></header>
                 <div className="form-group">
-                    <div class="row">
+                    <div className="row">
                         <div className="col-8">
                             <label htmlFor="buttonName">Your Name</label>
                             <input 
