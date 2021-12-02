@@ -13,6 +13,7 @@ import ReviewForm from './reviewForm';
 
 
 export class ProfilePage extends React.Component {
+    
     addReview(review){
         this.state.Hostel.reviews.push(review);
         this.state.Hostel.reviewAvg = this.state.Hostel.getAvg(this.state.Hostel.reviews);
@@ -35,6 +36,7 @@ export class ProfilePage extends React.Component {
         true, 
         true, 
         [],
+        123456,
         "75206",
         ),
     }
