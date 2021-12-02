@@ -1,8 +1,10 @@
 import React from 'react';
 import './login.css'
 import './profilePage.css'
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
+import { LoginButton, ErrorMessage } from './loginButton';
 import {Hostel} from '../Models/hostel';
 import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
@@ -42,32 +44,29 @@ export class ProfilePage extends React.Component {
 
 
     render(){
-        //const { Hostel } = this.state;
-        return( <div>
-            <div className="container mb-3">
-                <div className="row border border-dark">
-                    <div className="col-8 border-right border-dark">Menu bar</div>
-                    <div className="col-auto border-left border-dark">Browse</div>
-                </div>
-                <img className="float-left" src="https://via.placeholder.com/150" alt="What the hostel looks like"></img>
-                <h1>Bio {this.state.Hostel.reviewAvg}</h1>
-                <p>Insert bio here</p>
+        const { Hostel } = this.state;
+        return( <div id="background">
+            <div id="homePageHeader">
+                {this.state.Hostel.hostelName}
+                <p id="slogan" >{this.state.Hostel.info}</p>
             </div>
             
-            <div id="backToHomepage">
-                
-                <h4 id="headerText">Not what you're looking for?</h4>
-                
-                <Link to={'/homepage'}>
-                    <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
-                </Link>
-            </div>
+          
+                <div id="backToHomepage">
+                    
+                    <h4 id="headerText">Not what you're looking for?</h4>
+                   
+                   <Link to={'homepage'}>
+                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
+                            </Link>
+                            </div>
+          
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
-                <img src={this.state.Hostel.profilePicUrl} alt="What the hostel looks like" ></img>
+                <img src={this.state.Hostel.profilePicUrl} alt="picture" ></img>
                 
                 <div id="locationAndPrice">
-                    <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">{this.state.Hostel.pricing}</p> /night</p>
+                <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">${this.state.Hostel.pricing}</p> /night</p>
                 </div>
                 <p id="smallFont"> Located in Zip Code <p id="medFont">{this.state.Hostel.zipCode}</p></p>
                 <h2>Description</h2>
@@ -78,29 +77,29 @@ export class ProfilePage extends React.Component {
                 <p id="smallFont">NEARBY ATTRACTIONS: {this.state.Hostel.attractions}</p>
                
                <div id="features">
-                    <h2>Features</h2>
-                    <ul id="smallFont">
-                        {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
-                        {(!this.state.Hostel.isPetFriendly) && <li>is NOT pet friendly</li>}
+                <h2>Features</h2>
+                <ul id="smallFont">
+                    {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
+                    {(!this.state.Hostel.isPetFriendly) && <li>is NOT pet friendly</li>}
 
-                        {(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>}
-                        {(!this.state.Hostel.isCovidSafe) && <li>is NOT COVID safe</li>}
+                    {(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>}
+                    {(!this.state.Hostel.isCovidSafe) && <li>is NOT COVID safe</li>}
 
-                        {(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>}
-                        {(!this.state.Hostel.hasLockers) && <li>does NOT have lockers for secure guest storage</li>}
+                    {(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>}
+                    {(!this.state.Hostel.hasLockers) && <li>does NOT have lockers for secure guest storage</li>}
 
-                        {(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>}
-                        {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
+                    {(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>}
+                    {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
 
-                    </ul>
+                </ul>
 
-                    <h2>Average Rating: {this.state.Hostel.reviewAvg}</h2>
-                </div>
-                <div className="container">
-                    <ReviewList reviews={this.state.Hostel.reviews}/>
-                    <div className="bottom-padding"></div>
-                    <ReviewForm onReviewAdded= {review => this.addReview(review)} />
-                </div>
+            <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
+            </div>
+            <div className="container px-0">
+                <ReviewList reviews={this.state.Hostel.reviews}/>
+                <div className="bottom-padding"></div>
+                <ReviewForm onReviewAdded= {review => this.addReview(review)} />
+            </div>
             </div>
             
         </div>

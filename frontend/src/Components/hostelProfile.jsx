@@ -10,8 +10,6 @@ import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
 
 
-
-
 export class HostelProfile extends React.Component {
 
        apiClient = new HostelHopperAPIClient(); 
@@ -116,6 +114,7 @@ export class HostelProfile extends React.Component {
         </div>
         )
     }
+
     componentDidMount() {
         let hostid = this.props.match.params.id;
         if (hostid){
@@ -127,5 +126,6 @@ export class HostelProfile extends React.Component {
         );
         }
       }
+
 }
 export default HostelProfile;
