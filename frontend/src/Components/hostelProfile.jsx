@@ -104,7 +104,7 @@ export class HostelProfile extends React.Component {
            
             </div>
 
-            <Link to={'/updateHostel'}>
+            <Link to={`/updateHostel/${this.state.id}`}>
                     <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="hostelUpdate"> Edit hostel information</button>
                 </Link>
                
