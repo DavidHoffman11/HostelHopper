@@ -62,7 +62,7 @@ export default class ReviewForm extends React.Component {
                     </label>
                     
                 </div>
-                <button className="btn btn-primary mb-3" type="button" onClick={() => this.onAddClick(this.state.user_name,this.state.rating,this.state.comment)}>Submit</button>
+                <button className="btn btn-primary mb-3" type="button" onClick={() => this.onAddClick(this.state.comment,this.state.rating)}>Submit</button>
             </form>
         )
     }

@@ -26,6 +26,9 @@ export class UserProfile extends React.Component {
                    
                     <Link to={ `/homepage/${this.props.match.params.id}` }>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse Hostels</button>
+                                <Link to="/">
+            <button className="btn btn-primary btn-lg mb-7 " type="button">Log Out</button>
+            </Link>
                             </Link>
                             </div>
           
