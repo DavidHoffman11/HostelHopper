@@ -44,14 +44,10 @@ export class UpdateUser extends React.Component {
         this.setState({ confirm: true });
         debugger;
 
-        this.apiClient.updateUser(user_id, username, email, password, profilePicUrl)
-            .then(user => {
-                debugger;
+        this.apiClient.updateUser(user_id, username, email, password, profilePicUrl);
 
-                    console.log(user.info[0].id);
-                    this.setState({ id: user.info[0].id });
-                    this.setState({ registered: true });
-                });
+        debugger;
+        
         //}else{
         //    alert("Please fill out all fields");
         //}

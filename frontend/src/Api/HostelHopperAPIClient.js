@@ -73,6 +73,7 @@ export class HostelHopperAPIClient
       axios.put(
           `${this.url}/user/${user_id}`,
           {
+            "id":user_id,
             "name": name,
             "email": email,
             "password": password,
