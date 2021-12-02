@@ -7,7 +7,7 @@ import { LoginButton, ErrorMessage } from './loginButton';
 
 class Login extends React.Component {
 
-    apiClient = new HostelHopperAPIClient(); 
+    apiClient = new HostelHopperAPIClient();
 
     onLogin() {
         this.apiClient.login(this.state.email, this.state.password).then(user => {
@@ -76,7 +76,7 @@ class Login extends React.Component {
                                 onChange={e => this.setState({ password: e.target.value })}
                             />
                         </div>
-                        
+
                         <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
                             //onKeyPress={handleKeyPress}
                            onClick={() => this.onLogin()}>Log In</button>
@@ -85,7 +85,7 @@ class Login extends React.Component {
 
                         {this.state.authenticated && <Redirect to={'/homepage/' + this.state.id} />}
                         <br></br>
-                      
+
                         <div className="pb-5">
                             <Link to={'registerUser'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as User</button>
@@ -103,7 +103,7 @@ class Login extends React.Component {
                             </Link>
                         </div>
 
-                        
+
                         <br></br>
                         <div className="pb-5">
                             <Link to={'homepage'}>

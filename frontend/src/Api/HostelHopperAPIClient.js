@@ -3,7 +3,7 @@ import axios from 'axios';
 export class HostelHopperAPIClient
 {
 
-  url = 'http://localhost:8000/api';
+  url = 'http://localhost:8000/api'
 
   config = {};
 
@@ -12,7 +12,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/login`,
+          `${this.url}/login/`,
           {
             "email": email,
             "password": password,
@@ -28,7 +28,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/user`,
+          `${this.url}/user/`,
           {
             "name": name,
             "email": email,
@@ -53,12 +53,12 @@ export class HostelHopperAPIClient
     });
   }
 
-  getAlluser()
+  getAllUsers()
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/user`,
+          `${this.url}/user/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -95,13 +95,14 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host/`,)
+          `${this.url}/host/`, { params: searchRestrictions }
+        )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  createHost(body, title, price, city, state, address, country, zip, phone, image_url)
+  createHost(body, title, price, city, state, address, country, zip, phone, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms)
   {
     return new Promise((resolve, reject) =>
     {
@@ -118,6 +119,13 @@ export class HostelHopperAPIClient
             "zip": zip,
             "phone": phone,
             "image_url": image_url,
+            "food_info": food_info,
+            "living_options": living_options,
+            "attractions": attractions,
+            "is_pet_friendly": is_pet_friendly,
+            "is_covid_safe": is_covid_safe,
+            "has_lockers": has_lockers,
+            "has_gendered_rooms": has_gendered_rooms
           },
         )
         .then(response => resolve(response.data))
@@ -167,7 +175,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/review/${host_id}/body`,
+          `${this.url}/review/${host_id}/body/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
