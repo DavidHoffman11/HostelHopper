@@ -98,7 +98,7 @@ export class ProfilePage extends React.Component {
 
                 </ul>
 
-            <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
+            {/* <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2> */}
             </div>
             <div className="container px-0">
                 <ReviewList hostID={this.props.match.params.hostid} reviews={this.state.reviews}/>
