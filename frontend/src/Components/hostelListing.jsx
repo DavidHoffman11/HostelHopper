@@ -7,7 +7,7 @@ import Hostel from '../Models/hostel';
 
 
 export const HostelListing = props => {
-  const [hostels, setHostels] = useState(undefined);
+  const [hostels, setHostels] = useState([]);
   const apiClient = new HostelHopperAPIClient(); 
   
   useEffect(() => {
@@ -15,8 +15,8 @@ export const HostelListing = props => {
   }, []);
   
   let onSearch = params => {
-    apiClient.getAllHosts().then(x => setHostels(x));
-    console.log(typeof(hostels))
+    apiClient.getAllHosts(params).then(x => setHostels(x));
+    console.log(hostels);
   }
   
   
@@ -25,10 +25,9 @@ export const HostelListing = props => {
   if (!hostels){
     return <div>Loading...</div>
   }
-        return <>
-
-<div className="background2">
-  <ul id = "hostel-list">
+  return <>
+  <div className="background2">
+    <ul id = "hostel-list">
   {
         hostels.map(hostel => <div key = {hostel.id} className="card" id="listing">
    
@@ -44,9 +43,9 @@ export const HostelListing = props => {
           </Link>
         </div>
       </div>)
-}
-</ul>
-</div>
+      }
+      </ul>
+      </div>
       </>
     };
 

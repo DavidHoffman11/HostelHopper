@@ -95,7 +95,9 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host/`, 
+
+          `${this.url}/host/`,
+
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -215,7 +217,9 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
+
           `${this.url}/host/${host_id}/review/${review_id}like`,
+
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -227,7 +231,9 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
+
           `${this.url}/host/${host_id}/review/${review_id}/like`,
+
           {
             "user_id": user_id
           }
