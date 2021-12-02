@@ -67,7 +67,7 @@ export class ProfilePage extends React.Component {
                 <img src={this.state.Hostel.profilePicUrl} alt="picture" ></img>
                 
                 <div id="locationAndPrice">
-                <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">{this.state.Hostel.pricing}</p> /night</p>
+                <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">${this.state.Hostel.pricing}</p> /night</p>
                 </div>
                 <p id="smallFont"> Located in Zip Code <p id="medFont">{this.state.Hostel.zipCode}</p></p>
                 <h2>Description</h2>
@@ -94,7 +94,7 @@ export class ProfilePage extends React.Component {
 
                 </ul>
 
-            <h2>Average Rating: {this.state.Hostel.reviewAvg}</h2>
+            <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
             </div>
             <div className="container px-0">
                 <ReviewList reviews={this.state.Hostel.reviews}/>
