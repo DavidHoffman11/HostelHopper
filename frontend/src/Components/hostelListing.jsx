@@ -15,14 +15,13 @@ export const HostelListing = props => {
   });
   
   let onSearch = params => {
-    var hostels;
     apiClient.getAllHosts().then(x => hostels = x);
   }
   
   
 
   
-  if (!hostels){
+  if (!hostels || hostels.length === 0) {
     return <div>Loading...</div>
   }
   return <>
