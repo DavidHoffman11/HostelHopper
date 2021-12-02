@@ -19,6 +19,9 @@ export class HomePage extends React.Component {
 
         <div className="background">
           <div id="homePageHeader">
+            <Link to="/">
+            <button className="btn btn-primary btn-lg mb-7 " type="button">Log Out</button>
+            </Link>
           <Link to={ `/profile/${this.props.match.params.id}` }>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Profile</button>
                             </Link>
