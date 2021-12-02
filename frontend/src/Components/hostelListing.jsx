@@ -13,7 +13,7 @@ export const HostelListing = props => {
   });
   
   let onSearch = params => {
-    apiClient.getAllHosts().then(x => {
+    apiClient.getAllHosts(params).then(x => {
       setHostels(x.info);
     });
   }
@@ -50,6 +50,7 @@ export const HostelListing = props => {
 
       </>
     };
+    
 
 
 export default HostelListing;

@@ -56,7 +56,7 @@ class App extends Component {
           </Route>
 
           <Route path="/homepage/:id">
-            <ProfilePage />
+            <HostelProfile />
           </Route>
 
           </Switch>
