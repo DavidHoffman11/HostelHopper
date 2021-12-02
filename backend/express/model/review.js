@@ -5,7 +5,6 @@ var sql = require("./connection.js");
 var Review = function(review)
 {
   this.date = review.date;
-  this.id = review.id;
   this.parent_review_id = review.parent_review_id;
   this.host_id = review.host_id;
   this.user_id = review.user_id;
@@ -24,7 +23,7 @@ var Reply = function(reply)
 
 exports.create_review = function(req, res)
 {
-  if (sql.propertyCheck(req, res, ["user_id", "body"]))
+  if (sql.propertyCheck(req, res, ["user_id", "body","rating"]))
   {
     var newreview = new Review(req.body);
     newreview.date = new Date();
@@ -108,7 +107,7 @@ exports.delete_review = function(req, res)
 {
   sql.connection.query(
     "DELETE FROM `review` WHERE `host_id` = ? AND `id` = ?;",
-    [req.params.id, req.params.reviewId],
+    [req.params.id, req.params.host_id],
     function(sqlErr, sqlRes)
     {
       if (sql.isSuccessfulQuery(sqlErr, res))
@@ -118,7 +117,7 @@ exports.delete_review = function(req, res)
           res.status(200).send(
           {
             success: false,
-            response: "No host with id " + req.params.id + " & review with id " + req.params.reviewId + " found, review not deleted",
+            response: "No host with id " + req.params.host_id + " & review with id " + req.params.id + " found, review not deleted",
           });
         }
         else

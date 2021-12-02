@@ -281,8 +281,33 @@ export class RegisterHost extends React.Component {
                             </div>
 
 
+                            <div className="login-form">
+                                <div className="form-group">
+                                    <input type="text"
+                                        name="Email"
+                                        className="form-control"
+                                        value={this.state.hostelName}
+                                        onChange={e => this.setState({ hostelName: e.target.value })} />
+                                </div>
+                            </div>
+
+                            <div className="login-form">
+                                <div className="form-group">
+                                    <input type="text"
+                                        name="Email"
+                                        className="form-control"
+                                        value={this.state.hostelName}
+                                        onChange={e => this.setState({ hostelName: e.target.value })} />
+                                </div>
+                            </div>
+                            
+
+                            
+
                             <div className="login-form pb-4">
+
                                 <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.hostelPicUrl, this.state.info,this.state.pricing,this.state.salesPitch,this.state.foodInfo,this.state.livingOptions,this.state.attractions,this.state.isPetFriendly,this.state.isCovidSafe,this.state.location,this.state.hasLockers,this.state.hasGenderedRoom,this.state.zipCode)}>Register</button>
+
                                 {this.state.registered && <Redirect to={'/profile/' + this.state.id} />}
                             </div>
                         </form>
