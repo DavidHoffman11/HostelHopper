@@ -271,16 +271,7 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="login-form">
-                                <div className="form-group">
-                                    <input type="text"
-                                        name="Email"
-                                        className="form-control"
-                                        placeholder="Zip Code"
-                                        value={this.state.zipCode}
-                                        onChange={e => this.setState({ zipCode: e.target.value })} />
-                                </div>
-                            </div>
+                           
 
 
                             <div className="login-form">
@@ -302,6 +293,17 @@ export class RegisterHost extends React.Component {
                                         onChange={e => this.setState({ hostelName: e.target.value })} />
                                 </div>
                             </div> */}
+                            
+                             <div className="login-form">
+                                <div className="form-group">
+                                    <input type="text"
+                                        name="Email"
+                                        className="form-control"
+                                        placeholder="Zip Code"
+                                        value={this.state.zipCode}
+                                        onChange={e => this.setState({ zipCode: e.target.value })} />
+                                </div>
+                            </div>
 
                     <p>This property...</p>
         
