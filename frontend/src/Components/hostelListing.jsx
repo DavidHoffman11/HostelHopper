@@ -44,9 +44,9 @@ export const HostelListing = props => {
       </div>)
       }
       </ul>
-      </div>
-      </>
-    };
+    </div>
+  </>
+};
 
 
 export default HostelListing;

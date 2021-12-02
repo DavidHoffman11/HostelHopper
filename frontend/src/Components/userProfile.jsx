@@ -1,12 +1,9 @@
-
 import React from 'react';
 import './login.css'
 import './profilePage.css'
 import { Link } from 'react-router-dom';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import {User} from '../Models/user';
-
-
 
 export class UserProfile extends React.Component {
        apiClient = new HostelHopperAPIClient(); 
@@ -20,7 +17,6 @@ export class UserProfile extends React.Component {
         "https://i.pinimg.com/474x/ee/60/0b/ee600b5178e4f1648fd1e8623f049611.jpg"
         ),
     }
-
 
     render(){
         //const { User } = this.state;
