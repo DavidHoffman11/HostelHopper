@@ -16,6 +16,22 @@ class Login extends React.Component {
                 this.setState({ authenticated: true });
                 console.log(user.info[0]);
                 this.setState({ id: user.info[0].id });
+                this.setState( {route: '/homepage/' + this.state.id });
+            }
+            else {
+                this.setState({ authenticated: false });
+            }
+        });
+
+    }
+    onHostLogin() {
+        this.apiClient.loginHostel(this.state.email, this.state.password).then(user => {
+            console.log(user.info[0].id)
+            if (user.info[0].id !== undefined) {
+                this.setState({ authenticated: true });
+                console.log(user.info[0]);
+                this.setState({ id: user.info[0].id });
+                this.setState( {route: '/hostelProfile/' + this.state.id });
             }
             else {
                 this.setState({ authenticated: false });
@@ -79,11 +95,16 @@ class Login extends React.Component {
 
                         <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
                             //onKeyPress={handleKeyPress}
-                           onClick={() => this.onLogin()}>Log In</button>
+                           onClick={() => this.onLogin()}>Log In As User</button>
+                           {this.state.authenticated &&  <Redirect to={this.state.route}/>}
+                           <button className="btn btn-primary btn-lg btn-block btn-bot-margin" type="button"
+                                                      onClick={() => this.onHostLogin()}>Log In As Host</button>
+
+                           
+
 
                         <p>Don't have an account yet?</p>
 
-                        {this.state.authenticated && <Redirect to={'/homepage/' + this.state.id} />}
                         <br></br>
 
                         <div className="pb-5">
@@ -98,30 +119,10 @@ class Login extends React.Component {
                         <br></br>
 
 
-                        <div className="pb-5">
-                            <Link to={'profile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Details Temp Link</button>
-                            </Link>
-                        </div>
+                        
 
-                        <div className="pb-5">
-                            <Link to={'hostelProfile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Hostel Profile Temp Link</button>
-                            </Link>
-                        </div>
+                        
 
-                        <br></br>
-                        <div className="pb-5">
-                            <Link to={'homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">Go to Home Page</button>
-                            </Link>
-                        </div>
-
-                        <div className="pb-5">
-                            <Link to={'userProfile'}>
-                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button">User Profile Temp Link</button>
-                            </Link>
-                        </div>
 
                     </div>
                 </div>

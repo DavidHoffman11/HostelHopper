@@ -12,6 +12,7 @@ import ReviewForm from './reviewForm';
 
 
 export class ProfilePage extends React.Component {
+   
 
        apiClient = new HostelHopperAPIClient(); 
   
@@ -20,12 +21,13 @@ export class ProfilePage extends React.Component {
         this.state.Hostel.reviewAvg = this.state.Hostel.getAvg(this.state.Hostel.reviews);
         this.setState({Hostel: this.state.Hostel});
     }
+    
     state = {
         Hostel: new Hostel(
         0, 
         "Big Cabana Resort", 
         "Info / slogan", 
-        "https://johnlawrimore.com/smu/101.png",
+        "",
         1000, 
         "Natural, environmentally conscious, sustainable: our BIO HOTELS have been operating consistently ecologically since 2001 and are constantly developing. Today we are the most sustainable hotel association on the market. We offer you the ultimate sustainable experiences in the hotel industry: certified organic quality and maximum transparency in the most beautiful European cities and regions, from the car-free North Sea island to historic Rome to sun-kissed Greece.", 
         "we have good food", 
@@ -40,10 +42,13 @@ export class ProfilePage extends React.Component {
         123456,
         "75206",
         ),
+        reviews: [],
     }
 
 
     render(){
+        
+
         const { Hostel } = this.state;
         return( <div id="background">
             <div id="homePageHeader">
@@ -56,7 +61,7 @@ export class ProfilePage extends React.Component {
                     
                     <h4 id="headerText">Not what you're looking for?</h4>
                    
-                   <Link to={'homepage'}>
+                    <Link to={ `/homepage/${this.props.match.params.id}` }>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
                             </Link>
                             </div>
@@ -96,9 +101,9 @@ export class ProfilePage extends React.Component {
             <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
             </div>
             <div className="container px-0">
-                <ReviewList reviews={this.state.Hostel.reviews}/>
+                <ReviewList hostID={this.props.match.params.hostid} reviews={this.state.reviews}/>
                 <div className="bottom-padding"></div>
-                <ReviewForm onReviewAdded= {review => this.addReview(review)} />
+                <ReviewForm hostID={this.props.match.params.hostid} userID={this.props.match.params.id}onReviewAdded= {review => this.addReview(review)} />
             </div>
             </div>
             
@@ -106,15 +111,16 @@ export class ProfilePage extends React.Component {
         )
     }
     componentDidMount() {
-        let hostid = this.props.match.params.id;
+        let hostid = this.props.match.params.hostid;
         if (hostid){
           this.apiClient.getHost(hostid)
           .then(hostel => {
               let page = hostel.info[0];
               this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attrations, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
         }
-        );
-        }
+        );       
+
       }
+}
 }
 export default ProfilePage;

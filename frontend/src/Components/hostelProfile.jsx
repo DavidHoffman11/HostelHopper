@@ -24,7 +24,7 @@ export class HostelProfile extends React.Component {
         0, 
         "Bungalow", 
         "Info / slogan", 
-        "https://johnlawrimore.com/smu/101.png",
+        "",
         1000, 
         "Natural, environmentally conscious, sustainable: our BIO HOTELS have been operating consistently ecologically since 2001 and are constantly developing. Today we are the most sustainable hotel association on the market. We offer you the ultimate sustainable experiences in the hotel industry: certified organic quality and maximum transparency in the most beautiful European cities and regions, from the car-free North Sea island to historic Rome to sun-kissed Greece.", 
         "we have good food", 
@@ -56,14 +56,7 @@ export class HostelProfile extends React.Component {
             </div>
             
           
-                <div id="backToHomepage">
-                    
-                    <h4 id="headerText"> Wondering how you compare?</h4>
-                   
-                   <Link to={'/homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse other Hostels</button>
-                            </Link>
-                            </div>
+                
           
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
@@ -104,7 +97,7 @@ export class HostelProfile extends React.Component {
            
             </div>
 
-            <Link to={'updateHostel'}>
+            <Link to={`/updateHostel/${this.state.Hostel.id}`}>
                     <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="hostelUpdate"> Edit hostel information</button>
                 </Link>
                

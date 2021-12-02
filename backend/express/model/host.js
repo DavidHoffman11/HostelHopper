@@ -7,10 +7,8 @@ var Host = function(host)
   this.password = host.password;
   this.email = host.email;
   this.zip_code = host.zip_code;
-  this.title = host.title;
   this.body = host.body;
   this.price = host.price;
-  this.phone = host.phone;
   this.image_url = host.image_url;
   this.food_info = host.food_info;
   this.living_options = host.living_options;
@@ -21,6 +19,53 @@ var Host = function(host)
   this.has_gendered_rooms = host.has_gendered_rooms;
   this.location = host.location;
   this.slogan = host.slogan;
+};
+
+exports.login_host = function(req, res)
+{
+  if (sql.propertyCheck(req, res, ["email", "password"]))
+  {
+    var loginHost = new Host(req.body);
+
+    sql.connection.query(
+      "SELECT * FROM `host` WHERE `email` = ?;",
+      loginHost.email,
+      function(sqlErr, sqlRes)
+      {
+        if (sql.isSuccessfulQuery(sqlErr, res))
+        {
+          if (!Object.keys(sqlRes).length)
+          {
+            res.status(401).send(
+            {
+              success: false,
+              response: "Email not found",
+            });
+          }
+          else
+          {
+            if (sqlRes[0].password == loginHost.password)
+            {
+              res.status(200).send(
+              {
+                success: true,
+                response: "Successfully logged in",
+                info: sqlRes,
+              });
+            }
+            else
+            {
+              res.status(401).send(
+              {
+                success: false,
+                response: "Password does not match email",
+              });
+            }
+          }
+        }
+      }
+    );
+  }
 };
 
 exports.get_hosts = function(req, res)
@@ -45,7 +90,7 @@ exports.get_hosts = function(req, res)
 
 exports.create_host = function(req, res)
 {
-  if (sql.propertyCheck(req, res, ["title", "body", "price", "zip_code", "name","email","password","phone","image_url","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms","location","slogan"]))
+  if (sql.propertyCheck(req, res, ["body", "price", "zip_code", "name","email","password","image_url","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms","location","slogan"]))
   {
     var newHost = new Host(req.body);
 
@@ -195,7 +240,7 @@ exports.delete_host = function(req, res)
             res.status(200).send(
             {
               success: false,
-              response: "No user with id " + req.params.id + " found, nothing deleted",
+              response: "No host with id " + req.params.id + " found, nothing deleted",
             });
           }
           else
@@ -211,4 +256,107 @@ exports.delete_host = function(req, res)
       }
     );
   }
+};
+
+
+//Filtering
+exports.get_hosts_price = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` ORDER BY `price`;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
+};
+
+
+exports.get_hosts_gender = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` WHERE `has_gendered_rooms` = 1;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
+};
+
+exports.get_hosts_lockers = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` WHERE `has_lockers` = 1;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
+};
+
+exports.get_hosts_covid = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` WHERE `is_covid_safe` = 1;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
+};
+
+exports.get_hosts_pet = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` WHERE `is_pet_friendly` = 1;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
 };

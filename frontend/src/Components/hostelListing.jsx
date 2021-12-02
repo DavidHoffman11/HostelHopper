@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 
 
 export const HostelListing = props => {
+  let profID = props.userID;
+  let filter = props.filter;
+
   const [hostels, setHostels] = useState([]);
   const apiClient = new HostelHopperAPIClient(); 
   
@@ -12,11 +15,42 @@ export const HostelListing = props => {
     onSearch();
   });
   
-  let onSearch = params => {
-    apiClient.getAllHosts(params).then(x => {
+  let onSearch = params => {   
+  if (filter === "Price"){
+    apiClient.getPriceHosts(params).then(x => {
       setHostels(x.info);
     });
   }
+  if (filter === "Pet Friendly"){
+    apiClient.getPetHosts(params).then(x => {
+      setHostels(x.info);
+    });
+  }
+  if (filter === "COVID-Safe"){
+    apiClient.getCovidSafeHosts(params).then(x => {
+      setHostels(x.info);
+    });
+  }
+  if (filter === "Gender-Separated"){
+    apiClient.getGenderHosts(params).then(x => {
+      setHostels(x.info);
+    });
+  }
+  if (filter === "Has Lockers"){
+    apiClient.getLockerHosts(params).then(x => {
+      setHostels(x.info);
+    });
+  }
+  else{
+    if(filter === ""){
+      apiClient.getAllHosts(params).then(x => {
+        setHostels(x.info);
+      });
+    }
+  }
+}
+
+
   
 
   if (!hostels || hostels.length === 0) {
@@ -35,7 +69,7 @@ export const HostelListing = props => {
         <div className="card-body">
           <h5 className="card-title" id="medFont">Price Per Night: ${hostel.price}</h5>
           <p className="card-text" id="smallFont">"{hostel.slogan}"</p>
-          <Link to={ `/homepage/${hostel.id}` }>
+          <Link to={ `/homepage/${profID}/${hostel.id}` }>
           <a href="#" className="btn btn-primary">See hostel details</a>
           </Link>
         </div>
