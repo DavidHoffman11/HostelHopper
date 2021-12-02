@@ -260,14 +260,14 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/api/host/${host_id}/review/`,
+          `${this.url}/host/${host_id}/review/`,
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
-  postReview(host_id, user_id, rating, body, user_name)
+  postReview(host_id, user_id, rating, body, user_name, date)
   {
     return new Promise((resolve, reject) =>
     {
@@ -278,11 +278,12 @@ export class HostelHopperAPIClient
             "user_id": user_id,
             "rating": rating,
             "body": body,
-            "user_name": user_name
+            "user_name": user_name,
+            "date": date
           }
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => alert("Fill out form"));
     });
   }
 

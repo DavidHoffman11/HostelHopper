@@ -12,6 +12,7 @@ import ReviewForm from './reviewForm';
 
 
 export class ProfilePage extends React.Component {
+   
 
        apiClient = new HostelHopperAPIClient(); 
   
@@ -20,6 +21,7 @@ export class ProfilePage extends React.Component {
         this.state.Hostel.reviewAvg = this.state.Hostel.getAvg(this.state.Hostel.reviews);
         this.setState({Hostel: this.state.Hostel});
     }
+    
     state = {
         Hostel: new Hostel(
         0, 
@@ -40,6 +42,7 @@ export class ProfilePage extends React.Component {
         123456,
         "75206",
         ),
+        reviews: [],
     }
 
 
@@ -98,9 +101,9 @@ export class ProfilePage extends React.Component {
             <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2>
             </div>
             <div className="container px-0">
-                <ReviewList reviews={this.state.Hostel.reviews}/>
+                <ReviewList hostID={this.props.match.params.hostid} reviews={this.state.reviews}/>
                 <div className="bottom-padding"></div>
-                <ReviewForm onReviewAdded= {review => this.addReview(review)} />
+                <ReviewForm hostID={this.props.match.params.hostid} userID={this.props.match.params.id}onReviewAdded= {review => this.addReview(review)} />
             </div>
             </div>
             
@@ -115,8 +118,9 @@ export class ProfilePage extends React.Component {
               let page = hostel.info[0];
               this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attrations, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
         }
-        );
-        }
+        );       
+
       }
+}
 }
 export default ProfilePage;
