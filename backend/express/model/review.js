@@ -5,11 +5,11 @@ var sql = require("./connection.js");
 var Review = function(review)
 {
   this.date = review.date;
-  this.parent_review_id = review.parent_review_id;
   this.host_id = review.host_id;
   this.user_id = review.user_id;
   this.body = review.body;
   this.rating = review.rating;
+  this.user_name = review.user_name;
 };
 
 var Reply = function(reply)

@@ -57,20 +57,10 @@
     color: red;
 }
 
-/* .registerB{
-    border-radius: 10px;
-    background-color: red;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    font-size: 16px;
-    margin: 4px auto;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.6;
-    transition: 0.3s;
-    display: inline-block;
-    text-decoration: none;
-    cursor: pointer;
-} */
+
+#checklist{
+
+  
+    margin:2rem;
+    margin-top:1rem;
+}

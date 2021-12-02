@@ -1,4 +1,3 @@
-
 #fullProfile{
   min-height: 35rem;
   margin-top: 5rem;
@@ -16,13 +15,21 @@ img {
   max-width: 30rem;
   float:left;
   clear: both;
+  margin-right: 1rem;
+  margin-left:.5rem;
 
 }
 
 #background {
   background-color: rgb(189,237,252);
   margin: 0;
-  padding-bottom: 3rem;
+  padding-bottom: 10rem;
+}
+
+#profBackground {
+  background-color: lightgray;
+  margin: 0;
+  padding-bottom: 10rem;
 }
 
 #homePageHeader{
@@ -98,4 +105,39 @@ font-size: 2rem;
 
 #features{
 margin-left: 28rem;
+}
+
+#userPic{
+  width:30%;
+  margin-left:2rem;
+ max-height: 28rem;
+}
+
+#userUpdate{
+  float:right;
+  width:15rem;
+  clear:both;
+margin-right:2rem;
+margin-bottom:1rem;
+}
+
+#userProfileBody{
+margin-left:28rem;
+}
+
+#largeFont2{
+font-family: 'Oswald', sans-serif;
+color: rgb(47, 49, 146);
+font-size: 2rem;
+}
+
+#hostelUpdate{
+
+  float:right;
+  width:15rem;
+  clear:both;
+
+  display: block;
+margin-right:2rem;
+margin-bottom:7rem;
 }

@@ -7,7 +7,6 @@ var User = function(user)
   this.email = user.email;
   this.password = user.password;
   this.image_url = user.image_url;
-  this.is_host = user.is_host;
 };
 
 exports.get_users = function(req, res)
@@ -59,53 +58,6 @@ exports.create_user = function(req, res)
               }
             }
           );
-        }
-      }
-    );
-  }
-};
-
-exports.login_user = function(req, res)
-{
-  if (sql.propertyCheck(req, res, ["email", "password"]))
-  {
-    var loginUser = new User(req.body);
-
-    sql.connection.query(
-      "SELECT * FROM `user` WHERE `email` = ?;",
-      loginUser.email,
-      function(sqlErr, sqlRes)
-      {
-        if (sql.isSuccessfulQuery(sqlErr, res))
-        {
-          if (!Object.keys(sqlRes).length)
-          {
-            res.status(401).send(
-            {
-              success: false,
-              response: "Email not found",
-            });
-          }
-          else
-          {
-            if (sqlRes[0].password == loginUser.password)
-            {
-              res.status(200).send(
-              {
-                success: true,
-                response: "Successfully logged in",
-                info: sqlRes,
-              });
-            }
-            else
-            {
-              res.status(401).send(
-              {
-                success: false,
-                response: "Password does not match email",
-              });
-            }
-          }
         }
       }
     );
@@ -242,6 +194,112 @@ exports.delete_user = function(req, res)
             });
           }
         }
+      }
+    );
+  }
+};
+
+
+exports.login_user = function(req, res)
+{
+  if (sql.propertyCheck(req, res, ["email", "password"]))
+  {
+    var loginUser = new User(req.body);
+
+    sql.connection.query(
+      "SELECT * FROM `user` WHERE `email` = ?;",
+      loginUser.email,
+      function(sqlErr, sqlRes)
+      {
+        if (sql.isSuccessfulQuery(sqlErr, res))
+        {
+          if (!Object.keys(sqlRes).length)
+          {
+            res.status(401).send(
+            {
+              success: false,
+              response: "Email not found",
+            });
+          }
+          else
+          {
+            if (sqlRes[0].password == loginUser.password)
+            {
+              res.status(200).send(
+              {
+                success: true,
+                response: "Successfully logged in",
+                info: sqlRes,
+              });
+            }
+            else
+            {
+              res.status(401).send(
+              {
+                success: false,
+                response: "Password does not match email",
+              });
+            }
+          }
+        }
+      }
+    );
+  }
+};
+
+exports.old_login_user = function(req, res)
+{
+  if (sql.propertyCheck(req, res, ["email", "password"]))
+  {
+    var loginUser = new User(req.body);
+
+    sql.connection.query(
+      "SELECT * FROM `user` WHERE `email` = ?;",
+      loginUser.email,
+      function(sqlErr, sqlRes)
+      {
+        if (sql.isSuccessfulQuery(sqlErr, res))
+        {
+          if (!Object.keys(sqlRes).length)
+          {
+            sql.connection.query("SELECT * FROM `host` WHERE `email` = ? AND `password` = ?;", [loginUser.email, loginUser.password], function (sqlErr, sqlRes) {
+              if (sqlErr) {
+                sql.respondSqlError(sqlErr, res);
+              } else {
+                if (!Object.keys(sqlRes).length) {
+                  res.status(401).send({
+                    response: "No matching email and password"
+                  });
+                } else {
+                  res.status(200).send({
+                    response: "Successfully logged in",
+                    info: sqlRes
+                  });
+                }
+              }
+            });
+          }
+          else
+          {
+            if (sqlRes[0].password == loginUser.password)
+            {
+              res.status(200).send(
+              {
+                success: true,
+                response: "Successfully logged in",
+                info: sqlRes,
+              });
+            }
+            else
+            {
+              res.status(401).send(
+              {
+                success: false,
+                response: "Password does not match email",
+              });
+            }
+          }
+        } 
       }
     );
   }

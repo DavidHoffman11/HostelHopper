@@ -9,6 +9,7 @@
     height:100%;
     width:100%;
     background-color: rgb(189,237,252);
+    margin-bottom: 3rem;
 }
 
 #homePageHeader{
@@ -18,7 +19,7 @@
     color: rgb(47, 49, 146);
     text-align: center;
     margin-top: 1rem;
-    padding-bottom: 2rem;
+    padding:2rem;
 }
 
 #searchBar{
@@ -33,12 +34,14 @@
     display:flex;
     width:50%;
     margin:auto;
+    margin-bottom: 3rem;
+    padding:1rem;
 }
 
 #hostelImage{
 
-    width:80%;
-    height:25rem;
+    width:60%;
+    height:20rem;
     margin:auto;
     margin-top:2rem;
 }
@@ -52,7 +55,7 @@
 }
 
 .hostelName{
-    padding-left: 1rem;
+   
     padding-top: 2rem;
     font-family: Helvetica, sans-serif;
     font-size: 2rem;

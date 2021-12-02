@@ -1,11 +1,9 @@
 import React from 'react';
 import './register.css'
 import logo from '../logo.png';
-import User from '../Models/user';
-import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { RegisterButton } from './loginButton';
 import { Redirect } from 'react-router-dom';
-import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
+import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
+import { RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
 
 
 export class UpdateUser extends React.Component {
@@ -15,6 +13,7 @@ export class UpdateUser extends React.Component {
     //jsonUser = {name : "Eric", email : "erichoutman37@gmail.com", password : "hi"};
 
     state = {
+        
         // user : new User(123457, '', '', '', '', ''),
         // registered: undefined,
         // register2: undefined,
@@ -25,8 +24,10 @@ export class UpdateUser extends React.Component {
         password: '',
         confirmPassword: '',
         profilePicUrl: '',
-        registered: undefined,
-        register2: undefined,
+        // registered: undefined,
+        // register2: undefined,
+        registered: false,
+        register2: false,
         confirm: null
     };
 
@@ -43,11 +44,12 @@ export class UpdateUser extends React.Component {
         //if (this.readyToRegister()) {
         this.setState({ confirm: true });
 
-        this.apiClient.updateUser(user_id, username, email, password, profilePicUrl)
-            // .then(user => {
-            //         this.setState({ id: user.info[0].id });
-            //         this.setState({ registered: true });
-            //     });
+        this.apiClient.updateUser(user_id, username, email, password, profilePicUrl).then(this.setState({registered: true}));
+
+
+
+
+        
         //}else{
         //    alert("Please fill out all fields");
         //}
@@ -72,8 +74,8 @@ export class UpdateUser extends React.Component {
                                 <h1>Update User Info</h1>
                                 <img src={logo} alt="Avatar" className="avatar"></img>
                             </div>
-                            {this.state.registered == false && <RegisterErrorMessage />}
-                            {this.state.register2 == false && <RegisterErrorMessage2 />}
+                            {this.state.registered === false && <RegisterErrorMessage />}
+                            {this.state.register2 === false && <RegisterErrorMessage2 />}
                             <div className="login-form">
                                 <div className="form-group">
                                     {/* <label htmlFor="search_name" className="py-0">Username</label> */}
@@ -83,7 +85,8 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="username"
                                         value={this.state.username}
-                                        onChange={e => this.setState({ username: e.target.value })} />
+                                        onChange={e => this.setState({ username: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -96,7 +99,8 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="email"
                                         value={this.state.email}
-                                        onChange={e => this.setState({ email: e.target.value })} />
+                                        onChange={e => this.setState({ email: e.target.value })} 
+                                    />
                                 </div>
                             </div>
                             <div className="login-form">
@@ -108,7 +112,8 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="password"
                                         value={this.state.password}
-                                        onChange={e => this.setState({ password: e.target.value })} />
+                                        onChange={e => this.setState({ password: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -122,7 +127,8 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="confirm password"
                                         value={this.state.confirmPassword}
-                                        onChange={e => this.setState({ confirmPassword: e.target.value })} />
+                                        onChange={e => this.setState({ confirmPassword: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
@@ -133,20 +139,31 @@ export class UpdateUser extends React.Component {
                                         className="form-control"
                                         placeholder="profile picture url (optional)"
                                         value={this.state.profilePicUrl}
-                                        onChange={e => this.setState({ profilePicUrl: e.target.value })} />
+                                        onChange={e => this.setState({ profilePicUrl: e.target.value })} 
+                                    />
                                 </div>
                             </div>
 
                             <div className="login-form pb-4">
-                                console.log()
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.updaterUser(123457, this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Update</button>
-                                
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.updaterUser(this.props.match.params.id, this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.profilePicUrl)}>Update</button>
+                                {this.state.registered && <Redirect to={this.state.route} />}
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </>;
+    }
+    componentDidMount(){
+        let profid = this.props.match.params.id;
+        if (profid){
+          this.apiClient.getUserInfo(profid)
+          .then(user => {
+              let page = user.info[0];
+              this.setState({id: page.id, route: '/profile/' + page.id, username: page.name, email: page.email, password: page.password,profilePicUrl: page.image_url});
+        }
+        );
+        }
     }
 }
 

@@ -10,9 +10,7 @@ import { ReviewList } from './reviewList';
 import ReviewForm from './reviewForm';
 
 
-
-export class ProfilePage extends React.Component {
-   
+export class HostelProfile extends React.Component {
 
        apiClient = new HostelHopperAPIClient(); 
   
@@ -21,11 +19,10 @@ export class ProfilePage extends React.Component {
         this.state.Hostel.reviewAvg = this.state.Hostel.getAvg(this.state.Hostel.reviews);
         this.setState({Hostel: this.state.Hostel});
     }
-    
     state = {
         Hostel: new Hostel(
         0, 
-        "Big Cabana Resort", 
+        "Bungalow", 
         "Info / slogan", 
         "",
         1000, 
@@ -42,34 +39,33 @@ export class ProfilePage extends React.Component {
         123456,
         "75206",
         ),
-        reviews: [],
     }
 
 
     render(){
-        
-
-        const { Hostel } = this.state;
-        return( <div id="background">
+        if (this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
+        if (this.state.Hostel.id === 0){
+            return <div>Loading....</div>
+        }
+        return( <div id="profBackground">
             <div id="homePageHeader">
-                {this.state.Hostel.hostelName}
-                <p id="slogan" >{this.state.Hostel.info}</p>
+                My Hostel
+               
             </div>
             
           
-                <div id="backToHomepage">
-                    
-                    <h4 id="headerText">Not what you're looking for?</h4>
-                   
-                    <Link to={ `/homepage/${this.props.match.params.id}` }>
-                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
-                            </Link>
-                            </div>
+                
           
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
                 <img src={this.state.Hostel.profilePicUrl} alt="picture" ></img>
                 
+
+               
+                <p id="largeFont" > {this.state.Hostel.hostelName}</p>
+                <p id="slogan" >{this.state.Hostel.info}</p>
                 <div id="locationAndPrice">
                 <p id="subFont">Stay in <p id="largeFont">{this.state.Hostel.location}</p> for < p id="largeFont">${this.state.Hostel.pricing}</p> /night</p>
                 </div>
@@ -81,7 +77,7 @@ export class ProfilePage extends React.Component {
                 <p id="smallFont">LIVING OPTIONS: {this.state.Hostel.livingOptions}</p>
                 <p id="smallFont">NEARBY ATTRACTIONS: {this.state.Hostel.attractions}</p>
                
-               <div id="features">
+               <div >
                 <h2>Features</h2>
                 <ul id="smallFont">
                     {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
@@ -98,29 +94,31 @@ export class ProfilePage extends React.Component {
 
                 </ul>
 
-            {/* <h2>Average Rating: {this.state.Hostel.reviewAvg}/5 stars</h2> */}
+           
             </div>
-            <div className="container px-0">
-                <ReviewList hostID={this.props.match.params.hostid} reviews={this.state.reviews}/>
-                <div className="bottom-padding"></div>
-                <ReviewForm hostID={this.props.match.params.hostid} userID={this.props.match.params.id}onReviewAdded= {review => this.addReview(review)} />
-            </div>
+
+            <Link to={`/updateHostel/${this.state.Hostel.id}`}>
+                    <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="hostelUpdate"> Edit hostel information</button>
+                </Link>
+               
+           
             </div>
             
         </div>
         )
     }
+
     componentDidMount() {
-        let hostid = this.props.match.params.hostid;
+        let hostid = this.props.match.params.id;
         if (hostid){
           this.apiClient.getHost(hostid)
           .then(hostel => {
               let page = hostel.info[0];
-              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attractions, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
+              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attrations, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
         }
-        );       
-
+        );
+        }
       }
+
 }
-}
-export default ProfilePage;
+export default HostelProfile;

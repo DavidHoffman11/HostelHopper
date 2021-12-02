@@ -4,36 +4,13 @@ import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import { Redirect } from 'react-router-dom';
 import { RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
-export class RegisterHost extends React.Component {
+
+
+export class UpdateHostel extends React.Component {
     apiClient = new HostelHopperAPIClient();
     state = {
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        registered: false,
-        register2: false,
-        confirm: null,
-        id:'',
-        hostelName: '',
-        body : '',
-        hostelPicUrl: '',
-        pricing: '',
-        salesPitch: '',
-        foodInfo : '',
-        livingOptions: '',
-        attractions : '',
-        isPetFriendly: false,
-        isCovidSafe : false,
-        location: '',
-        hasLockers: false,
-        hasGenderedRoom : false,
-        zipCode: '',
-        location: '',
-        info: '',
-        registered: false,
-        register2: true,
-        phone: '',
+      
+        
     };
     readyToRegister() {
         if (this.state.username !== ''
@@ -43,18 +20,12 @@ export class RegisterHost extends React.Component {
         this.setState({ confirm: false });
         return false;
     }
-
-    registerHost(name, email, password, body, price, zip_code, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan) {
+    registerHost(host_id, body, price, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan, name, email, password, image_url, zip_code) {
         if (image_url === '') image_url = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
         if (this.readyToRegister()) {
             this.setState({ confirm: true });
-            console.log(zip_code);
-            this.apiClient.createHost(name, email, password, body, price, zip_code, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
-                .then(user => {
-                    console.log(user.info[0].id);
-                    this.setState({ id: user.info[0].id });
-                    this.setState({ registered: true });
-                });
+            this.apiClient.updateHost(host_id, body, price, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan, name, email, password, image_url, zip_code);
+            this.setState({registered: true});
         }else{
             alert("Please fill out all fields");
         }
@@ -74,12 +45,12 @@ export class RegisterHost extends React.Component {
                     <div id="loginFormContent">
                         <form className="container">
                             <div className="imgcontainer pt-3">
-                                <h1>Register as Host</h1>
+                                <h1>Update Hostel Information</h1>
                                 <img src={logo} alt="Avatar" className="avatar"></img>
                             </div>
                             {this.state.registered === false && <RegisterErrorMessage />}
                             {this.state.register2 === false && <RegisterErrorMessage2 />}
-
+                           
                             <div className="login-form">
                                 <div className="form-group">
                                     <input type="text"
@@ -140,19 +111,8 @@ export class RegisterHost extends React.Component {
                                     <input type="text"
                                         name="Email"
                                         className="form-control"
-                                        placeholder="Name of Hostel"
-                                        value={this.state.hostelName}
-                                        onChange={e => this.setState({ hostelName: e.target.value })} 
-                                    />
-                                </div>
-                            </div>
-                            <div className="login-form">
-                                <div className="form-group">
-                                    <input type="text"
-                                        name="Email"
-                                        className="form-control"
                                         placeholder="Hostel tag line (or slogan)"
-                                        value={this.state.slogan}
+                                        value={this.state.info}
                                         onChange={e => this.setState({ info: e.target.value })} 
                                     />
                                 </div>
@@ -179,7 +139,7 @@ export class RegisterHost extends React.Component {
                                     />
                                 </div>
                             </div>
-
+                            
                             <div className="login-form">
                                 <div className="form-group">
                                     <input type="text"
@@ -236,7 +196,7 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div>
                             <p>This property...</p>
-
+    
                             <div id="checklist">
                                 <div>
                                     <input 
@@ -294,14 +254,24 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div>
                             <div className="login-form pb-4">
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost( this.state.username,this.state.email, this.state.password, this.state.body, this.state.pricing,this.state.zipCode, this.state.hostelPicUrl, this.state.foodInfo, this.state.livingOptions, this.state.attractions, this.state.isPetFriendly, this.state.isCovidSafe, this.state.hasLockers, this.state.hasGenderedRoom, this.state.location, this.state.salesPitch)}>Register</button>
-                                {this.state.registered && <Redirect to={'/hostelProfile/' + this.state.id} />}
-                            </div>
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.id, this.state.info, this.state.pricing, this.state.foodInfo, this.state.livingOptions, this.state.attractions,this.state.isPetFriendly,this.state.isCovidSafe,this.state.hasLockers,this.state.hasGenderedRoom,this.state.location,this.state.salesPitch, this.state.username, this.state.email,this.state.password,this.state.hostelPicUrl, this.state.zipCode)}>Update</button>
+                                {this.state.registered && <Redirect to={this.state.route} />}                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </>;
     }
+    componentDidMount(){
+        let profid = this.props.match.params.id;
+        if (profid){
+          this.apiClient.getHost(profid)
+          .then(user => {
+              let page = user.info[0];
+              this.setState({id: page.id, route: '/hostelProfile/' + page.id, username: page.name, email: page.email, password: page.password,hostelPicUrl: page.image_url,  info: page.body, pricing: page.price, salesPitch: page.slogan, foodInfo: page.food_info, livingOptions: page.living_options, attractions: page.attractions, isPetFriendly: page.is_pet_friendly, isCovidSafe: page.is_covid_safe, location: page.location, hasLockers: page.has_lockers, hasGenderedRoom: page.has_gendered_rooms, zipCode: page.zip_code});
+        }
+        );
+        }
+    }
 }
-export default RegisterHost;
+export default UpdateHostel;
