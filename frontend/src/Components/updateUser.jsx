@@ -12,41 +12,37 @@ export class UpdateUser extends React.Component {
 
     apiClient = new HostelHopperAPIClient();
 
+    jsonUser = {"id" : 123457, "name" : "Eric", "email" : "erichoutman37@gmail.com", "password" : "hi"};
 
     state = {
-        id: '',
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        profilePicUrl: '',
+        user : new User(123457, '', '', '', '', ''),
         registered: undefined,
         register2: undefined,
         confirm: null
     };
 
-    readyToRegister() {
-        if (this.state.username !== ''
-            && this.state.email !== ''
-            && this.state.password !== ''
-            && this.state.confirmPassword === this.state.password) return true;
-        return false;
-    }
+    // readyToRegister() {
+    //     if (this.state.username !== ''
+    //         && this.state.email !== ''
+    //         && this.state.password !== ''
+    //         && this.state.confirmPassword === this.state.password) return true;
+    //     return false;
+    // }
 
-    registerUser(username, email, password, confirmPassword, profilePicUrl) {
-        if (profilePicUrl === '') profilePicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
-        if (this.readyToRegister()) {
-            this.setState({ confirm: true });
-            this.apiClient.register(username, email, password, profilePicUrl)
-                .then(user => {
-                    console.log(user.info[0].id);
-                    this.setState({ id: user.info[0].id });
-                    this.setState({ registered: true });
-                });
-        }else{
-            alert("Please fill out all fields");
-        }
-    }
+    // registerUser(username, email, password, confirmPassword, profilePicUrl) {
+    //     if (profilePicUrl === '') profilePicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
+    //     if (this.readyToRegister()) {
+    //         this.setState({ confirm: true });
+    //         this.apiClient.register(username, email, password, profilePicUrl)
+    //             .then(user => {
+    //                 console.log(user.info[0].id);
+    //                 this.setState({ id: user.info[0].id });
+    //                 this.setState({ registered: true });
+    //             });
+    //     }else{
+    //         alert("Please fill out all fields");
+    //     }
+    // }
 
     passwordsDoNotMatch() {
         if (this.state.confirmPassword !== '') {
@@ -132,10 +128,11 @@ export class UpdateUser extends React.Component {
                                 </div>
                             </div>
 
-                            {/* <div className="login-form pb-4">
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.updateUser(this.state.id, this)}>Update</button>
+                            <div className="login-form pb-4">
+                                console.log()
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.apiClient.updateUser(123457, this.jsonUser)}>Update</button>
                                 {this.state.registered && <Redirect to={'/profile/' + this.state.id} />}
-                            </div> */}
+                            </div>
                         </form>
                     </div>
                 </div>
