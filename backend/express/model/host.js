@@ -21,6 +21,53 @@ var Host = function(host)
   this.slogan = host.slogan;
 };
 
+exports.login_host = function(req, res)
+{
+  if (sql.propertyCheck(req, res, ["email", "password"]))
+  {
+    var loginHost = new Host(req.body);
+
+    sql.connection.query(
+      "SELECT * FROM `host` WHERE `email` = ?;",
+      loginHost.email,
+      function(sqlErr, sqlRes)
+      {
+        if (sql.isSuccessfulQuery(sqlErr, res))
+        {
+          if (!Object.keys(sqlRes).length)
+          {
+            res.status(401).send(
+            {
+              success: false,
+              response: "Email not found",
+            });
+          }
+          else
+          {
+            if (sqlRes[0].password == loginHost.password)
+            {
+              res.status(200).send(
+              {
+                success: true,
+                response: "Successfully logged in",
+                info: sqlRes,
+              });
+            }
+            else
+            {
+              res.status(401).send(
+              {
+                success: false,
+                response: "Password does not match email",
+              });
+            }
+          }
+        }
+      }
+    );
+  }
+};
+
 exports.get_hosts = function(req, res)
 {
   sql.connection.query(
@@ -193,7 +240,7 @@ exports.delete_host = function(req, res)
             res.status(200).send(
             {
               success: false,
-              response: "No user with id " + req.params.id + " found, nothing deleted",
+              response: "No host with id " + req.params.id + " found, nothing deleted",
             });
           }
           else
@@ -209,4 +256,107 @@ exports.delete_host = function(req, res)
       }
     );
   }
+};
+
+
+//Filtering
+exports.get_hosts_price = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` ORDER BY `price`;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
+};
+
+
+exports.get_hosts_gender = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` ORDER BY `has_gendered_rooms`;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
+};
+
+exports.get_hosts_lockers = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` ORDER BY `has_lockers`;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
+};
+
+exports.get_hosts_covid = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` ORDER BY `is_covid_safe`;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
+};
+
+exports.get_hosts_pet = function(req, res)
+{
+  sql.connection.query(
+    "SELECT * FROM `host` ORDER BY `is_pet_friendly`;",
+    null,
+    function(sqlErr, sqlRes)
+    {
+      if (sql.isSuccessfulQuery(sqlErr, res))
+      {
+        res.status(200).send(
+        {
+          success: true,
+          count: Object.keys(sqlRes).length,
+          info: sqlRes,
+        });
+      }
+    }
+  );
 };
