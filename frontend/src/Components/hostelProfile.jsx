@@ -24,7 +24,7 @@ export class HostelProfile extends React.Component {
         0, 
         "Bungalow", 
         "Info / slogan", 
-        "https://johnlawrimore.com/smu/101.png",
+        "",
         1000, 
         "Natural, environmentally conscious, sustainable: our BIO HOTELS have been operating consistently ecologically since 2001 and are constantly developing. Today we are the most sustainable hotel association on the market. We offer you the ultimate sustainable experiences in the hotel industry: certified organic quality and maximum transparency in the most beautiful European cities and regions, from the car-free North Sea island to historic Rome to sun-kissed Greece.", 
         "we have good food", 

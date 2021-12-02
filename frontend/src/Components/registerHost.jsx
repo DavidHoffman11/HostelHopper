@@ -33,6 +33,7 @@ export class RegisterHost extends React.Component {
         info: '',
         registered: false,
         register2: true,
+        phone: '',
     };
     readyToRegister() {
         if (this.state.username !== ''
@@ -43,11 +44,12 @@ export class RegisterHost extends React.Component {
         return false;
     }
 
-    registerHost( username,id, hostelName, pricing, email,salesPitch, password, hostelPicUrl, zipCode, foodInfo, livingOptions, attractions, isPetFriendly, isCovidSafe, hasLockers, hasGenderedRoom, location, info) {
-        if (hostelPicUrl === '') hostelPicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
+    registerHost(name, email, password, body, price, zip_code, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan) {
+        if (image_url === '') image_url = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
         if (this.readyToRegister()) {
             this.setState({ confirm: true });
-            this.apiClient.createHost( username,id, hostelName, pricing, email,salesPitch, password, hostelPicUrl, zipCode, foodInfo, livingOptions, attractions, isPetFriendly, isCovidSafe, hasLockers, hasGenderedRoom, location, info)
+            console.log(zip_code);
+            this.apiClient.createHost(name, email, password, body, price, zip_code, image_url, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
                 .then(user => {
                     console.log(user.info[0].id);
                     this.setState({ id: user.info[0].id });
@@ -292,7 +294,7 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div>
                             <div className="login-form pb-4">
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost( this.state.username,this.state.id, this.state.hostelName, this.state.pricing, this.state.email,this.state.salesPitch, this.state.password, this.state.hostelPicUrl, this.state.zipCode, this.state.foodInfo, this.state.livingOptions, this.state.attractions, this.state.isPetFriendly, this.state.isCovidSafe, this.state.hasLockers, this.state.hasGenderedRoom, this.state.location, this.state.info)}>Register</button>
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost( this.state.username,this.state.email, this.state.password, this.state.body, this.state.pricing,this.state.zipCode, this.state.hostelPicUrl, this.state.foodInfo, this.state.livingOptions, this.state.attractions, this.state.isPetFriendly, this.state.isCovidSafe, this.state.hasLockers, this.state.hasGenderedRoom, this.state.location, this.state.slogan)}>Register</button>
                                 {this.state.registered && <Redirect to={'/profile/' + this.state.id} />}
                             </div>
                         </form>
