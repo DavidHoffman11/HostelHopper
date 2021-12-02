@@ -95,9 +95,13 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
+<<<<<<< Updated upstream
 
           `${this.url}/host/`,
 
+=======
+          `${this.url}/host/`, 
+>>>>>>> Stashed changes
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -175,12 +179,12 @@ export class HostelHopperAPIClient
     });
   }
 
-  getComments(host_id)
+  getReviews(host_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/review/${host_id}/body/`,
+          `${this.url}/api/host/${host_id}/review/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
