@@ -84,19 +84,19 @@ export class HostelProfile extends React.Component {
                
                <div >
                 <h2>Features</h2>
+
+            
                 <ul id="smallFont">
-                    {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li>}
-                    {(!this.state.Hostel.isPetFriendly) && <li>is NOT pet friendly</li>}
+               
+               
+                    {(this.state.Hostel.isPetFriendly) && <li>is pet friendly</li> || <li>is NOT pet friendly</li>}
 
-                    {(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li>}
-                    {(!this.state.Hostel.isCovidSafe) && <li>is NOT COVID safe</li>}
+                    {(this.state.Hostel.isCovidSafe) && <li>is COVID safe</li> || <li>is NOT COVID safe</li>}
 
-                    {(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li>}
-                    {(!this.state.Hostel.hasLockers) && <li>does NOT have lockers for secure guest storage</li>}
+                    {(this.state.Hostel.hasLockers) && <li>has lockers for secure guest storage</li> || <li>does NOT have lockers for secure guest storage</li>}
 
-                    {(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li>}
-                    {(!this.state.Hostel.hasGenderedRoom) && <li>does NOT gendered rooms</li>}
-
+                    {(this.state.Hostel.hasGenderedRoom) && <li>has gendered rooms</li> || <li>does NOT gendered rooms</li> }
+       
                 </ul>
 
            
@@ -119,7 +119,7 @@ export class HostelProfile extends React.Component {
           this.apiClient.getHost(hostid)
           .then(hostel => {
               let page = hostel.info[0];
-              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attrations, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
+              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attractions, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
         }
         );
         }
