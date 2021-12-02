@@ -1,11 +1,9 @@
 import React from 'react';
 import './register.css'
 import logo from '../logo.png';
-import User from '../Models/user';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { RegisterButton } from './loginButton';
 import { Redirect } from 'react-router-dom';
-import { LoginButton, RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
+import { RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
 
 
 export class RegisterUser extends React.Component {

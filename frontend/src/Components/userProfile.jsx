@@ -2,13 +2,9 @@
 import React from 'react';
 import './login.css'
 import './profilePage.css'
-import { Redirect, Link } from 'react-router-dom';
-import logo from '../logo.png';
+import { Link } from 'react-router-dom';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
-import { LoginButton, ErrorMessage } from './loginButton';
 import {User} from '../Models/user';
-import { ReviewList } from './reviewList';
-import ReviewForm from './reviewForm';
 
 
 
@@ -27,7 +23,7 @@ export class UserProfile extends React.Component {
 
 
     render(){
-        const { User } = this.state;
+        //const { User } = this.state;
         return( <div id="background">
             <div id="homePageHeader">
                 User Profile
@@ -45,7 +41,7 @@ export class UserProfile extends React.Component {
           
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3 ">
-                <img src={this.state.User.profilePicUrl} alt="picture" ></img>
+                <img src={this.state.User.profilePicUrl} alt="What the hostel looks like" ></img>
                 <h2>Username</h2>
                 <p id="smallFont">{this.state.User.username}</p>
                 <h2>Email Address</h2>
