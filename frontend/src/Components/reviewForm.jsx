@@ -2,27 +2,34 @@ import React from 'react';
 import HostelReview  from '../Models/hostelReview.js';
 import './profilePage.css'
 import { Rating } from './Rating.jsx';
+import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 
 export default class ReviewForm extends React.Component {
     ratings = [1,2,3,4,5];
+
+    apiClient = new HostelHopperAPIClient();
+
     constructor(props){
         super();
         this.state = {
             //apiClient: new HostelHopperAPIClient(),
-            //user: this.apiClient.getUserInfo(props.user_id),
+            user_id: this.apiClient.getUserInfo(props.id),
+            host_id: this.apiClient.getHost(props.id),
             userName: '',
             comment : '',
             rating: 0
         }
     }
-    onAddClick(){
+    onAddClick(userName,comment,rating){
         var date = new Date().toDateString();
-        this.props.onReviewAdded(new HostelReview(this.state.userName, this.state.rating, this.state.comment, date));
-        this.setState({
-            userName: '',
-            comment : '',
-            rating: 0
-        });
+        var review = new HostelReview(this.state.userName, this.state.rating, this.state.comment, date);
+        this.setState({ confirm: true });
+        this.apiClient.postReview(userName, rating, comment, date)
+                .then(user => {
+                    console.log(user.info[0].id);
+                    this.setState({ id: user.info[0].id });
+                    this.setState({ registered: true });
+                });
     }
     render(){
         return(
@@ -70,7 +77,7 @@ export default class ReviewForm extends React.Component {
                     </label>
                     
                 </div>
-                <button className="btn btn-primary mb-3" type="button" onClick={() => this.onAddClick()}>Submit</button>
+                <button className="btn btn-primary mb-3" type="button" onClick={() => this.onAddClick(this.state.userName,this.state.rating,this.state.comment)}>Submit</button>
             </form>
         )
     }
