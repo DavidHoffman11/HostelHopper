@@ -110,5 +110,12 @@ export class HostelProfile extends React.Component {
         </div>
         )
     }
+    componentDidMount() {
+        let id = this.props.params.host.id;
+        if (id){
+          this.apiClient.getHost(id)
+          .then(hostel => this.setState(hostel));
+        }
+      }
 }
 export default HostelProfile;
