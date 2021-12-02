@@ -7,7 +7,6 @@ var User = function(user)
   this.email = user.email;
   this.password = user.password;
   this.image_url = user.image_url;
-  this.is_host = user.is_host;
 };
 
 exports.get_users = function(req, res)

@@ -60,8 +60,8 @@ export class HostelHopperAPIClient
       axios.get(
           `${this.url}/user/`,
         )
-        .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .then(response => console.log(typeof(response.data)))
+        .catch(error => console.log(error));
     });
   }
 
@@ -95,7 +95,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host/`, 
+          `${this.url}/host/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -115,6 +115,7 @@ export class HostelHopperAPIClient
             "body": body,
             "title": title,
             "price": price,
+            "zip_code": zip_code,
             "phone": phone,
             "image_url": image_url,
             "food_info": food_info,

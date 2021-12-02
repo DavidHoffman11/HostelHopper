@@ -4,7 +4,6 @@ var sql = require("./connection.js");
 
 var User = function User(user) {
     this.name = user.name;
-    this.is_host = user.is_host;
     this.email = user.email;
     this.password = user.password;
     this.image_url = user.image_url;

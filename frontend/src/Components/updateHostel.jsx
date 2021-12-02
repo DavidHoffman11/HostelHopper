@@ -4,7 +4,9 @@ import logo from '../logo.png';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import { Redirect } from 'react-router-dom';
 import { RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
-export class RegisterHost extends React.Component {
+
+
+export class UpdateHostel extends React.Component {
     apiClient = new HostelHopperAPIClient();
     state = {
         username: '',
@@ -16,7 +18,7 @@ export class RegisterHost extends React.Component {
         confirm: null,
         id:'',
         hostelName: '',
-        body : '',
+        info : '',
         hostelPicUrl: '',
         pricing: '',
         salesPitch: '',
@@ -38,12 +40,11 @@ export class RegisterHost extends React.Component {
         this.setState({ confirm: false });
         return false;
     }
-
-    registerHost(username, email, password, confirmPassword, hostelPicUrl, hostelName, body, pricing, salesPitch, foodInfo, livingOptions, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_room, zip_code) {
-        if (hostelPicUrl === '') hostelPicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
+    registerHost(username, email, password, confirmPassword, profilePicUrl) {
+        if (profilePicUrl === '') profilePicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
         if (this.readyToRegister()) {
             this.setState({ confirm: true });
-            this.apiClient.register(username, email, password, confirmPassword, hostelPicUrl, hostelName, body, pricing, salesPitch, foodInfo, livingOptions, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_room, zip_code)
+            this.apiClient.register(username, email, password, profilePicUrl)
                 .then(user => {
                     console.log(user.info[0].id);
                     this.setState({ id: user.info[0].id });
@@ -68,12 +69,12 @@ export class RegisterHost extends React.Component {
                     <div id="loginFormContent">
                         <form className="container">
                             <div className="imgcontainer pt-3">
-                                <h1>Register as Host</h1>
+                                <h1>Update Hostel Information</h1>
                                 <img src={logo} alt="Avatar" className="avatar"></img>
                             </div>
                             {this.state.registered === false && <RegisterErrorMessage />}
                             {this.state.register2 === false && <RegisterErrorMessage2 />}
-
+                           
                             <div className="login-form">
                                 <div className="form-group">
                                     <input type="text"
@@ -173,7 +174,7 @@ export class RegisterHost extends React.Component {
                                     />
                                 </div>
                             </div>
-
+                            
                             <div className="login-form">
                                 <div className="form-group">
                                     <input type="text"
@@ -230,7 +231,7 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div>
                             <p>This property...</p>
-
+    
                             <div id="checklist">
                                 <div>
                                     <input 
@@ -288,7 +289,7 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div>
                             <div className="login-form pb-4">
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.hostelPicUrl, this.state.info,this.state.pricing,this.state.salesPitch,this.state.foodInfo,this.state.livingOptions,this.state.attractions,this.state.isPetFriendly,this.state.isCovidSafe,this.state.location,this.state.hasLockers,this.state.hasGenderedRoom,this.state.zipCode)}>Register</button>
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.hostelPicUrl, this.state.info,this.state.pricing,this.state.salesPitch,this.state.foodInfo,this.state.livingOptions,this.state.attractions,this.state.isPetFriendly,this.state.isCovidSafe,this.state.location,this.state.hasLockers,this.state.hasGenderedRoom,this.state.zipCode)}>Update</button>
                                 {this.state.registered && <Redirect to={'/profile/' + this.state.id} />}
                             </div>
                         </form>
@@ -298,4 +299,4 @@ export class RegisterHost extends React.Component {
         </>;
     }
 }
-export default RegisterHost;
+export default UpdateHostel;
