@@ -90,6 +90,9 @@ class Login extends React.Component {
                             <Link to={'registerUser'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as User</button>
                             </Link>
+                            <Link to={'updateUser'}>
+                                <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Update User</button>
+                            </Link>
                             <Link to={'registerHost'}>
                                 <button className="btn btn-primary btn-lg mb-7 btn-block" type="button" id="registerButton">Register as Host</button>
                             </Link>
