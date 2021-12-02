@@ -65,13 +65,19 @@ export class HostelHopperAPIClient
     });
   }
 
-  updateUser(user_id, updateJSON)
+  updateUser(user_id, name, email, password, image_url)
   {
+    debugger;
     return new Promise((resolve, reject) =>
     {
       axios.put(
           `${this.url}/user/${user_id}`,
-          updateJSON
+          {
+            "name": name,
+            "email": email,
+            "password": password,
+            "image_url": image_url
+          },
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
