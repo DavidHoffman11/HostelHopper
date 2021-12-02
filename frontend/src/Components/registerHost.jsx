@@ -148,8 +148,8 @@ export class RegisterHost extends React.Component {
                                         name="Email"
                                         className="form-control"
                                         placeholder="Hostel tag line (or slogan)"
-                                        value={this.state.info}
-                                        onChange={e => this.setState({ info: e.target.value })} 
+                                        value={this.state.body}
+                                        onChange={e => this.setState({ body: e.target.value })} 
                                     />
                                 </div>
                             </div>

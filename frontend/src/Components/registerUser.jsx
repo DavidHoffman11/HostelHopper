@@ -80,7 +80,7 @@ export class RegisterUser extends React.Component {
                                     />
                                 </div>
                             </div>
-
+                            
                             <div className="login-form">
                                 <div className="form-group">
                                     {/* <label htmlFor="search_name" className="py-0">Email</label> */}

@@ -102,7 +102,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  createHost(body, title, price, phone, name, email, password, image_url, zip_code, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
+  createHost(body, price, phone, name, email, password, image_url, zip_code, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan)
   {
     return new Promise((resolve, reject) =>
     {
@@ -113,7 +113,6 @@ export class HostelHopperAPIClient
             "email": email,
             "password": password,
             "body": body,
-            "title": title,
             "price": price,
             "zip_code": zip_code,
             "phone": phone,
