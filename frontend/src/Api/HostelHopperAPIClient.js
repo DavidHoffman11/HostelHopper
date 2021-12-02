@@ -74,7 +74,7 @@ export class HostelHopperAPIClient
           updateJSON
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
@@ -128,7 +128,7 @@ export class HostelHopperAPIClient
           },
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 
@@ -153,7 +153,7 @@ export class HostelHopperAPIClient
           updateJSON
         )
         .then(response => resolve(response.data))
-        .catch(error => alert(error));
+        .catch(error => console.log(error.response));
     });
   }
 

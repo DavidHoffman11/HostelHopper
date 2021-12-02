@@ -7,10 +7,8 @@ var Host = function(host)
   this.password = host.password;
   this.email = host.email;
   this.zip_code = host.zip_code;
-  this.title = host.title;
   this.body = host.body;
   this.price = host.price;
-  this.phone = host.phone;
   this.image_url = host.image_url;
   this.food_info = host.food_info;
   this.living_options = host.living_options;
@@ -45,7 +43,7 @@ exports.get_hosts = function(req, res)
 
 exports.create_host = function(req, res)
 {
-  if (sql.propertyCheck(req, res, ["body", "price", "zip_code", "name","email","password","phone","image_url","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms","location","slogan"]))
+  if (sql.propertyCheck(req, res, ["body", "price", "zip_code", "name","email","password","image_url","food_info","living_options","attractions","is_pet_friendly","is_covid_safe","has_lockers","has_gendered_rooms","location","slogan"]))
   {
     var newHost = new Host(req.body);
 

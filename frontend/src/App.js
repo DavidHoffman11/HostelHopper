@@ -47,9 +47,7 @@ class App extends Component {
             <RegisterHost />
           </Route>
 
-          <Route path="/profile">
-            <ProfilePage />
-            </Route>
+  
          <Route exact path="/homepage">
             <HomePage />
             <HostelListing />
