@@ -90,7 +90,7 @@ export class HostelHopperAPIClient
     });
   }
 
-  getAllHosts(searchRestrictions = {})
+  getAllHosts()
   {
     return new Promise((resolve, reject) =>
     {
@@ -210,24 +210,24 @@ export class HostelHopperAPIClient
     });
   }
 
-  gethostLikes(host_id)
+  gethostReviewLikes(host_id, review_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host/${host_id}/like`,
+          `${this.url}/host/${host_id}/review/${review_id}like`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  likeHost(host_id, user_id,review_id)
+  likeHostReview(host_id, user_id,review_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/host/${host_id}/like`,
+          `${this.url}/host/${host_id}/review/${review_id}/like`,
           {
             "user_id": user_id
           }
@@ -237,24 +237,24 @@ export class HostelHopperAPIClient
     });
   }
 
-  unlikeHost(host_id, user_id,review_id)
+  unlikeHostReview(host_id, user_id,review_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.delete(
-          `${this.url}/host/${host_id}/like/${user_id}`,
+          `${this.url}/host/${host_id}/review/${review_id}/like/${user_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
     });
   }
 
-  didUserLikeHost(host_id, user_id)
+  didUserLikeHostReview(host_id, user_id, review_id)
   {
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host/${host_id}/like/${user_id}`,
+          `${this.url}/host/${host_id}/review/${review_id}/like/${user_id}`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
