@@ -9,28 +9,8 @@ import { RegisterErrorMessage, RegisterErrorMessage2 } from './loginButton';
 export class UpdateHostel extends React.Component {
     apiClient = new HostelHopperAPIClient();
     state = {
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        registered: false,
-        register2: false,
-        confirm: null,
-        id:'',
-        hostelName: '',
-        info : '',
-        hostelPicUrl: '',
-        pricing: '',
-        salesPitch: '',
-        foodInfo : '',
-        livingOptions: '',
-        attractions : '',
-        isPetFriendly: false,
-        isCovidSafe : false,
-        location: '',
-        hasLockers: false,
-        hasGenderedRoom : false,
-        zipCode: '',
+      
+        
     };
     readyToRegister() {
         if (this.state.username !== ''
@@ -40,11 +20,12 @@ export class UpdateHostel extends React.Component {
         this.setState({ confirm: false });
         return false;
     }
-    registerHost(username, email, password, confirmPassword, profilePicUrl) {
-        if (profilePicUrl === '') profilePicUrl = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
+    registerHost(host_id, body, price, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan, name, email, password, image_url, zip_code) {
+        if (image_url === '') image_url = "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg";
         if (this.readyToRegister()) {
             this.setState({ confirm: true });
-            this.apiClient.updateHost()
+            this.apiClient.updateHost(host_id, body, price, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan, name, email, password, image_url, zip_code);
+            this.setState({registered: true});
         }else{
             alert("Please fill out all fields");
         }
@@ -122,17 +103,6 @@ export class UpdateHostel extends React.Component {
                                         placeholder="profile picture url (optional)"
                                         value={this.state.hostelPicUrl}
                                         onChange={e => this.setState({ hostelPicUrl: e.target.value })} 
-                                    />
-                                </div>
-                            </div>
-                            <div className="login-form">
-                                <div className="form-group">
-                                    <input type="text"
-                                        name="Email"
-                                        className="form-control"
-                                        placeholder="Name of Hostel"
-                                        value={this.state.hostelName}
-                                        onChange={e => this.setState({ hostelName: e.target.value })} 
                                     />
                                 </div>
                             </div>
@@ -284,13 +254,24 @@ export class UpdateHostel extends React.Component {
                                 </div>
                             </div>
                             <div className="login-form pb-4">
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.username, this.state.email, this.state.password, this.state.confirmPassword, this.state.hostelPicUrl, this.state.info,this.state.pricing,this.state.salesPitch,this.state.foodInfo,this.state.livingOptions,this.state.attractions,this.state.isPetFriendly,this.state.isCovidSafe,this.state.location,this.state.hasLockers,this.state.hasGenderedRoom,this.state.zipCode)}>Update</button>
-                                {this.state.registered && <Redirect to={'/homepage/' + this.state.id} />}                            </div>
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost(this.state.id, this.state.info, this.state.pricing, this.state.foodInfo, this.state.livingOptions, this.state.attractions,this.state.isPetFriendly,this.state.isCovidSafe,this.state.hasLockers,this.state.hasGenderedRoom,this.state.location,this.state.salesPitch, this.state.username, this.state.email,this.state.password,this.state.hostelPicUrl, this.state.zipCode)}>Update</button>
+                                {this.state.registered && <Redirect to={this.state.route} />}                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </>;
+    }
+    componentDidMount(){
+        let profid = this.props.match.params.id;
+        if (profid){
+          this.apiClient.getHost(profid)
+          .then(user => {
+              let page = user.info[0];
+              this.setState({id: page.id, route: '/hostelProfile/' + page.id, username: page.name, email: page.email, password: page.password,hostelPicUrl: page.image_url,  info: page.body, pricing: page.price, salesPitch: page.slogan, foodInfo: page.food_info, livingOptions: page.living_options, attractions: page.attractions, isPetFriendly: page.is_pet_friendly, isCovidSafe: page.is_covid_safe, location: page.location, hasLockers: page.has_lockers, hasGenderedRoom: page.has_gendered_rooms, zipCode: page.zip_code});
+        }
+        );
+        }
     }
 }
 export default UpdateHostel;

@@ -56,14 +56,7 @@ export class HostelProfile extends React.Component {
             </div>
             
           
-                <div id="backToHomepage">
-                    
-                    <h4 id="headerText"> Wondering how you compare?</h4>
-                   
-                   <Link to={'/homepage'}>
-                                <button className="btn btn-primary btn-lg mb-7 " type="button">Browse other Hostels</button>
-                            </Link>
-                            </div>
+                
           
             
             <div id="fullProfile" className="container informationContainer py-5 mb-3">
@@ -104,7 +97,7 @@ export class HostelProfile extends React.Component {
            
             </div>
 
-            <Link to={'/updateHostel'}>
+            <Link to={`/updateHostel/${this.state.Hostel.id}`}>
                     <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="hostelUpdate"> Edit hostel information</button>
                 </Link>
                
@@ -116,7 +109,7 @@ export class HostelProfile extends React.Component {
     }
 
     componentDidMount() {
-        let hostid = this.props.match.params.hostid;
+        let hostid = this.props.match.params.id;
         if (hostid){
           this.apiClient.getHost(hostid)
           .then(hostel => {

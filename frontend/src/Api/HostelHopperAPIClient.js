@@ -12,7 +12,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/login/`,
+          `${this.url}/loginUser/`,
           {
             "email": email,
             "password": password,
@@ -164,14 +164,30 @@ export class HostelHopperAPIClient
     });
   }
 
-  updateHost(host_id, updateJSON)
+  updateHost(host_id, body, price, food_info, living_options, attractions, is_pet_friendly, is_covid_safe, has_lockers, has_gendered_rooms, location, slogan, name, email, password, image_url, zip_code)
   {
     return new Promise((resolve, reject) =>
     {
       axios.put(
-          `${this.url}/host/${host_id}`,
-          updateJSON
-        )
+          `${this.url}/host/${host_id}`,{
+            "id":host_id,
+          "body": body,
+            "price": price,
+            "food_info": food_info,
+            "living_options": living_options,
+            "attractions": attractions,
+            "is_pet_friendly": is_pet_friendly,
+            "is_covid_safe": is_covid_safe,
+            "has_lockers": has_lockers,
+            "has_gendered_rooms": has_gendered_rooms,
+            "name": name,
+            "email": email,
+            "password": password,
+            "zip_code": zip_code,
+            "image_url": image_url,
+            "slogan": slogan,
+            "location": location,
+          })
         .then(response => resolve(response.data))
         .catch(error => console.log(error.response));
     });

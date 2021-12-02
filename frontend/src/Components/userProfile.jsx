@@ -48,7 +48,7 @@ export class UserProfile extends React.Component {
                 </div>
 
 
-                <Link to={'/updateUser'}>
+                <Link to={`/updateUser/${this.props.match.params.id}`}>
                     <button className="btn btn-primary btn-lg mb-7 btn-block"  type="button" id="userUpdate"> Edit profile information</button>
                 </Link>
                
