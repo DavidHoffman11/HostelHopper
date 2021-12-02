@@ -3,7 +3,7 @@ import axios from 'axios';
 export class HostelHopperAPIClient
 {
 
-  url = 'http://localhost:8000'
+  url = 'http://localhost:8000/api'
 
   config = {};
 
@@ -12,7 +12,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/login`,
+          `${this.url}/login/`,
           {
             "email": email,
             "password": password,
@@ -28,7 +28,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/user`,
+          `${this.url}/user/`,
           {
             "name": name,
             "email": email,
@@ -58,7 +58,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/user`,
+          `${this.url}/user/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -95,7 +95,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host`, { params: searchRestrictions }
+          `${this.url}/host/`, { params: searchRestrictions }
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -168,7 +168,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/review/${host_id}/body`,
+          `${this.url}/review/${host_id}/body/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -180,7 +180,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/host/${host_id}/review`,
+          `${this.url}/host/${host_id}/review/`,
           {
             "user_id": user_id,
             "body": body,
@@ -208,7 +208,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.get(
-          `${this.url}/host/${host_id}/like`,
+          `${this.url}/host/${host_id}/like/`,
         )
         .then(response => resolve(response.data))
         .catch(error => alert(error));
@@ -220,7 +220,7 @@ export class HostelHopperAPIClient
     return new Promise((resolve, reject) =>
     {
       axios.post(
-          `${this.url}/host/${host_id}/like`,
+          `${this.url}/host/${host_id}/like/`,
           {
             "user_id": user_id
           }
