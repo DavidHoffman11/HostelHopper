@@ -15,21 +15,17 @@ export default class ReviewForm extends React.Component {
             //apiClient: new HostelHopperAPIClient(),
             user_id: this.apiClient.getUserInfo(props.id),
             host_id: this.apiClient.getHost(props.id),
-            userName: '',
+            user_name: '',
             comment : '',
             rating: 0
         }
     }
     onAddClick(userName,comment,rating){
-        var date = new Date().toDateString();
-        var review = new HostelReview(this.state.userName, this.state.rating, this.state.comment, date);
+        //var date = new Date().toDateString();
+        //var review = new HostelReview(this.state.user_name, this.state.rating, this.state.comment);
         this.setState({ confirm: true });
-        this.apiClient.postReview(userName, rating, comment, date)
-                .then(user => {
-                    console.log(user.info[0].id);
-                    this.setState({ id: user.info[0].id });
-                    this.setState({ registered: true });
-                });
+        this.apiClient.postReview(this.state.host_id, this.state.user_id, rating, comment, userName )
+        .then(this.setState({registered: true}));
     }
     render(){
         return(
@@ -77,7 +73,7 @@ export default class ReviewForm extends React.Component {
                     </label>
                     
                 </div>
-                <button className="btn btn-primary mb-3" type="button" onClick={() => this.onAddClick(this.state.userName,this.state.rating,this.state.comment)}>Submit</button>
+                <button className="btn btn-primary mb-3" type="button" onClick={() => this.onAddClick(this.state.user_name,this.state.rating,this.state.comment)}>Submit</button>
             </form>
         )
     }
