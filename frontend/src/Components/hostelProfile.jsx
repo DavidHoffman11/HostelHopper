@@ -114,7 +114,7 @@ export class HostelProfile extends React.Component {
           this.apiClient.getHost(hostid)
           .then(hostel => {
               let page = hostel.info[0];
-              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attrations, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
+              this.setState({Hostel: new Hostel(page.id, page.name, page.slogan, page.image_url, page.price, page.body, page.food_info, page.living_options, page.attractions, page.is_pet_friendly, page.is_covid_safe, page.location, page.has_lockers, page.has_gendered_rooms, [], page.zip_code)});
         }
         );
         }
