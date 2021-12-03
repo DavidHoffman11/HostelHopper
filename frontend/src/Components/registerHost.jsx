@@ -16,7 +16,6 @@ export class RegisterHost extends React.Component {
         confirm: null,
         id:'',
         hostelName: 'a',
-        body : '',
         hostelPicUrl: '',
         pricing: '',
         salesPitch: '',
@@ -141,7 +140,7 @@ export class RegisterHost extends React.Component {
                                         name="Email"
                                         className="form-control"
                                         placeholder="Hostel tag line (or slogan)"
-                                        value={this.state.slogan}
+                                        value={this.state.info}
                                         onChange={e => this.setState({ info: e.target.value })} 
                                     />
                                 </div>
@@ -283,7 +282,7 @@ export class RegisterHost extends React.Component {
                                 </div>
                             </div>
                             <div className="login-form pb-4">
-                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost( this.state.username,this.state.email, this.state.password, this.state.body, this.state.pricing,this.state.zipCode, this.state.hostelPicUrl, this.state.foodInfo, this.state.livingOptions, this.state.attractions, this.state.isPetFriendly, this.state.isCovidSafe, this.state.hasLockers, this.state.hasGenderedRoom, this.state.location, this.state.salesPitch)}>Register</button>
+                                <button className="btn btn-primary btn-lg btn-block" type="button" onClick={() => this.registerHost( this.state.username,this.state.email, this.state.password, this.state.info, this.state.pricing,this.state.zipCode, this.state.hostelPicUrl, this.state.foodInfo, this.state.livingOptions, this.state.attractions, this.state.isPetFriendly, this.state.isCovidSafe, this.state.hasLockers, this.state.hasGenderedRoom, this.state.location, this.state.salesPitch)}>Register</button>
                                 {this.state.registered && <Redirect to={'/hostelProfile/' + this.state.id} />}
                             </div>
                         </form>

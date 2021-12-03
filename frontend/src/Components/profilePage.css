@@ -33,6 +33,7 @@ img {
 }
 
 #homePageHeader{
+
 font-size: 5rem;
 font-family: 'Oswald', sans-serif;
 background-color: white;
@@ -41,6 +42,7 @@ text-align: center;
 margin-top: 1rem;
 padding-bottom: 2rem;
 margin-bottom: 0.5rem;
+
 }
 
 #navBar{
@@ -62,7 +64,7 @@ font-size: 1.25rem;
 padding-top:.5rem;
 display:flex;
 float: right;
-margin-right: 8.9rem;
+margin-right: 19rem;
 
 }
 
@@ -140,4 +142,10 @@ font-size: 2rem;
   display: block;
 margin-right:2rem;
 margin-bottom:7rem;
+}
+
+#logOutButton{
+  float:left;
+  clear: both;
+  margin-left:19rem;
 }

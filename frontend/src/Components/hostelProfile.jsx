@@ -56,7 +56,7 @@ export class HostelProfile extends React.Component {
             </div>
             <div id="backToHomepage">
             <Link to="/">
-            <button className="btn btn-primary btn-lg mb-7 " type="button">Log Out</button>
+            <button className="btn btn-primary btn-lg mb-7 " type="button" id="logOutButton">Log Out</button>
             </Link>
                 </div>
 

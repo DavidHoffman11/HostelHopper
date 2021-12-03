@@ -268,7 +268,7 @@ export class UpdateHostel extends React.Component {
           this.apiClient.getHost(profid)
           .then(user => {
               let page = user.info[0];
-              this.setState({id: page.id, route: '/hostelProfile/' + page.id, username: page.name, email: page.email, password: page.password,hostelPicUrl: page.image_url,  info: page.body, pricing: page.price, salesPitch: page.slogan, foodInfo: page.food_info, livingOptions: page.living_options, attractions: page.attractions, isPetFriendly: page.is_pet_friendly, isCovidSafe: page.is_covid_safe, location: page.location, hasLockers: page.has_lockers, hasGenderedRoom: page.has_gendered_rooms, zipCode: page.zip_code});
+              this.setState({id: page.id, route: '/hostelProfile/' + page.id, username: page.name, email: page.email, password: page.password,hostelPicUrl: page.image_url,  info: page.slogan, pricing: page.price, salesPitch: page.body, foodInfo: page.food_info, livingOptions: page.living_options, attractions: page.attractions, isPetFriendly: page.is_pet_friendly, isCovidSafe: page.is_covid_safe, location: page.location, hasLockers: page.has_lockers, hasGenderedRoom: page.has_gendered_rooms, zipCode: page.zip_code});
         }
         );
         }
