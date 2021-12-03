@@ -1,3 +1,6 @@
+
+
+
 .imgcontainer {
     text-align: center;
     color: royalblue;
@@ -119,11 +122,13 @@ img.avatar {
 }
 
 #loginPageBG{
-    background-color: rgb(47, 49, 146);
+    background-image:url('../backgroundImage.jpeg');
 
+    background-attachment: fixed;
 }
 
 .fadeInDown{
+    
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
     -webkit-animation-duration: 1s;

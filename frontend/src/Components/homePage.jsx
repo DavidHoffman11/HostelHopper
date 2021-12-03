@@ -19,14 +19,17 @@ export class HomePage extends React.Component {
 
         <div className="background">
           <div id="homePageHeader">
-            <Link to="/">
-            <button className="btn btn-primary btn-lg mb-7 " type="button">Log Out</button>
-            </Link>
+            
           <Link to={ `/profile/${this.props.match.params.id}` }>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button" id="backToProfile">Go to my Profile</button>
                             </Link>
+
             Avaliable Hostels 
           </div >
+
+          <Link to="/">
+            <button className="btn btn-primary btn-lg mb-7 " type="button" id="logOutButtonMain">Log Out</button>
+            </Link>
 
           <img src={logo} alt="Avatar" className="avatar" id="cornerLogo"></img>
 

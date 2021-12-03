@@ -53,20 +53,21 @@ export class ProfilePage extends React.Component {
         return( <div id="background">
             <div id="homePageHeader">
                 {this.state.Hostel.hostelName}
-                <p id="slogan" >{this.state.Hostel.info}</p>
+                <p id="slogan" >"{this.state.Hostel.info}"</p>
             </div>
-            
+            <Link to="/">
+            <button className="btn btn-primary btn-lg mb-7 " type="button" id="logOutButton">Log Out</button>
+            </Link>
           
                 <div id="backToHomepage">
                     
                     <h4 id="headerText">Not what you're looking for?</h4>
                    
+                    
                     <Link to={ `/homepage/${this.props.match.params.id}` }>
                                 <button className="btn btn-primary btn-lg mb-7 " type="button">Browse more Hostels</button>
                             </Link>
-                            <Link to="/">
-            <button className="btn btn-primary btn-lg mb-7 " type="button">Log Out</button>
-            </Link>
+                         
             
                             </div>
           

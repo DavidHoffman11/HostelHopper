@@ -2,6 +2,7 @@ import React from 'react';
 import './login.css'
 import { Redirect, Link } from 'react-router-dom';
 import logo from '../logo.png';
+import backgroundImage from '../backgroundImage.jpeg';
 import { HostelHopperAPIClient } from '../Api/HostelHopperAPIClient';
 import { ErrorMessage } from './loginButton';
 

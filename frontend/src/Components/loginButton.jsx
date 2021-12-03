@@ -24,7 +24,7 @@ export const RegisterErrorMessage = props => {
     
     console.log('here');
     return<div>
-        <h3 className = "error">Passwords Dont Match!</h3>
+        <h3 className = "error"></h3>
     </div>
                             
 }
